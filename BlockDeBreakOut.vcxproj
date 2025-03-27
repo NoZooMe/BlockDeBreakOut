@@ -151,22 +151,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\BlockMenu\AbstractScene.cpp" />
+    <ClCompile Include="..\BlockMenu\Define.cpp" />
+    <ClCompile Include="..\BlockMenu\GameScene.cpp" />
+    <ClCompile Include="..\BlockMenu\Looper.cpp" />
+    <ClCompile Include="..\BlockMenu\Parameter.cpp" />
+    <ClCompile Include="..\BlockMenu\Task.cpp" />
+    <ClCompile Include="..\BlockMenu\TitleScene.cpp" />
     <ClCompile Include="CalcUtils.cpp" />
-    <ClCompile Include="Define.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Fps.cpp" />
     <ClCompile Include="Keyboard.cpp" />
-    <ClCompile Include="Looper.cpp" />
     <ClCompile Include="SystemMain.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\BlockMenu\AbstractScene.h" />
+    <ClInclude Include="..\BlockMenu\Define.h" />
+    <ClInclude Include="..\BlockMenu\GameScene.h" />
+    <ClInclude Include="..\BlockMenu\ISceneChangedListener.h" />
+    <ClInclude Include="..\BlockMenu\Looper.h" />
+    <ClInclude Include="..\BlockMenu\Parameter.h" />
+    <ClInclude Include="..\BlockMenu\Task.h" />
+    <ClInclude Include="..\BlockMenu\TitleScene.h" />
     <ClInclude Include="CalcUtils.h" />
-    <ClInclude Include="Define.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="Fps.h" />
     <ClInclude Include="Keyboard.h" />
-    <ClInclude Include="Looper.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SystemMain.h" />

@@ -151,13 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\BlockMenu\AbstractScene.cpp" />
     <ClCompile Include="..\BlockMenu\Define.cpp" />
     <ClCompile Include="..\BlockMenu\GameScene.cpp" />
     <ClCompile Include="..\BlockMenu\Looper.cpp" />
     <ClCompile Include="..\BlockMenu\Parameter.cpp" />
     <ClCompile Include="..\BlockMenu\Task.cpp" />
     <ClCompile Include="..\BlockMenu\TitleScene.cpp" />
+    <ClCompile Include="AbstractScene.cpp" />
     <ClCompile Include="CalcUtils.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Fps.cpp" />

@@ -5,12 +5,12 @@ Block::Block(float x, float y, float width, float height, int col):RectangleObje
 
 }
 
-void Block::Init() {
+void Block::Initialize() {
 	//å©Ç¶ÇÈèÛë‘Ç…Ç∑ÇÈ
 	WaveFlag((int)fBlock::_live, true);
 }
 
-void Block::Fin() {
+void Block::Finalize() {
 
 }
 

@@ -14,8 +14,8 @@ protected:
 public:
 
     RectangleObject(float x, float y, int width, int height);
-    virtual void Init() override = 0;
-    virtual void Fin() override = 0;
+    virtual void Initialize() override = 0;
+    virtual void Finalize() override = 0;
     void Update();
     void Draw() const override;
 

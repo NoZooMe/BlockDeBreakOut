@@ -1,16 +1,16 @@
 #include "Player.h"
-#include "DxLib.h"
-#include "Def.h"
+#include <DxLib.h>
+#include "Define.h"
 
 //Player::Player(float iniX, float iniY, IDethPlayer* iListener) : Rectangle(iniX, iniY, WIDTH, HEIGHT), listener(iListener), direction(0, 0) {
 //
 //}
 
-Player::Player(float iniX, float iniY) : RectangleObject(iniX, iniY, PLAYER_WIDTH, PLAYER_HEIGHT), dirH(0), dirV(0), life(PLAYER_LIFE) {
+Player::Player(float iniX, float iniY) : RectangleObject(iniX, iniY, Define::PLAYER_WIDTH, Define::PLAYER_HEIGHT), dirH(0), dirV(0), life(Define::PLAYER_LIFE) {
 	
 }
 
-void Player::Init() {
+void Player::Initialize() {
 	
 }
 
@@ -85,16 +85,16 @@ void Player::Check_Out() {
 	if (position.GetterX() < 0) {
 		position.Setter(0, position.GetterY());
 	}
-	else if (position.GetterX() + GetterWidth() > SCREEN_WIDTH) {
-		position.Setter(SCREEN_WIDTH - GetterWidth(), position.GetterY());
+	else if (position.GetterX() + GetterWidth() > Define::SCREEN_WIDTH) {
+		position.Setter(Define::SCREEN_WIDTH - GetterWidth(), position.GetterY());
 	}
 
 	//yç¿ïWÇ…Ç¬Ç¢Çƒ
-	if (position.GetterY() < SCREEN_HEIGHT*3/5) {//âÊñ è„Ç÷ÇÕà⁄ìÆêßå‰Ç†ÇË
-		position.Setter(position.GetterX(), SCREEN_HEIGHT*3/5);
+	if (position.GetterY() < Define::SCREEN_HEIGHT * 3 / 5) {//âÊñ è„Ç÷ÇÕà⁄ìÆêßå‰Ç†ÇË
+		position.Setter(position.GetterX(), Define::SCREEN_HEIGHT*3/5);
 	}
-	else if (position.GetterY() + GetterHeight() > SCREEN_HEIGHT) {
-		position.Setter(position.GetterX(), SCREEN_HEIGHT - GetterHeight());
+	else if (position.GetterY() + GetterHeight() > Define::SCREEN_HEIGHT) {
+		position.Setter(position.GetterX(), Define::SCREEN_HEIGHT - GetterHeight());
 	}
 }
 

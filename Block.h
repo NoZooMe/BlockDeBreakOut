@@ -8,8 +8,8 @@ private:
     
 public:
     Block(float x, float y, float width, float height, int color);
-    void Init() override;
-    void Fin() override;
+    void Initialize() override;
+    void Finalize() override;
     void Update() override;
     void Draw() const;
 

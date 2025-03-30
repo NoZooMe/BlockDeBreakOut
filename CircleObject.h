@@ -9,8 +9,8 @@ protected:
     int r;
 public:
     CircleObject(float x, float y, int r);
-    virtual void Init() override = 0;
-    virtual void Fin() override = 0;
+    virtual void Initialize() override = 0;
+    virtual void Finalize() override = 0;
     virtual void Update() override = 0;
     void Draw() const override;
 

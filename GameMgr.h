@@ -20,8 +20,8 @@ private:
 
 public:
     GameMgr();
-    void Init() override ;
-    void Fin() override ;
+    void Initialize() override ;
+    void Finalize() override ;
     void Update() override;
     void Draw() const override;
 

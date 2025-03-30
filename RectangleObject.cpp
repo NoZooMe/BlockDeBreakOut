@@ -1,6 +1,6 @@
 #include "RectangleObject.h"
-#include "DxLib.h"
-#include "Def.h"
+#include <DxLib.h>
+#include "Define.h"
 
 RectangleObject::RectangleObject(float x, float y, int width, int height) : ShapeObject(x, y), width(width), height(height), vertSide1(x, y, x, y+height), vertSide2(x+width, y, x+width, y+height), 
 	horiSide1(x, y, x+width, y), horiSide2(x, y+height, x+width, y+height){
@@ -19,5 +19,5 @@ void RectangleObject::Update(){
 }
 
 void RectangleObject::Draw() const {
-	DrawBox(position.GetterX(), position.GetterY(), position.GetterX() + width, position.GetterY() + height, WHITE, true);
+	DrawBox(position.GetterX(), position.GetterY(), position.GetterX() + width, position.GetterY() + height, Define::WHITE, true);
 }

@@ -26,8 +26,8 @@ private:
 public:
     //Player(float iniX, float iniY, IDethPlayer* iListner);
     Player(float iniX, float iniY);
-    void Init() override ;
-    void Fin() override {};
+    void Initialize() override ;
+    void Finalize() override {};
     void Update() override;
     void Draw() const override;
 

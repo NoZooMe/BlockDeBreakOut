@@ -15,8 +15,8 @@ private:
     int Check_DistPointAndLine(const Vector2<float>& point, const Vector2<float>& lineBegin, const Vector2<float>& lineEnd) const;
 
 public:
-    void Init() override {};
-    void Fin() override {};
+    void Initialize() override {};
+    void Finalize() override {};
     void Update() override {};
     void Draw() const override {};
 

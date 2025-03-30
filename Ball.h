@@ -26,8 +26,8 @@ public:
 
     Ball(int x, int y);
 
-    void Init() override ;
-    void Fin() override ;
+    void Initialize() override ;
+    void Finalize() override ;
     void Update() override;
     //ボールがプレイヤーを追従するときのUpdate
     void Update(float playerX, float playerY);

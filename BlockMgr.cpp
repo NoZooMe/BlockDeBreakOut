@@ -1,25 +1,27 @@
 #include "BlockMgr.h"
-#include "Def.h"
+#include "Define.h"
 
 using namespace std;
 
+const int BlockMgr::NUM = Define::BLOCK_NUM;
+
 BlockMgr::BlockMgr() {
 	for (int i = 0; i < NUM; i++) {
-		_vector.emplace_back(make_shared<Block>(i%BLOCK_ROW*(BLOCK_WIDTH + BLOCK_GAPX) + BLOCK_GAPX, i/BLOCK_ROW*(BLOCK_HEIGHT + BLOCK_GAPY) + BLOCK_GAPY, BLOCK_WIDTH, BLOCK_HEIGHT, RED));
+		_vector.emplace_back(make_shared<Block>(i%Define::BLOCK_ROW*(Define::BLOCK_WIDTH + Define::BLOCK_GAPX) + Define::BLOCK_GAPX, i/Define::BLOCK_ROW*(Define::BLOCK_HEIGHT + Define::BLOCK_GAPY) + Define::BLOCK_GAPY, Define::BLOCK_WIDTH, Define::BLOCK_HEIGHT, Define::RED));
 	}
 
 	
 }
 
-void BlockMgr::Init() {
+void BlockMgr::Initialize() {
 	for (auto block : _vector) {
-		block->Init();
+		block->Initialize();
 	}
 }
 
-void BlockMgr::Fin() {
+void BlockMgr::Finalize() {
 	for (auto block : _vector) {
-		block->Fin();
+		block->Finalize();
 	}
 }
 

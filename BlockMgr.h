@@ -2,7 +2,7 @@
 #include "Task.h"
 #include "Block.h"
 #include "Ball.h"
-#include "Def.h"
+#include "Define.h"
 
 #include <vector>
 #include <memory>
@@ -11,12 +11,12 @@ class BlockMgr :
 {
 private:
     std::vector<std::shared_ptr<Block>> _vector;
-    static const int NUM = BLOCK_NUM;
+    static const int NUM;
 
 public:
     BlockMgr();
-    void Init() override;
-    void Fin() override;
+    void Initialize() override;
+    void Finalize() override;
     void Update() override;
     void Draw() const override;
 

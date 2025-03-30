@@ -1,21 +1,21 @@
 #include "Ball.h"
 #include "DxLib.h"
-#include "Def.h"
-#include "KeyBoard.h"
+#include "Define.h"
+#include "Keyboard.h"
 #include <cmath>
 #include <memory>
 
 
-Ball::Ball(int x, int y) : CircleObject(x, y, BALL_RADIUS){
+Ball::Ball(int x, int y) : CircleObject(x, y, Define::BALL_RADIUS){
 
 }
 
-void Ball::Init() {
+void Ball::Initialize() {
 	//ボールは最初は動いていない
 	WaveFlag((int)fBall::_move, false);
 }
 
-void Ball::Fin() {
+void Ball::Finalize() {
 
 }
 
@@ -29,16 +29,16 @@ void Ball::Update(float playerX, float playerY) {
 	if (!CheckFlag((int)fBall::_wait)) {
 		position.Setter(playerX, playerY);
 		//スペースキーが押されたら待ち状態へ
-		if (KeyBoard::Instance()->GetPressingCount(KEY_INPUT_SPACE) == 1) {
+		if (Keyboard::getIns()->getPressingCount(KEY_INPUT_SPACE) == 1) {
 			WaveFlag((int)fBall::_wait, true);
 		}
 	}
 	else {//離されたら解除
 		angle++;
 		//急ごしらえradianと直線
-		float radian = ((float)(angle % 360) / 180 * PI) * 2 ;
-		DrawLine(position.GetterX(), position.GetterY(), position.GetterX() + 100*cosf(radian), position.GetterY() - fabsf(100*sinf(radian)), GREEN, 0);
-		if (KeyBoard::Instance()->GetReleasingCount(KEY_INPUT_SPACE) == 1) {			
+		float radian = ((float)(angle % 360) / 180 * Define::PI) * 2 ;
+		DrawLine(position.GetterX(), position.GetterY(), position.GetterX() + 100*cosf(radian), position.GetterY() - fabsf(100*sinf(radian)), Define::GREEN, 0);
+		if (Keyboard::getIns()->getReleasingCount(KEY_INPUT_SPACE) == 1) {			
 			velocity.Setter(SPEED*cosf(radian), -fabsf(SPEED*sinf(radian)));
 			WaveFlag((int)fBall::_move, true);
 			WaveFlag((int)fBall::_wait, false);
@@ -112,8 +112,8 @@ void Ball::Check_Out() {
 		position.Setter(GetterR(), GetterPosY());
 		ReflectWall_Horizontal();
 	}
-	else if(GetterPosX() + GetterR() > SCREEN_WIDTH){
-		position.Setter(SCREEN_WIDTH - GetterR(), GetterPosY());
+	else if(GetterPosX() + GetterR() > Define::SCREEN_WIDTH){
+		position.Setter(Define::SCREEN_WIDTH - GetterR(), GetterPosY());
 		ReflectWall_Horizontal();
 	}
 
@@ -121,7 +121,7 @@ void Ball::Check_Out() {
 		position.Setter(GetterPosX(), GetterR());
 		ReflectWall_Vertical();
 	}
-	else if (GetterPosY() - GetterR() > SCREEN_HEIGHT) {
+	else if (GetterPosY() - GetterR() > Define::SCREEN_HEIGHT) {
 		//下に落ちた時
 		ShapeObject::WaveFlag((int)fBall::_out, true);
 	}

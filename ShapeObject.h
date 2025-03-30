@@ -29,8 +29,8 @@ protected:
 
 public:
     ShapeObject(float posX, float posY);
-    virtual void Init() override  = 0;
-    void Fin() override = 0;
+    virtual void Initialize() override  = 0;
+    void Finalize() override = 0;
     void Update() override;
     void Draw() const override = 0;
 

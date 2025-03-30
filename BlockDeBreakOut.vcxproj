@@ -158,12 +158,23 @@
     <ClCompile Include="..\BlockMenu\Task.cpp" />
     <ClCompile Include="..\BlockMenu\TitleScene.cpp" />
     <ClCompile Include="AbstractScene.cpp" />
+    <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="BlockMgr.cpp" />
     <ClCompile Include="CalcUtils.cpp" />
+    <ClCompile Include="CircleObject.cpp" />
+    <ClCompile Include="ColMgr.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Fps.cpp" />
+    <ClCompile Include="GameMgr.cpp" />
     <ClCompile Include="Keyboard.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RectangleObject.cpp" />
+    <ClCompile Include="Segment.cpp" />
+    <ClCompile Include="ShapeObject.cpp" />
     <ClCompile Include="SystemMain.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\BlockMenu\AbstractScene.h" />
@@ -174,13 +185,24 @@
     <ClInclude Include="..\BlockMenu\Parameter.h" />
     <ClInclude Include="..\BlockMenu\Task.h" />
     <ClInclude Include="..\BlockMenu\TitleScene.h" />
+    <ClInclude Include="Ball.h" />
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="BlockMgr.h" />
     <ClInclude Include="CalcUtils.h" />
+    <ClInclude Include="CircleObject.h" />
+    <ClInclude Include="ColMgr.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="Fps.h" />
+    <ClInclude Include="GameMgr.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Macro.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="RectangleObject.h" />
+    <ClInclude Include="Segment.h" />
+    <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SystemMain.h" />
+    <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

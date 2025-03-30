@@ -7,20 +7,21 @@ const char* GameScene::ParameterTagStage = "ParameterTagStage";
 
 GameScene::GameScene(ISceneChangedListener* impl, const Parameter& parameter) : AbstractScene(impl, parameter) {
 	_level = _parameter.get(ParameterTagLevel);		//ƒŒƒxƒ‹‚ÉParameter‚Å•R‚Ã‚¯‚³‚ê‚Ä‚¢‚é”’l‚ğ‘ã“ü
+	gameMgr = std::make_shared<GameMgr>();
 }
 
 void GameScene::Initialize() {
-
+	gameMgr->Initialize();
 }
 
 void GameScene::Finalize() {
-
+	gameMgr->Finalize();
 }
 
 void GameScene::Update() {
-
+	gameMgr->Update();
 }
 
 void GameScene::Draw() const {
-	DrawFormatString(100, 100, Define::WHITE, "“ïˆÕ“x‚Í%d‚Å‚·", _level);
+	gameMgr->Draw();
 }

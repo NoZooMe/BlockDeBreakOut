@@ -32,6 +32,7 @@ void Looper::onSceneChanged(const eScene nextScene, const Parameter& parameter, 
 		}
 	}
 
+
 	switch(nextScene) {
 		case Title:
 			_sceneStack.push(std::make_shared<TitleScene>(this, parameter));
@@ -42,4 +43,5 @@ void Looper::onSceneChanged(const eScene nextScene, const Parameter& parameter, 
 		default:
 			;
 	}
+	_sceneStack.top()->Initialize();
 }

@@ -11,6 +11,8 @@ public:
 	void set(std::string key, int val);
 	int get(std::string key) const;
 
+	int getNum() const;
+
 private:
 	std::map<std::string, int> _map;
 };

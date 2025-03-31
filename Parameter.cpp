@@ -14,3 +14,8 @@ int Parameter::get(std::string key) const {
 		return it->second;	//あったら値を返す._mapの要素は_pair型として保存され、それぞれfirstとsecodで要素を取得できる
 	}
 }
+
+int Parameter::getNum() const {
+	int num = _map.size();
+	return num;
+}

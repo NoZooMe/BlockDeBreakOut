@@ -4,6 +4,7 @@
 #include <DxLib.h>
 
 
+
 GameMgr::GameMgr() : player(std::make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY)), ball(std::make_shared<Ball>(Define::BALL_INIX, Define::BALL_INIY)), blockMgr(std::make_shared<BlockMgr>()) {
 	
 }
@@ -21,8 +22,6 @@ void GameMgr::Finalize() {
 }
 
 void GameMgr::Update() {
-	//SingletonのKeyboardを更新
-	Keyboard::getIns()->update();
 
 	//残機があるときとないときで分岐
 	if (player->Getter_PlayerLife() > 0 && blockMgr->Getter_LiveNum() != 0) {//残機があるかつクリアしてないとき

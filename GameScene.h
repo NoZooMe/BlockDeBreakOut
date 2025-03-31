@@ -1,6 +1,7 @@
 #pragma once
 #include "AbstractScene.h"
 #include "GameMgr.h"
+#include "Choices.h"
 #include <memory>
 class GameScene :
     public AbstractScene
@@ -19,5 +20,11 @@ public:
 private:
     int _level;
     std::shared_ptr<GameMgr> gameMgr;
+    std::shared_ptr<Choices> _gameMenu;
+
+    const static char* GameMenu1;
+    const static char* GameMenu2;
+
+    bool pose;
 };
 

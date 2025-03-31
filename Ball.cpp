@@ -20,7 +20,6 @@ void Ball::Finalize() {
 }
 
 void Ball::Update() {
-
 	ShapeObject::Update();
 	Check_Out();
 }

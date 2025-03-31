@@ -1,6 +1,7 @@
 #include "Looper.h"
 #include "TitleScene.h"
 #include "GameScene.h"
+#include <DxLib.h>
 
 Looper::Looper()
 {
@@ -15,6 +16,7 @@ Looper::~Looper()
 
 bool Looper::loop() 
 {
+
 	_sceneStack.top()->Update();
 	_sceneStack.top()->Draw();
 
@@ -26,6 +28,7 @@ bool Looper::loop()
 }
 
 void Looper::onSceneChanged(const eScene nextScene, const Parameter& parameter, const bool stackClear) {
+	_sceneStack.top()->Finalize();
 	if (stackClear == true) {
 		while (!_sceneStack.empty()) {
 			_sceneStack.pop();

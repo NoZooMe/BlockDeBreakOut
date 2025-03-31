@@ -36,7 +36,12 @@ bool ColMgr::Col_SegmentAndBall(const Segment& segment, const CircleObject& ball
 		int dotProd1 = vectorB.DotProd(vectorA);
 		int dotProd2 = vectorC.DotProd(vectorA);
 
-		if ((dotProd1 * dotProd2) <= 0) {
+		//³•‰”»’èBˆÙ‚È‚é‚È‚ç-1B“¯‚¶‚È‚ç1
+
+		int sign1 = (dotProd1 > 0) - (dotProd1 < 0);
+		int sign2 = (dotProd2 > 0) - (dotProd2 < 0);
+
+		if (sign1 * sign2 < 0) {
 			return true;
 		}
 

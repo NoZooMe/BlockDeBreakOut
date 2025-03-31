@@ -29,8 +29,8 @@ const int Define::BALL_INIY = PLAYER_INIY - BALL_RADIUS;
 //blockŠÖ˜A
 const int Define::BLOCK_WIDTH = 75;
 const int Define::BLOCK_HEIGHT = 20;
-const int Define::BLOCK_ROW = SCREEN_WIDTH / BLOCK_WIDTH;
-const int Define::BLOCK_GAPX = SCREEN_WIDTH % BLOCK_WIDTH / (BLOCK_ROW + 1);
+const int Define::BLOCK_ROW = 10;
+const int Define::BLOCK_GAPX = 10;
 const int Define::BLOCK_GAPY = 20;
 const int Define::BLOCK_COLUMN = 5;
 const int Define::BLOCK_NUM = BLOCK_ROW * BLOCK_COLUMN;

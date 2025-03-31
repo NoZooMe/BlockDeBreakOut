@@ -127,14 +127,12 @@ bool GameMgr::Call_ColRectangleAndBall(std::shared_ptr<RectangleObject> rectangl
 	//…•½‚Ì•Ç‚É“–‚½‚ê‚Î‚’¼‚É’µ‚Ë•Ô‚é.…•½—Dæ.
 	if (colMgr.ColHori_RectAndBall(*rectangle, *ball)) {
 		ball->ReflectBlock_Vertical(rectangle);
-
 		return true;
 	}
 
 	//‚’¼‚Ì•Ç‚É“–‚½‚ê‚Î…•½‚É’µ‚Ë•Ô‚é
 	if (colMgr.ColVert_RectAndBall(*rectangle, *ball)) {
 		ball->ReflectBlock_Horizontal(rectangle);
-
 		return true;
 	}
 

@@ -4,7 +4,6 @@ ShapeObject::ShapeObject(float posX, float posY) : position(posX, posY), velocit
 }
 
 void ShapeObject::Move() {
-	//入力されている方向の単位ベクトルにspeedをスカラ倍したものを現在位置に足す
 	position = position + velocity;
 }
 

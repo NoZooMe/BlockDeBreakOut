@@ -7,11 +7,16 @@ Looper::Looper()
 {
 	_keyboard = _keyboard->getIns();
 	Parameter parameter;
-	_sceneStack.push(std::make_shared<TitleScene>(this, parameter));
+	//ここ変更することで始まるシーンを変えれる
+	//_sceneStack.push(std::make_shared<TitleScene>(this, parameter));
+	_sceneStack.push(std::make_shared<GameScene>(this, parameter));
+	
+	_sceneStack.top()->Initialize();
 }
 
 Looper::~Looper()
 {
+	_sceneStack.top()->Finalize();
 }
 
 bool Looper::loop() 

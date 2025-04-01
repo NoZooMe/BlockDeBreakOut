@@ -2,9 +2,10 @@
 #include "AbstractScene.h"
 #include "GameMgr.h"
 #include "Choices.h"
+#include "ISceneChangedListener.h"
 #include <memory>
 class GameScene :
-    public AbstractScene
+    public AbstractScene, ISceneChangedListener
 {
 public:
     const static char* ParameterTagStage;
@@ -17,6 +18,8 @@ public:
     void Finalize() override;
     void Update() override;
     void Draw() const override;
+
+    void onSceneChanged(const eScene nextScene, const Parameter& parameter, const bool stackClear) override;
 private:
     int _level;
     std::shared_ptr<GameMgr> gameMgr;

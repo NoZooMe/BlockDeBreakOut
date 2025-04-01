@@ -35,5 +35,9 @@ public:
 	const static int BLOCK_GAPY;
 	const static int BLOCK_COLUMN;
 	const static int BLOCK_NUM;
+
+	//bulletŠÖ˜A
+	const static int BULLET_SIZE_SMALL;
+	const static int BULLET_SIZE_BIG;
 };
 

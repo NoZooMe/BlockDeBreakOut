@@ -34,3 +34,7 @@ void ShapeObject::WaveFlag(int tFlag, bool value) {
 		flag = flag & temp;
 	}
 }
+
+void ShapeObject::SetOnFlag(int tFlag) {
+	WaveFlag(tFlag, true);
+}

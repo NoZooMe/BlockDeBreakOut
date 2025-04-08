@@ -32,7 +32,7 @@ public:
     void Draw() const override;
 
     //具体的なフラグの構造体
-    enum class fPlayer {
+    enum fPlayer {
         _outVertical,
         _outHorizontal,
         _move,

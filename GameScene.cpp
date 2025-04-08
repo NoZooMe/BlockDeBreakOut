@@ -13,7 +13,10 @@ using namespace std;
 
 GameScene::GameScene(ISceneChangedListener* impl, const Parameter& parameter) : AbstractScene(impl, parameter), pose(false){
 	_level = _parameter.get(ParameterTagLevel);		//ƒŒƒxƒ‹‚ÉParameter‚Å•R‚Ã‚¯‚³‚ê‚Ä‚¢‚é”’l‚ğ‘ã“ü
-	gameMgr = std::make_shared<GameMgr>();
+
+	Parameter param;
+
+	_stageScene1 = make_shared<StageScene1>(this, param);
 
 	map<int, string> gameMenu;
 	gameMenu[0] = GameMenu1;
@@ -23,11 +26,11 @@ GameScene::GameScene(ISceneChangedListener* impl, const Parameter& parameter) : 
 }
 
 void GameScene::Initialize() {
-	gameMgr->Initialize();
+	_stageScene1->Initialize();
 }
 
 void GameScene::Finalize() {
-	gameMgr->Finalize();
+	_stageScene1->Finalize();
 }
 
 void GameScene::Update() {
@@ -53,17 +56,21 @@ void GameScene::Update() {
 		}
 	}
 	else {
-		gameMgr->Update();
+		_stageScene1->Update();
 	}
 }
 
 void GameScene::Draw() const {
 	
-	gameMgr->Draw();
+	_stageScene1->Draw();
 	if (pose) {
 		_gameMenu->Draw();
 	}
 	else {
 
 	}
+}
+
+void GameScene::onSceneChanged(const eScene nextScene, const Parameter& parameter, const bool stackClear) {
+
 }

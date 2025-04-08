@@ -50,6 +50,8 @@ public:
 
     //flagのenumを渡すことでそのフラグが立っているかをboolで返す.外部呼出し可.
     bool CheckFlag(const int tFlag) const;
+    //flagを立てる。外部呼出し可。
+    void SetOnFlag(int tFlag);
 
 };
 

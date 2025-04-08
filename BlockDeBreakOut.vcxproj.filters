@@ -43,6 +43,9 @@
     <Filter Include="ソース ファイル\Scene">
       <UniqueIdentifier>{c2720840-8657-4306-83af-4d406c3094d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Interface">
+      <UniqueIdentifier>{7a40d8ad-28f1-416d-9180-848ed63a127e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,9 +68,6 @@
     </ClCompile>
     <ClCompile Include="Define.cpp">
       <Filter>ソース ファイル\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Looper.cpp">
-      <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Parameter.cpp">
       <Filter>ソース ファイル</Filter>
@@ -99,9 +99,6 @@
     <ClCompile Include="Segment.cpp">
       <Filter>ソース ファイル\System</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2.cpp">
-      <Filter>ソース ファイル\System</Filter>
-    </ClCompile>
     <ClCompile Include="AbstractBullet.cpp">
       <Filter>ソース ファイル\Abstract</Filter>
     </ClCompile>
@@ -130,7 +127,13 @@
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
     <ClCompile Include="StageScene1.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Looper.cpp">
+      <Filter>ソース ファイル\System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,9 +165,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Parameter.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ISceneChangedListener.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="CircleObject.h">
@@ -226,6 +226,12 @@
     </ClInclude>
     <ClInclude Include="StageScene1.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ISceneChangedListener.h">
+      <Filter>ヘッダー ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="eScene.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

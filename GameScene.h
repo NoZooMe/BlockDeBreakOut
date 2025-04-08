@@ -1,11 +1,11 @@
 #pragma once
 #include "AbstractScene.h"
-#include "GameMgr.h"
 #include "Choices.h"
+#include "StageScene1.h"
 #include "ISceneChangedListener.h"
 #include <memory>
 class GameScene :
-    public AbstractScene, ISceneChangedListener
+    public AbstractScene, public ISceneChangedListener
 {
 public:
     const static char* ParameterTagStage;
@@ -20,10 +20,11 @@ public:
     void Draw() const override;
 
     void onSceneChanged(const eScene nextScene, const Parameter& parameter, const bool stackClear) override;
+
 private:
     int _level;
-    std::shared_ptr<GameMgr> gameMgr;
     std::shared_ptr<Choices> _gameMenu;
+    std::shared_ptr<StageScene1> _stageScene1;
 
     const static char* GameMenu1;
     const static char* GameMenu2;

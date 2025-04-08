@@ -20,6 +20,7 @@ const int Define::PLAYER_WIDTH = SCREEN_WIDTH / 7;
 const int Define::PLAYER_HEIGHT = SCREEN_HEIGHT/40;
 const int Define::PLAYER_INIX = SCREEN_WIDTH / 2 - PLAYER_WIDTH / 2;
 const int Define::PLAYER_INIY = SCREEN_HEIGHT * 5 / 6;
+const int Define::PLAYER_SCREEN_HEIGHT = SCREEN_HEIGHT * 3 / 5;
 
 //ballŠÖ˜A
 const int Define::BALL_RADIUS = PLAYER_WIDTH/8;

@@ -102,3 +102,12 @@ void Player::CallDecLife() {
 	life--;
 }
 
+Vector2<float> Player::GetterPosition() const {
+
+	float tempX = position.GetterX();
+	float tempY = position.GetterY();
+
+	Vector2<float> posVec(tempX, tempY);
+
+	return posVec;
+}

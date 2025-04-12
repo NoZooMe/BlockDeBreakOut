@@ -4,7 +4,7 @@ template<class T>
 class Vector2
 {
 private:
-	T x, y;
+	T _x, _y;
 public:
 	Vector2(T x, T y);
 
@@ -25,12 +25,18 @@ public:
 	//正規化されたベクトルを返す
 	Vector2 Norm() const;
 
-	//セッタ
-	void Setter(T dx, T dy) { x = dx; y = dy; };
-	void SetterX(T dx) { x = dx; };
-	void SetterY(T dy) { y = dy; };
+	//角度(radian)を返す(x軸からy軸正方向)
+	float GetterAngle() const;
 
-	T GetterX() const { return x; };
-	T GetterY() const { return y; };
+	//自身をradianだけ回転させたベクトルを返す
+	Vector2 RotateVector(float angle) const;
+
+	//セッタ
+	void Setter(T dx, T dy) { _x = dx; _y = dy; };
+	void SetterX(T dx) { _x = dx; };
+	void SetterY(T dy) { _y = dy; };
+
+	T GetterX() const { return _x; };
+	T GetterY() const { return _y; };
 };
 

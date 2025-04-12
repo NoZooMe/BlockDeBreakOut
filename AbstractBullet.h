@@ -7,8 +7,8 @@ class AbstractBullet :
     public CircleObject
 {
 public:
-    //今後のことも考えて引数にはPlayer型を渡す
-    AbstractBullet(const Vector2<float>& position, int speed, int r, int color, int patter, const Player& player);
+    //場所、方向、早さ、パターン、色、半径
+    AbstractBullet(const Vector2<float>& position, const Vector2<float>& direction, int speed, int pattern, int color, int r);
     ~AbstractBullet() = default;
     void Initialize() override = 0;
     void Finalize() override = 0;
@@ -19,9 +19,10 @@ private:
     int _pattern;
     int _speed;
 
-    Vector2<float> _playerPosition;
+    Vector2<float> _direction;
 
     //パターンによる弾幕メソッド
-    void SetAngleToPlayer();
+    void ShotStraight();
+    void ShotSin();
 };
 

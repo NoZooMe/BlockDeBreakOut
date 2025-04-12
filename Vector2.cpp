@@ -7,7 +7,7 @@ template class Vector2<int>;
 
 template<typename T>
 
-Vector2<T>::Vector2(T iniX, T iniY) : x(iniX), y(iniY) {
+Vector2<T>::Vector2(T iniX, T iniY) : _x(iniX), _y(iniY) {
 
 }
 
@@ -37,7 +37,7 @@ Vector2<T> Vector2<T>::Mult(const T scalar) const {
 template<typename T>
 
 T Vector2<T>::Abs() const {
-	T abs = std::sqrtf(x * x + y * y);
+	T abs = std::sqrtf(_x * _x + _y * _y);
 	return abs;
 }
 
@@ -52,7 +52,7 @@ Vector2<T> Vector2<T>::Norm() const {
 		return nor;
 	}
 	else {
-		Vector2<T> nor(x / abs, y / abs);
+		Vector2<T> nor(_x / abs, _y / abs);
 		return nor;
 	}
 }
@@ -71,4 +71,23 @@ T Vector2<T>::DotProd(const Vector2<T>& vector) const {
 	T value = this->GetterX() * vector.GetterX() + this->GetterY() * vector.GetterY();
 
 	return value;
+}
+
+template<typename T>
+float Vector2<T>::GetterAngle() const {
+	float ty = static_cast<float>(_y);
+	float tx = static_cast<float>(_x);
+
+	return atan2f(ty, tx);
+}
+
+template<typename T>
+Vector2<T> Vector2<T>::RotateVector(float angle) const {
+	//‰ñ“]s—ñ‚ðì—p
+	T x = cosf(angle) * this->GetterX() + sinf(angle) * this->GetterY();
+	T y = -sinf(angle) * this->GetterX() + cosf(angle) * this->GetterY();
+
+	Vector2<T> rotateVector2(x, y);
+
+	return rotateVector2;
 }

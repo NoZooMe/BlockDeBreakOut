@@ -141,3 +141,6 @@ bool GameMgr::Call_ColRectangleAndBall(std::shared_ptr<RectangleObject> rectangl
 	return false;
 }
 
+Vector2<float> GameMgr::GetterPlayerPosition() const {
+	return _player->GetterPosition();
+}

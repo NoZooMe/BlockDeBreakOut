@@ -49,3 +49,16 @@ GameMgr‚ªƒCƒ“ƒXƒ^ƒ“ƒX‚ðì¬‚·‚é‚Ì‚ÍŠëŒ¯‚¾‚ÆŽv‚Á‚Äã‚ÉƒR[ƒ‹ƒoƒbƒN‚·‚éƒCƒ“ƒ^[ƒtƒ
 ‚»‚à‚»‚à‚±‚ÌGameMgr‚ÆStageScene‚Ì•ª—£Ž©‘Ì‚ª‚Æ‚Ä‚à•Ï‚È‚±‚Æ‚ð‚µ‚Ä‚¢‚é‚Æ‚¢‚¤‚©A‚â‚Á‚Ï‚èStageScene‚Íplayer‚âball‚Ì‚±‚Æ‚Í’m‚ç‚È‚­‚Ä‚¢‚¢‚Ì‚Å‚ÍH BlockMgr‚ÆBulletMgr‚Ìî•ñ‚µ‚©•K—v‚È‚¢‚Ì‚Å‚ÍHHHHH
 1TŠÔ‹ß‚­‚à‰½‚ð‚µ‚Ä‚¢‚é‚ñ‚¾HHH V‚µ‚¢—v‘f‚ð‘«‚µ‚½‚¢‚È‚ç•Ï‰»‚ª•K—v‚È•”•ª‚Ì‚Ý‚ðØ‚èŽæ‚Á‚Ä•Ê‚Ål‚¦‚ê‚Î‚¢‚¢‚¶‚á‚È‚¢‚©B
 ‰½‚Æ‚©ì‹Æ‚ð•œ‹Œ‚Å‚«‚½BŠë‚È‚©‚Á‚½B‚±‚ê‚Å‚â‚Á‚ÆBulletMgr‚âStage‚É‚Â‚¢‚ÄŽæ‚è‘g‚ß‚éB‚Æ‚¢‚¤‚©Œp³‚Ì‚Æ‚«‚È‚ñ‚ÅŒÂ•Ê‚ÉƒAƒNƒZƒXŽw’èŽq‚Â‚¯‚Ë‚Î‚È‚ç‚ñ‚Ì‚¾IH
+bullet‚É‚ÍAŽí—ÞAˆÊ’u(ƒxƒNƒgƒ‹)A•ûŒüiƒxƒNƒgƒ‹jA‘‚³A‚Ì5Ží—Þ‚­‚ç‚¢“n‚¹‚ê‚Î‚¢‚¢‚©‚ÈH
+
+04/09
+BulletMgr‚ÆBullet‚Ì§ì‚ÉŽæ‚è‘g‚ñ‚Å‚¢‚­B’e‚Ì“®‚«‚Í“à•”ƒJƒEƒ“ƒ^‚É‚æ‚Á‚ÄŽÀ‘•BŽŸ‚ÍShotSinŠÖ”‚©‚çB
+
+04/10
+‚Æ‚è‚ ‚¦‚¸ŽŽì‚Æ‚µ‚ÄShotSinŠÖ”‚ðì‚Á‚½‚Ì‚ÅŽÀÛ‚É“®ì‚ðŠm‚©‚ß‚Ä‚Ý‚éB‰æ–ÊŠO‚És‚Á‚½‚çŽ©g‚ðÁ‚·ŠÖ”‚È‚Ç‚àŽÀ‘•B
+shotŠÖ”‚ðŒÄ‚Ô‚Ì‚Íupdate‚Å‚Í‚È‚­init‚©‚È‚ŸB
+
+04/12
+BulletMgr‚É’e‚ð“o˜^‚·‚éŠÖ”‚ð’Ç‰Á‚µ‚ÄA‚»‚ê‚ðStageScene‚©‚çŒÄ‚Ño‚·‚±‚Æ‚Å’e‚ðŽËo‚³‚¹‚éB
+sin‚Ì‹““®‚ª‚¨‚©‚µ‚¢ccB‚ ‚Æ’e‚ðŽËo‚·‚éŠp“x‚à­‚µ‚¸‚ê‚Ä‚éB‚±‚±‚ç•Ó‚ðC³‚µ‚Ä‚¢‚±‚¤B
+Œã‚Í“–‚½‚è”»’èA’e‚Ì‰æ–ÊŠOˆ—‚ÖB

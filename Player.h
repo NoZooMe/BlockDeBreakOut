@@ -24,7 +24,6 @@ private:
     void Check_Out();
 
 public:
-    //Player(float iniX, float iniY, IDethPlayer* iListner);
     Player(float iniX, float iniY);
     void Initialize() override ;
     void Finalize() override {};
@@ -43,11 +42,13 @@ public:
     void CallDecLife();
 
     int Getter_PlayerLife() const { return life; };
+    Vector2<float> GetterPosition() const;
 
     //外部呼出し用のflagセット関数
     void SetPlayerFlag_OutVertical(bool value);
     void SetPlayerFlag_OutHorizontal(bool value);
     void SetPlayerFlag_Move(bool value);
     void SetPlayerFlag_Death(bool value);
+
 };
 

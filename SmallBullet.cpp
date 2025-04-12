@@ -1,8 +1,8 @@
 #include "SmallBullet.h"
 #include "Define.h"
 
-SmallBullet::SmallBullet(const Vector2<float>& position, int speed, int color, int pattern, const Player& player) : 
-	AbstractBullet(position, speed, Define::BULLET_SIZE_SMALL, color, pattern, player){
+SmallBullet::SmallBullet(const Vector2<float>& position, const Vector2<float>& direction, int speed, int pattern, int color) :
+	AbstractBullet(position, direction, speed, pattern, color, Define::BULLET_SIZE_SMALL){
 
 }
 

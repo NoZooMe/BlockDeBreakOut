@@ -1,44 +1,39 @@
 #include "AbstractBullet.h"
+#include "Macro.h"
 #include <cmath>
 
-AbstractBullet::AbstractBullet(const Vector2<float>& position, int speed, int r, int color, int pattern, const Player& player)
-	: CircleObject(position.GetterX(), position.GetterY(), r), _speed(speed), _color(color), _pattern(pattern), _playerPosition(player.GetterPosition()){
-
+AbstractBullet::AbstractBullet(const Vector2<float>& position, const Vector2<float>& direction, int speed, int pattern, int color, int r)
+	: CircleObject(position.GetterX(), position.GetterY(), r), _speed(speed), _color(color), _pattern(pattern), _direction(direction.Norm()){
+	
 	switch (_pattern) {
 	case 1:
-		SetAngleToPlayer();
+		ShotStraight();
 		break;
 	case 2:
-		SetAngleToPlayer();
+		ShotSin();
 		break;
 	default:
-		;
+		ERR("意図していない弾幕パターンです");
+		break;
 	}
 
 }
 
 void AbstractBullet::Update() {
-	switch (_pattern) {
-	case 1:
-		break;
-	case 2:
-		SetAngleToPlayer();
-		break;
-	default:
-		;
-	}
-
-	//速度をセット
-	velocity.Setter(cosf(angle) * _speed, sinf(angle) * _speed);
 
 	ShapeObject::Update();
 }
 
-void AbstractBullet::SetAngleToPlayer() {
-	//playerと自分の差を計算
-	int difX = _playerPosition.GetterX() - position.GetterX();
-	int difY = _playerPosition.GetterY() - position.GetterY();
+void AbstractBullet::ShotStraight() {
+	//与えられた方向とスピードを速度に代入
+	velocity = _direction.Mult(_speed);
 
-	//角度を取得
-	angle = atan2f(difX, difY);
+}
+
+void AbstractBullet::ShotSin() {
+	Vector2<float> velSin(_speed, sinf(_speed));
+	float angle = _direction.GetterAngle();
+	
+	//direction方向に傾けたsin波
+	velocity = velSin.RotateVector(angle);
 }

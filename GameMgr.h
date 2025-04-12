@@ -17,7 +17,7 @@ public:
     void Update(std::shared_ptr<BlockMgr> blockMgr, std::shared_ptr<BulletMgr> bulletMgr);
     void Draw() const;
 
-   
+    Vector2<float> GetterPlayerPosition() const ;
 
 private:
 

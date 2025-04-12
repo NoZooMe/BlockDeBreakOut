@@ -25,5 +25,7 @@ private:
 
     std::shared_ptr<GameMgr> _gameMgr;
 
+    int _cnt;
+
 };
 

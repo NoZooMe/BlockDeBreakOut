@@ -1,10 +1,12 @@
 #include "ShapeObject.h"
+#include "Image.h"
+#include <DxLib.h>
 
-ShapeObject::ShapeObject(float posX, float posY) : position(posX, posY), velocity(0, 0), flag(0){
+ShapeObject::ShapeObject(float posX, float posY) : _position(posX, posY), _velocity(0, 0), _flag(0){
 }
 
 void ShapeObject::Move() {
-	position = position + velocity;
+	_position = _position + _velocity;
 }
 
 void ShapeObject::Update() {
@@ -13,7 +15,7 @@ void ShapeObject::Update() {
 
 
 bool ShapeObject::CheckFlag(const int tFlag) const {
-	if ((flag & (1 << tFlag)) == (1 << tFlag)) {
+	if ((_flag & (1 << tFlag)) == (1 << tFlag)) {
 		return true;
 	}
 	else {
@@ -26,15 +28,19 @@ void ShapeObject::WaveFlag(int tFlag, bool value) {
 	int temp = 1 << tFlag;
 	if (value) {
 		//フラグを立てる
-		flag = flag | temp;
+		_flag = _flag | temp;
 	}
 	else {
 		temp = 255 - temp;
 		//フラグを下げる
-		flag = flag & temp;
+		_flag = _flag & temp;
 	}
 }
 
 void ShapeObject::SetOnFlag(int tFlag) {
 	WaveFlag(tFlag, true);
+}
+
+void ShapeObject::Draw(int handle) const {
+	DrawRotaGraphF(_position.GetterX(), _position.GetterY(), 1.0, _angle, handle, TRUE);
 }

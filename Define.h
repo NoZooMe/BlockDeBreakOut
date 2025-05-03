@@ -22,6 +22,8 @@ public:
 	const static int PLAYER_INIX;
 	const static int PLAYER_INIY;
 	const static int PLAYER_SCREEN_HEIGHT;
+	const static int PLAYER_IMAGESIZEX;
+	const static int PLAYER_IMAGESIZEY;
 
 	//ballŠÖ˜A
 	const static int BALL_RADIUS;

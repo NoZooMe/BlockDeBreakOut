@@ -20,7 +20,7 @@ void Block::Update() {
 
 void Block::Draw() const {
 	if (CheckFlag((int)fBlock::_live)) {
-		DrawBox(position.GetterX(), position.GetterY(), position.GetterX() + width, position.GetterY() + height, color, true);
+		DrawBox(_position.GetterX(), _position.GetterY(), _position.GetterX() + width, _position.GetterY() + height, color, true);
 	}
 }
 

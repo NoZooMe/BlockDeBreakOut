@@ -10,11 +10,10 @@ private:
 
     static const int speed = 10;
 
-    //IDethPlayer* listener;
-
     //Playerの方向を表す変数.8方向.
     int dirV, dirH;
 
+    int _mutekiCnt;
 
     //方向をチェック
     void Check_Direciton();
@@ -22,6 +21,9 @@ private:
     void Set_Velocity();
     //画面外にいるかをチェック.いれば修正.
     void Check_Out();
+    //自分を回転させる
+    void RotateLeft();
+    void RotateRight();
 
 public:
     Player(float iniX, float iniY);
@@ -36,6 +38,9 @@ public:
         _outHorizontal,
         _move,
         _death,
+        _muteki, 
+        _rotateR,
+        _rotateL, 
     };
 
     //PlayerのLifeを減らす
@@ -49,6 +54,10 @@ public:
     void SetPlayerFlag_OutHorizontal(bool value);
     void SetPlayerFlag_Move(bool value);
     void SetPlayerFlag_Death(bool value);
+
+    //ダメージを受けた時に呼び出される関数
+    void DamagePlayer();
+    bool isDamaged() const;
 
 };
 

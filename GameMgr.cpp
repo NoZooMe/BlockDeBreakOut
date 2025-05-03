@@ -40,6 +40,19 @@ void GameMgr::Update(shared_ptr<BlockMgr> blockMgr, shared_ptr<BulletMgr> bullet
 				}
 			}
 		}
+
+		//BulletとPlayerの当たり判定
+		for (int i = 0; i < bulletMgr->GetBulletNum(); i++) {
+			if (colMgr.ColHori_RectAndBall(*_player, *bulletMgr->GetBullet(i)) || colMgr.ColVert_RectAndBall(*_player, *bulletMgr->GetBullet(i))) {
+				//無敵でないなら無敵フラグをオン
+				if (!_player->isDamaged()) {
+					_player->CallDecLife();
+					_player->DamagePlayer();
+				}
+				
+				bulletMgr->DeleteBullet(i);
+			}
+		}
 		
 		//Playerにも待ち状態を作ってこちらがやるのはflagのONのみにする。
 		//ballが待ち状態なら動けない
@@ -57,6 +70,7 @@ void GameMgr::Update(shared_ptr<BlockMgr> blockMgr, shared_ptr<BulletMgr> bullet
 
 		}
 
+		//ここら辺もStageSceneがやる
 		//落ちたかどうかはGameMgrが判定。boolで返しその後の処理はStageSceneに任せる。
 		//ボールが下に落ちた時
 		if (_ball->CheckFlag((int)Ball::fBall::_out)) {
@@ -88,25 +102,25 @@ void GameMgr::Update(shared_ptr<BlockMgr> blockMgr, shared_ptr<BulletMgr> bullet
 		DrawString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2, "Game Clear!", Define::WHITE);
 		DrawString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2 + 15, "Restart is Spece", Define::WHITE);
 
-		////スペースが押されたらリスタート
-		// ここはStageSceneでやる
-		//if (Keyboard::getIns()->getPressingCount(KEY_INPUT_SPACE) == 1) {
-		//	//playerの終了と初期化処理
-		//	_player->Finalize();
-		//	_player.reset();
-		//	_player = std::make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY);
-		//	_player->Initialize();
+		//スペースが押されたらリスタート
+		 //ここはStageSceneでやる
+		if (Keyboard::getIns()->getPressingCount(KEY_INPUT_SPACE) == 1) {
+			//playerの終了と初期化処理
+			_player->Finalize();
+			_player.reset();
+			_player = std::make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY);
+			_player->Initialize();
 
-		//	_ball->Finalize();
-		//	_ball.reset();
-		//	_ball = std::make_shared<Ball>(_player->GetterPosX() + _player->GetterWidth() / 2, _player->GetterPosY() - Define::BALL_RADIUS);
-		//	_ball->Initialize();
+			_ball->Finalize();
+			_ball.reset();
+			_ball = std::make_shared<Ball>(_player->GetterPosX() + _player->GetterWidth() / 2, _player->GetterPosY() - Define::BALL_RADIUS);
+			_ball->Initialize();
 
-		//	blockMgr->Finalize();
-		//	blockMgr.reset();
-		//	blockMgr = std::make_shared<BlockMgr>();
-		//	blockMgr->Initialize();
-		//}
+			blockMgr->Finalize();
+			blockMgr.reset();
+			blockMgr = std::make_shared<BlockMgr>();
+			blockMgr->Initialize();
+		}
 	}
 
 	

@@ -2,6 +2,7 @@
 #include "TitleScene.h"
 #include "GameScene.h"
 #include <DxLib.h>
+#include "Image.h"
 
 Looper::Looper()
 {
@@ -12,6 +13,7 @@ Looper::Looper()
 	_sceneStack.push(std::make_shared<GameScene>(this, parameter));
 	
 	_sceneStack.top()->Initialize();
+	Image::getIns()->load();
 }
 
 Looper::~Looper()

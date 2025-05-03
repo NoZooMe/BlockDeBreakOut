@@ -26,22 +26,22 @@ void Ball::Update() {
 
 void Ball::Update(float playerX, float playerY) {
 	if (!CheckFlag((int)fBall::_wait)) {
-		position.Setter(playerX, playerY);
+		_position.Setter(playerX, playerY);
 		//スペースキーが押されたら待ち状態へ
 		if (Keyboard::getIns()->getPressingCount(KEY_INPUT_SPACE) == 1) {
 			WaveFlag((int)fBall::_wait, true);
 		}
 	}
 	else {//離されたら解除
-		angle++;
+		_angle++;
 		//急ごしらえradianと直線
-		float radian = ((float)(angle % 360) / 180 * Define::PI) * 2 ;
-		DrawLine(position.GetterX(), position.GetterY(), position.GetterX() + 100*cosf(radian), position.GetterY() - fabsf(100*sinf(radian)), Define::GREEN, 0);
+		float radian = ((float)(static_cast<int>(_angle) % 360) / 180 * Define::PI) * 2 ;
+		DrawLine(_position.GetterX(), _position.GetterY(), _position.GetterX() + 100*cosf(radian), _position.GetterY() - fabsf(100*sinf(radian)), Define::GREEN, 0);
 		if (Keyboard::getIns()->getReleasingCount(KEY_INPUT_SPACE) == 1) {			
-			velocity.Setter(SPEED*cosf(radian), -fabsf(SPEED*sinf(radian)));
+			_velocity.Setter(SPEED*cosf(radian), -fabsf(SPEED*sinf(radian)));
 			WaveFlag((int)fBall::_move, true);
 			WaveFlag((int)fBall::_wait, false);
-			angle = 0;
+			_angle = 0;
 		}
 
 	}
@@ -57,67 +57,67 @@ void Ball::Draw() const {
 void Ball::ReflectBlock_Vertical(std::shared_ptr<RectangleObject> obj) {
 
 	/*Blockの中心が自分より下にあるかどうかと自分の速度が正かどうかの条件によって結果を分岐させる*/
-	bool conditionA = (obj->GetterPosY() + obj->GetterHeight() / 2 > position.GetterY());
-	bool conditionB = (velocity.GetterY() > 0);
+	bool conditionA = (obj->GetterPosY() + obj->GetterHeight() / 2 > _position.GetterY());
+	bool conditionB = (_velocity.GetterY() > 0);
 
 	if (conditionA == conditionB) {//速度を反転させる場合
-		velocity.SetterY(-velocity.GetterY());
+		_velocity.SetterY(-_velocity.GetterY());
 	}
 	else {//速度を足す場合
-		velocity.SetterY(velocity.GetterY() + obj->GetterVelY()/5);
+		_velocity.SetterY(_velocity.GetterY() + obj->GetterVelY()/5);
 	}
 
 	//すり抜け防止
 	if (conditionA) {//上から衝突
-		position.SetterY(obj->GetterPosY() - r);
+		_position.SetterY(obj->GetterPosY() - r);
 	}else {//下から衝突
-		position.SetterY(obj->GetterPosY() + obj->GetterHeight() + r);
+		_position.SetterY(obj->GetterPosY() + obj->GetterHeight() + r);
 	}
 }
 
 //別に今のままでもいいけど、角に当たった時の判定を別に用意するとか、反射にランダム性を持たせるとかも面白そう。
 void Ball::ReflectBlock_Horizontal(std::shared_ptr<RectangleObject> obj) {
 	//Blockの中心が自分より右かどうか
-	bool conditionA = (obj->GetterPosX() + obj->GetterWidth() / 2 > position.GetterX());
-	bool conditionB = (velocity.GetterX() > 0);
+	bool conditionA = (obj->GetterPosX() + obj->GetterWidth() / 2 > _position.GetterX());
+	bool conditionB = (_velocity.GetterX() > 0);
 
 	if (conditionA == conditionB) {//速度を反転させる場合
-		velocity.SetterX(-velocity.GetterX());
+		_velocity.SetterX(-_velocity.GetterX());
 	}
 	else {//速度を足す場合
-		velocity.SetterX(velocity.GetterX() + obj->GetterVelX() / 5);
+		_velocity.SetterX(_velocity.GetterX() + obj->GetterVelX() / 5);
 	}
 
 	//すり抜け防止
 	if (conditionA) {//左から衝突
-		position.SetterX(obj->GetterPosX() - r);
+		_position.SetterX(obj->GetterPosX() - r);
 	}
 	else {//右から衝突
-		position.SetterX(obj->GetterPosX() + obj->GetterWidth() + r);
+		_position.SetterX(obj->GetterPosX() + obj->GetterWidth() + r);
 	}
 }
 
 void Ball::ReflectWall_Horizontal() {
-	velocity.SetterX(-velocity.GetterX());
+	_velocity.SetterX(-_velocity.GetterX());
 }
 
 void Ball::ReflectWall_Vertical() {
-	velocity.SetterY(-velocity.GetterY());
+	_velocity.SetterY(-_velocity.GetterY());
 }
 
 void Ball::Check_Out() {
 	//xについての処理
 	if (GetterPosX() - GetterR() < 0) {
-		position.Setter(GetterR(), GetterPosY());
+		_position.Setter(GetterR(), GetterPosY());
 		ReflectWall_Horizontal();
 	}
 	else if(GetterPosX() + GetterR() > Define::SCREEN_WIDTH){
-		position.Setter(Define::SCREEN_WIDTH - GetterR(), GetterPosY());
+		_position.Setter(Define::SCREEN_WIDTH - GetterR(), GetterPosY());
 		ReflectWall_Horizontal();
 	}
 
 	if (GetterPosY() - GetterR() < 0) {
-		position.Setter(GetterPosX(), GetterR());
+		_position.Setter(GetterPosX(), GetterR());
 		ReflectWall_Vertical();
 	}
 	else if (GetterPosY() - GetterR() > Define::SCREEN_HEIGHT) {

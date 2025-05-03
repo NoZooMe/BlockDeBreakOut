@@ -10,19 +10,19 @@ class ShapeObject :
 {
 protected:
     //現在地.ベクトルとして実装
-    Vector2<float> position;
+    Vector2<float> _position;
     //速度ベクトル
-    Vector2<float> velocity;
+    Vector2<float> _velocity;
 
 
     //角度.Velocityに三角関数を用いて入れたりする.
-    int angle = 0;
+    float _angle = 0;
 
     //基本的なMove関数.現在地に速度ベクトルを足す
     void Move();
 
     //4byteまでのflag
-    int flag;
+    int _flag;
 
     //tFlagのTFをvalueにする
     void WaveFlag(int tFlag, bool value);
@@ -33,19 +33,20 @@ public:
     void Finalize() override = 0;
     void Update() override;
     void Draw() const override = 0;
+    void Draw(int handle) const;
 
     //positionのGetter
-    float GetterPosX() const { return position.GetterX(); };
-    float GetterPosY() const { return position.GetterY(); };
-    Vector2<float> GetterPosition() const { return position; };
+    float GetterPosX() const { return _position.GetterX(); };
+    float GetterPosY() const { return _position.GetterY(); };
+    Vector2<float> GetterPosition() const { return _position; };
 
     //velocityのGetter
-    float GetterVelX() const { return velocity.GetterX(); };
-    float GetterVelY() const { return velocity.GetterY(); };
+    float GetterVelX() const { return _velocity.GetterX(); };
+    float GetterVelY() const { return _velocity.GetterY(); };
 
     //positionのSetter.遠回りな気もするけどこれでいいのか.そもそも二段階でSetterを参照するプログラムではいけない気がする
     void SetterPosition(Vector2<float>& temp) {
-        position.Setter(temp.GetterX(), temp.GetterY());
+        _position.Setter(temp.GetterX(), temp.GetterY());
     }
 
     //flagのenumを渡すことでそのフラグが立っているかをboolで返す.外部呼出し可.

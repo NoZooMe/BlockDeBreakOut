@@ -11,13 +11,13 @@ void RectangleObject::Update(){
 	ShapeObject::Update();
 
 	//Ç±Ç±ÇÁï”ÇÕÇ‡Ç§è≠Çµä»íPÇ…Ç≈Ç´Ç»Ç¢ÅH
-	vertSide1.UpdateSegment(position.GetterX(), position.GetterY(), position.GetterX(), position.GetterY() + height);
-	vertSide2.UpdateSegment(position.GetterX() + width, position.GetterY(), position.GetterX() + width, position.GetterY() + height);
-	horiSide1.UpdateSegment(position.GetterX(), position.GetterY(), position.GetterX() + width, position.GetterY());
-	horiSide2.UpdateSegment(position.GetterX(), position.GetterY() + height, position.GetterX() + width, position.GetterY() + height);
+	vertSide1.UpdateSegment(_position.GetterX(), _position.GetterY(), _position.GetterX(), _position.GetterY() + height);
+	vertSide2.UpdateSegment(_position.GetterX() + width, _position.GetterY(), _position.GetterX() + width, _position.GetterY() + height);
+	horiSide1.UpdateSegment(_position.GetterX(), _position.GetterY(), _position.GetterX() + width, _position.GetterY());
+	horiSide2.UpdateSegment(_position.GetterX(), _position.GetterY() + height, _position.GetterX() + width, _position.GetterY() + height);
 
 }
 
 void RectangleObject::Draw() const {
-	DrawBox(position.GetterX(), position.GetterY(), position.GetterX() + width, position.GetterY() + height, Define::WHITE, true);
+	DrawBox(_position.GetterX(), _position.GetterY(), _position.GetterX() + width, _position.GetterY() + height, Define::WHITE, true);
 }

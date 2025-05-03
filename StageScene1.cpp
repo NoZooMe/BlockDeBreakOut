@@ -1,5 +1,6 @@
 #include "StageScene1.h"
 #include "Macro.h"
+#include "Define.h"
 
 using namespace std;
 
@@ -27,15 +28,19 @@ void StageScene1::Update() {
 	_bulletMgr->Update();
 	_gameMgr->Update(_blockMgr, _bulletMgr);
 
-	Vector2<float> temp(300, 300);
+	Vector2<float> injectionPoint1(0, Define::PLAYER_INIY);
+	Vector2<float> injectionPoint2(Define::SCREEN_WIDTH, Define::PLAYER_INIY);
 
-	if (_cnt % 60 == 0) {
-		_bulletMgr->Set_SinSmallBullet(temp, _gameMgr->GetterPlayerPosition(), 10, 1);
-		_bulletMgr->Set_StraightSmallBullet(temp, _gameMgr->GetterPlayerPosition(), 10, 1);
+	if (_cnt%200 >= 0 && _cnt%200 <= 10) {
+		_bulletMgr->Set_SinSmallBullet(injectionPoint1, _gameMgr->GetterPlayerPosition(), 10, 1);
+		_bulletMgr->Set_StraightSmallBullet(injectionPoint1, _gameMgr->GetterPlayerPosition(), 10, 1);
+	}
+	if (_cnt % 200 >= 100 && _cnt % 200 <= 110) {
+		_bulletMgr->Set_SinSmallBullet(injectionPoint2, _gameMgr->GetterPlayerPosition(), 10, 1);
+		_bulletMgr->Set_StraightSmallBullet(injectionPoint2, _gameMgr->GetterPlayerPosition(), 10, 1);
 	}
 
 	_cnt++;
-
 }
 
 void StageScene1::Draw() const {

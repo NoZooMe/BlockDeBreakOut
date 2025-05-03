@@ -84,8 +84,8 @@ float Vector2<T>::GetterAngle() const {
 template<typename T>
 Vector2<T> Vector2<T>::RotateVector(float angle) const {
 	//‰ñ“]s—ñ‚ðì—p
-	T x = cosf(angle) * this->GetterX() + sinf(angle) * this->GetterY();
-	T y = -sinf(angle) * this->GetterX() + cosf(angle) * this->GetterY();
+	T x = cosf(angle) * this->GetterX() + -sinf(angle) * this->GetterY();
+	T y = sinf(angle) * this->GetterX() + cosf(angle) * this->GetterY();
 
 	Vector2<T> rotateVector2(x, y);
 

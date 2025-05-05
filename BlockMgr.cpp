@@ -7,8 +7,8 @@ const int BlockMgr::NUM = Define::BLOCK_NUM;
 
 BlockMgr::BlockMgr() {
 	for (int i = 0; i < NUM; i++) {
-		_vector.emplace_back(make_shared<Block>(i%Define::BLOCK_ROW*(Define::BLOCK_WIDTH + Define::BLOCK_GAPX), 
-			i/Define::BLOCK_ROW*(Define::BLOCK_HEIGHT + Define::BLOCK_GAPY), 
+		_vector.emplace_back(make_shared<Block>(i%Define::BLOCK_ROW*(Define::BLOCK_WIDTH + Define::BLOCK_GAPX)+(i%Define::BLOCK_ROW + 1)*Define::BLOCK_GAPX, 
+			i/Define::BLOCK_ROW*(Define::BLOCK_HEIGHT + Define::BLOCK_GAPY) + Define::BLOCK_GAPY, 
 			Define::BLOCK_WIDTH, Define::BLOCK_HEIGHT, Define::RED));
 	}
 }

@@ -46,6 +46,9 @@
     <Filter Include="ヘッダー ファイル\Interface">
       <UniqueIdentifier>{7a40d8ad-28f1-416d-9180-848ed63a127e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Enum">
+      <UniqueIdentifier>{ce88d1f1-cd97-468d-a2c7-e5aee70959d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -99,9 +102,6 @@
     <ClCompile Include="Segment.cpp">
       <Filter>ソース ファイル\System</Filter>
     </ClCompile>
-    <ClCompile Include="AbstractBullet.cpp">
-      <Filter>ソース ファイル\Abstract</Filter>
-    </ClCompile>
     <ClCompile Include="BlockMgr.cpp">
       <Filter>ソース ファイル\Manager</Filter>
     </ClCompile>
@@ -116,9 +116,6 @@
     </ClCompile>
     <ClCompile Include="GameMgr.cpp">
       <Filter>ソース ファイル\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="SmallBullet.cpp">
-      <Filter>ソース ファイル\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="TitleScene.cpp">
       <Filter>ソース ファイル\Scene</Filter>
@@ -137,6 +134,9 @@
     </ClCompile>
     <ClCompile Include="Image.cpp">
       <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>ソース ファイル\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -203,9 +203,6 @@
     <ClInclude Include="BlockMgr.h">
       <Filter>ヘッダー ファイル\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="AbstractBullet.h">
-      <Filter>ヘッダー ファイル\Abstract</Filter>
-    </ClInclude>
     <ClInclude Include="BulletMgr.h">
       <Filter>ヘッダー ファイル\Manager</Filter>
     </ClInclude>
@@ -224,23 +221,26 @@
     <ClInclude Include="TitleScene.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="SmallBullet.h">
-      <Filter>ヘッダー ファイル\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="StageScene1.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="ISceneChangedListener.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="eScene.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="IInstanceDeleteListener.h">
       <Filter>ヘッダー ファイル\Interface</Filter>
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="eBulletSize.h">
+      <Filter>ヘッダー ファイル\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="eScene.h">
+      <Filter>ヘッダー ファイル\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>ヘッダー ファイル\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

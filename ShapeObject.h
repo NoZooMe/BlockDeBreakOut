@@ -9,7 +9,7 @@ class ShapeObject :
     protected Task
 {
 protected:
-    //現在地.ベクトルとして実装
+    //現在地.ベクトルとして実装. RectangleObjectは左上がposition座標
     Vector2<float> _position;
     //速度ベクトル
     Vector2<float> _velocity;
@@ -33,7 +33,7 @@ public:
     void Finalize() override = 0;
     void Update() override;
     void Draw() const override = 0;
-    void Draw(int handle) const;
+    void Draw(float x, float y, int handle) const;
 
     //positionのGetter
     float GetterPosX() const { return _position.GetterX(); };

@@ -6,7 +6,7 @@ class CircleObject :
 {
 protected:
     //”¼Œa‚ª‰~‚ð“Á’¥‚Ã‚¯‚é
-    int r;
+    int _r;
 public:
     CircleObject(float x, float y, int r);
     virtual void Initialize() override = 0;
@@ -14,6 +14,6 @@ public:
     virtual void Update() override = 0;
     void Draw() const override;
 
-    int GetterR() const { return r; };
+    int GetterR() const { return _r; };
 };
 

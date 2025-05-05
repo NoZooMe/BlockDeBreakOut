@@ -1,12 +1,12 @@
 #include "Ball.h"
-#include "DxLib.h"
 #include "Define.h"
 #include "Keyboard.h"
 #include <cmath>
 #include <memory>
+#include <DxLib.h>
 
 
-Ball::Ball(int x, int y) : CircleObject(x, y, Define::BALL_RADIUS){
+Ball::Ball(int x, int y) : CircleObject(x, y, Define::BALL_RADIUS), rand(0), _acceleration(0){
 
 }
 
@@ -20,6 +20,27 @@ void Ball::Finalize() {
 }
 
 void Ball::Update() {
+	//‰Á‘¬“x‚Í“ü—Í‚É‰‚¶‚Ä(-5, 5)‚Ì”ÍˆÍ‚ğã‰º‚·‚é
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_A) != 0) {
+		if (_acceleration >= -1.1) {
+			_acceleration -= 0.001;
+		}
+	}
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_D) != 0) {
+		if (_acceleration <= 1.1) {
+			_acceleration += 0.001;
+		}
+	}
+
+	if (rand < 0.5) {
+		rand += 0.01;
+	}
+	else {
+		rand = -0.5;
+	}
+
+	_velocity.SetterX(_velocity.GetterX() + _acceleration);
+
 	ShapeObject::Update();
 	Check_Out();
 }
@@ -51,8 +72,10 @@ void Ball::Update(float playerX, float playerY) {
 
 void Ball::Draw() const {
 	CircleObject::Draw();
+	DrawFormatString(0, 640, GetColor(255, 255, 255), "%f", _velocity.GetterY());
 }
 
+//…•½‚É“–‚½‚Á‚½‚É‚’¼‚É’µ‚Ë‚é”»’è
 //block‚Ìposition‚ğŒ©‚Ä”½Ë‚·‚é•ûŒü‚ğŒˆ‚ß‚éB‚à‚µ‚àvelocity‚Ì•ûŒü‚ª“¯‚¶‚È‚çX‚É‰ÁZ‚·‚é
 void Ball::ReflectBlock_Vertical(std::shared_ptr<RectangleObject> obj) {
 
@@ -67,11 +90,19 @@ void Ball::ReflectBlock_Vertical(std::shared_ptr<RectangleObject> obj) {
 		_velocity.SetterY(_velocity.GetterY() + obj->GetterVelY()/5);
 	}
 
+
 	//‚·‚è”²‚¯–h~
 	if (conditionA) {//ã‚©‚çÕ“Ë
-		_position.SetterY(obj->GetterPosY() - r);
+		_position.SetterY(obj->GetterPosY() - _r);
 	}else {//‰º‚©‚çÕ“Ë
-		_position.SetterY(obj->GetterPosY() + obj->GetterHeight() + r);
+		_position.SetterY(obj->GetterPosY() + obj->GetterHeight() + _r);
+	}
+
+	//­‚µƒ‰ƒ“ƒ_ƒ€«‚ğ‘«‚·
+	_velocity.SetterX(_velocity.GetterX() + rand);
+	//‘¬‚­‚·‚é
+	if (fabsf(_velocity.GetterY()) <= 15) {
+		_velocity.SetterY(_velocity.GetterY() * 1.05);
 	}
 }
 
@@ -87,22 +118,35 @@ void Ball::ReflectBlock_Horizontal(std::shared_ptr<RectangleObject> obj) {
 	else {//‘¬“x‚ğ‘«‚·ê‡
 		_velocity.SetterX(_velocity.GetterX() + obj->GetterVelX() / 5);
 	}
+	
+
 
 	//‚·‚è”²‚¯–h~
 	if (conditionA) {//¶‚©‚çÕ“Ë
-		_position.SetterX(obj->GetterPosX() - r);
+		_position.SetterX(obj->GetterPosX() - _r);
 	}
 	else {//‰E‚©‚çÕ“Ë
-		_position.SetterX(obj->GetterPosX() + obj->GetterWidth() + r);
+		_position.SetterX(obj->GetterPosX() + obj->GetterWidth() + _r);
+	}
+
+	_acceleration = 0;
+	//­‚µƒ‰ƒ“ƒ_ƒ€«+‘‚­‚·‚é
+	_velocity.SetterY(_velocity.GetterY() + rand);
+	if (fabsf(_velocity.GetterX()) < 15) {
+	_velocity.SetterX(_velocity.GetterX() * 1.05);
 	}
 }
 
 void Ball::ReflectWall_Horizontal() {
 	_velocity.SetterX(-_velocity.GetterX());
+
+	_acceleration = 0;
 }
 
 void Ball::ReflectWall_Vertical() {
 	_velocity.SetterY(-_velocity.GetterY());
+
+	_acceleration = 0;
 }
 
 void Ball::Check_Out() {

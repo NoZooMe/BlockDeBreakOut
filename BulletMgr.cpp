@@ -1,6 +1,5 @@
 #include "BulletMgr.h"
-#include "SmallBullet.h"
-#include <DxLib.h>
+//#include <DxLib.h>
 
 //DxLibはデバッグ用
 
@@ -33,16 +32,15 @@ void BulletMgr::Update() {
 void BulletMgr::Draw() const {
 	for (auto bullet : _vector) {
 		bullet->Draw();
-		DrawFormatString(0, 640, GetColor(255, 255, 255), "%d", _vector.size());
 	}
 }
 
-void BulletMgr::Set_StraightSmallBullet(const Vector2<float>& position, const Vector2<float>& direction, int speed, int color) {
-	_vector.emplace_back(make_shared<SmallBullet>(position, direction, speed, 1, color));
+void BulletMgr::Set_StraightBullet(eBulletSize size, const Vector2<float>& position, float angle, int speed, int color) {
+	_vector.emplace_back(make_shared<Bullet>(position, angle, speed, 1, color, size));
 }
 
-void BulletMgr::Set_SinSmallBullet(const Vector2<float>& position, const Vector2<float>& direction, int speed, int color) {
-	_vector.emplace_back(make_shared<SmallBullet>(position, direction, speed, 2, color));
+void BulletMgr::Set_SinBullet(eBulletSize size, const Vector2<float>& position, float angle, int speed, int color) {
+	_vector.emplace_back(make_shared<Bullet>(position, angle, speed, 2, color, size));
 }
 
 void BulletMgr::CheckOut() {
@@ -57,7 +55,7 @@ void BulletMgr::CheckOut() {
 	}
 }
 
-shared_ptr<AbstractBullet> BulletMgr::GetBullet(int i) const {
+shared_ptr<Bullet> BulletMgr::GetBullet(int i) const {
 	return _vector.at(i);
 };
 

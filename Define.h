@@ -41,6 +41,7 @@ public:
 
 	//bulletŠÖ˜A
 	const static int BULLET_SIZE_SMALL;
+	const static int BULLET_SIZE_MIDIUM;
 	const static int BULLET_SIZE_BIG;
 };
 

@@ -14,6 +14,7 @@ Looper::Looper()
 	
 	_sceneStack.top()->Initialize();
 	Image::getIns()->load();
+
 }
 
 Looper::~Looper()

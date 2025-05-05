@@ -15,6 +15,11 @@ private:
     //
     void Check_Out();
 
+    //-1/2から1/2を動く変数
+    float rand;
+
+    float _acceleration;
+
 public:
 
     //フラグ構造体
@@ -36,5 +41,7 @@ public:
     //衝突関数。引数に衝突する相手のpositionとvelocityを取る
     void ReflectBlock_Vertical(std::shared_ptr<RectangleObject> obj);
     void ReflectBlock_Horizontal(std::shared_ptr<RectangleObject> obj);
+
+    void SetterAccel(float accel);
 };
 

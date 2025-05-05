@@ -41,6 +41,6 @@ void ShapeObject::SetOnFlag(int tFlag) {
 	WaveFlag(tFlag, true);
 }
 
-void ShapeObject::Draw(int handle) const {
-	DrawRotaGraphF(_position.GetterX(), _position.GetterY(), 1.0, _angle, handle, TRUE);
+void ShapeObject::Draw(float x, float y, int handle) const {
+	DrawRotaGraphF(x, y, 1.0, _angle, handle, TRUE);
 }

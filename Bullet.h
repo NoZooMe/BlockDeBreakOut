@@ -3,18 +3,19 @@
 #include "Vector2.h"
 #include "Player.h"
 #include <memory>
+#include "eBulletSize.h"
 
-class AbstractBullet :
+class Bullet :
     public CircleObject
 {
 public:
     //場所、方向、早さ、パターン、色、半径
-    AbstractBullet(const Vector2<float>& position, const Vector2<float>& direction, int speed, int pattern, int color, int r);
-    ~AbstractBullet() = default;
-    void Initialize() override = 0;
-    void Finalize() override = 0;
+    Bullet(const Vector2<float>& position, float angle, int speed, int pattern, int color, eBulletSize size);
+    ~Bullet() = default;
+    void Initialize() override;
+    void Finalize() override;
     void Update() override;
-    void Draw() const override = 0;
+    void Draw() const override;
 
     bool CheckOut();
 private:
@@ -22,8 +23,6 @@ private:
     int _pattern;
     int _speed;
     float _cnt;
-
-    Vector2<float> _direction;
 
     //パターンによる弾幕メソッド
 

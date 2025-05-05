@@ -96,6 +96,11 @@ void GameMgr::Update(shared_ptr<BlockMgr> blockMgr, shared_ptr<BulletMgr> bullet
 			_player.reset();
 			_player = std::make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY);
 			_player->Initialize();
+
+			_ball->Finalize();
+			_ball.reset();
+			_ball = std::make_shared<Ball>(_player->GetterPosX() + _player->GetterWidth() / 2, _player->GetterPosY() - Define::BALL_RADIUS);
+			_ball->Initialize();
 		}
 	}
 	else if (blockMgr->Getter_LiveNum() <= 0) {//block‚ð‘S‚ÄÁ‚¹‚½‚ç

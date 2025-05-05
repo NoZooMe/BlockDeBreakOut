@@ -2,6 +2,7 @@
 #include <DxLib.h>
 #include "Define.h"
 #include "Image.h"
+#include "Keyboard.h"
 
 //Player::Player(float iniX, float iniY, IDethPlayer* iListener) : Rectangle(iniX, iniY, WIDTH, HEIGHT), listener(iListener), direction(0, 0) {
 //
@@ -35,12 +36,22 @@ void Player::Update() {
 			_mutekiCnt = 0;
 		}
 	}
+
+	/*
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_S) >= 1) {
+		_angle = Define::PI / 2;
+	}
+	else {
+		_angle = 0;
+	}
+	*/
 }
 
 void Player::Draw() const {
 	//無敵になったら点滅
 	if (_mutekiCnt % 2 == 0) {
-		ShapeObject::Draw(Image::getIns()->getPlayer());
+		//中心座標を指定しているが……。
+		ShapeObject::Draw(_position.GetterX()+Define::PLAYER_WIDTH/2, _position.GetterY()+Define::PLAYER_HEIGHT/2, Image::getIns()->getPlayer());
 	}
 }
 

@@ -151,7 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AbstractBullet.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="AbstractScene.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Block.cpp" />
@@ -174,7 +174,6 @@
     <ClCompile Include="RectangleObject.cpp" />
     <ClCompile Include="Segment.cpp" />
     <ClCompile Include="ShapeObject.cpp" />
-    <ClCompile Include="SmallBullet.cpp" />
     <ClCompile Include="StageScene1.cpp" />
     <ClCompile Include="SystemMain.cpp" />
     <ClCompile Include="main.cpp" />
@@ -183,7 +182,7 @@
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractBullet.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="AbstractScene.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Block.h" />
@@ -193,6 +192,7 @@
     <ClInclude Include="CircleObject.h" />
     <ClInclude Include="ColMgr.h" />
     <ClInclude Include="Define.h" />
+    <ClInclude Include="eBulletSize.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="eScene.h" />
     <ClInclude Include="Fps.h" />
@@ -211,7 +211,6 @@
     <ClInclude Include="Segment.h" />
     <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="Singleton.h" />
-    <ClInclude Include="SmallBullet.h" />
     <ClInclude Include="StageScene1.h" />
     <ClInclude Include="SystemMain.h" />
     <ClInclude Include="Task.h" />

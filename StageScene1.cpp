@@ -8,26 +8,36 @@ using namespace std;
 StageScene1::StageScene1(ISceneChangedListener* impl, const Parameter& param) : AbstractScene(impl, param) , _cnt(0){
 	_blockMgr = make_shared<BlockMgr>();
 	_bulletMgr = make_shared<BulletMgr>();
+	_gameMgr = make_shared<GameMgr>(dynamic_cast<IGameLifeCycleHandler*>(this));
+	_colMgr = make_shared<ColMgr>();
 
-	_gameMgr = make_shared<GameMgr>();
+	_player = make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY);
+	_ball = make_shared<Ball>(Define::BALL_INIX, Define::BALL_INIY);
 }
 
 void StageScene1::Initialize() {
 	_gameMgr->Initialize();
 	_bulletMgr->Initialize();
 	_blockMgr->Initialize();
+	_colMgr->Initialize();
+	
+	_player->Initialize();
+	_ball->Initialize();
 }
 
 void StageScene1::Finalize() {
 	_gameMgr->Finalize();
 	_blockMgr->Finalize();
 	_bulletMgr->Finalize();
+	_colMgr->Finalize();
+
+	_player->Finalize();
+	_ball->Finalize();
 }
 
 void StageScene1::Update() {
-	_blockMgr->Update();
-	_bulletMgr->Update();
-	_gameMgr->Update(_blockMgr, _bulletMgr);
+	_gameMgr->Update(*_blockMgr, *_bulletMgr, *_player, *_ball);
+	_colMgr->Update(*_blockMgr, *_bulletMgr, *_player, *_ball);
 
 	//è≠ÇµçÇÇ¢Ç∆Ç±ÇÎ
 	Vector2<float> injectionPoint1(0, Define::PLAYER_INIY);
@@ -51,12 +61,12 @@ void StageScene1::Update() {
 	}
 
 	if (_cnt % 300 >= 145 && _cnt % 300 <= 150) {
-		Vector2<float> directionPlayer = _gameMgr->GetterPlayerPosition() - injectionPoint3;
+		Vector2<float> directionPlayer = _player->GetterPosition() - injectionPoint3;
 		_bulletMgr->Set_StraightBullet(eBulletSize::Midium, injectionPoint3, directionPlayer.GetterAngle(), 5, 1);
 	}
 
 	if (_cnt % 300 >= 200 && _cnt % 300 <= 205) {
-		Vector2<float> directionPlayer = _gameMgr->GetterPlayerPosition() - injectionPoint4;
+		Vector2<float> directionPlayer = _player->GetterPosition() - injectionPoint4;
 		_bulletMgr->Set_StraightBullet(eBulletSize::Midium, injectionPoint4, directionPlayer.GetterAngle(), 5, 1);
 	}
 
@@ -68,7 +78,61 @@ void StageScene1::Update() {
 }
 
 void StageScene1::Draw() const {
-	_bulletMgr->Draw();
-	_blockMgr->Draw();
-	_gameMgr->Draw();
+	_gameMgr->Draw(*_blockMgr, *_bulletMgr, *_player, *_ball);
+}
+
+
+
+
+void StageScene1::RequestDamage() {
+	_ball->Finalize();
+	_ball.reset();
+
+	_ball = std::make_shared<Ball>(_player->GetterPosX() + _player->GetterWidth() / 2, _player->GetterPosY() - Define::BALL_RADIUS);
+	_ball->Initialize();
+}
+
+void StageScene1::RequestContinue() {
+	_player->Finalize();
+	_player.reset();
+	_player = std::make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY);
+	_player->Initialize();
+
+	_ball->Finalize();
+	_ball.reset();
+	_ball = std::make_shared<Ball>(_player->GetterPosX() + _player->GetterWidth() / 2,_player->GetterPosY() - Define::BALL_RADIUS);
+	_ball->Initialize();
+
+	_bulletMgr->Finalize();
+	_bulletMgr.reset();
+	_bulletMgr = std::make_shared<BulletMgr>();
+	_bulletMgr->Initialize();
+
+
+}
+
+void StageScene1::RequestClear() {
+
+}
+
+void StageScene1::RequestRestart() {
+	_player->Finalize();
+	_player.reset();
+	_player = std::make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY);
+	_player->Initialize();
+
+	_ball->Finalize();
+	_ball.reset();
+	_ball = std::make_shared<Ball>(_player->GetterPosX() + _player->GetterWidth() / 2, _player->GetterPosY() - Define::BALL_RADIUS);
+	_ball->Initialize();
+
+	_bulletMgr->Finalize();
+	_bulletMgr.reset();
+	_bulletMgr = std::make_shared<BulletMgr>();
+	_bulletMgr->Initialize();
+
+	_blockMgr->Finalize();
+	_blockMgr.reset();
+	_blockMgr = std::make_shared<BlockMgr>();
+	_blockMgr->Initialize();
 }

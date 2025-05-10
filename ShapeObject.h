@@ -43,6 +43,7 @@ public:
     //velocityのGetter
     float GetterVelX() const { return _velocity.GetterX(); };
     float GetterVelY() const { return _velocity.GetterY(); };
+    Vector2<float> GetterVelocity() const { return _velocity; };
 
     //positionのSetter.遠回りな気もするけどこれでいいのか.そもそも二段階でSetterを参照するプログラムではいけない気がする
     void SetterPosition(Vector2<float>& temp) {

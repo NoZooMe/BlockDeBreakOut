@@ -120,3 +120,12 @@ Segment‚Éposition‚ÌÀ•W‚ð¶ã‚ÌÀ•W‚Æ‚µ‚Ä“n‚µ‚Ä‚¢‚é‚©‚çC³‚·‚é‚È‚ç‚±‚±‚àC³‚·‚
 Ž©‹@‘_‚¢‚Ì’e–‹‚ÌŽËo“_‚ð­‚µã‚ÉŽæ‚Á‚Ä‚Ý‚éB
 ­‚µ‚¸‚Âo—ˆ‚Ä‚«‚½B
 ŽŸA‰¹‚ÌŽÀ‘•‚Å‚à‚µ‚æ‚¤‚©‚ÈB
+
+05/07
+ChatGPT‚ÉŠp“x‚ª•t‚¢‚½•Ç‚Æ‚Ì”»’è‚ð‹³‚¦‚Ä‚à‚ç‚Á‚½‚Ì‚Å‚»‚ê‚ðŽÀ‘•‚Å‚àBball‚É“–‚½‚è”»’èæ‚Ìsegment‚Ìî•ñ‚ð“ü‚ê‚é•K—v‚ª‚ ‚éB‚Ü‚¸ball‚Ì‚Ù‚¤‚ÅŠÖ”‚ðŽÀ‘•‚µ‚Ä‚©‚çAGameMgr‚Éball‚É“n‚·ŠÖ”‚ðŽÀ‘•B
+
+05/10
+Šp“x‚Ì•t‚¢‚½•Ç‚É‚à‘Î‰ž‚Å‚«‚éÕ“Ë”»’è‚ðŽÀ‘•B‚±‚±‚©‚çGameMgr‚ÌÓ–±‚ðŠeƒCƒ“ƒXƒ^ƒ“ƒX‚É•ª—£A‚Ü‚½‹éŒ`ƒNƒ‰ƒX‚ÌUpdate‚ð•ÏX‚µ‚ÄPlayer‚âBlock‚ÉŠp“x‚ð•t‚¯‚ç‚ê‚é‚æ‚¤‚É‚·‚éB
+GameMgr‚Ì‹ï‘Ì“I‚È•ª—£‚ÉŠÖ‚µ‚Ä‚ÍA“–‚½‚è”»’è‚ðColMgrAƒQ[ƒ€‚ÌƒŠƒXƒ^[ƒgAƒNƒŠƒA“™‚ÉŠÖ‚µ‚Ä‚ÍStageScene‚ÉIF‚ð’Ç‰Á‚µ‚Ä‚»‚ê‰z‚µ‚És‚¤B
+•ÛŽ‚·‚é‚È‚çƒXƒ}[ƒgƒ|ƒCƒ“ƒ^Aˆø”‚ÅŽQÆ‚·‚é‚¾‚¯‚È‚çT*‚ÅŽg‚¢•ª‚¯‚éB
+‚Ü‚½AGameMgr“à‚ÌDraw‚Ì‚æ‚¤‚ÈAÅ‰‚©‚çˆø”‚ªŒˆ‚Ü‚Á‚Ä‚¢‚Änullptr‚ð‹–‚³‚È‚¢‚æ‚¤‚ÈÝŒv‚È‚çŽQÆ“n‚µ(const T&)‚ÅOkB‚Ü‚½Update•”‚Å‚ànull‚ð‹–‚³‚È‚¢‚È‚çT&‚ÅOkB

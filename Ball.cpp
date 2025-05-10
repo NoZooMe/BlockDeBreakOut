@@ -137,6 +137,46 @@ void Ball::ReflectBlock_Horizontal(std::shared_ptr<RectangleObject> obj) {
 	}
 }
 
+void Ball::ReflectFromSurface(const Segment& surface, const Vector2<float>& surfaceVelocity) {
+	//壁の法線ベクトル
+	Vector2<float> segVec = surface.GetterSegVector();
+	//垂直ベクトルを2種類用意(2つのベクトルはsegVecに垂直だが向きが逆)
+	Vector2<float> normal1(-segVec.GetterY(), segVec.GetterX());
+	Vector2<float> normal2(segVec.GetterY(), -segVec.GetterX());
+
+	//ボールの位置ベクトルと線分の法線が「近い向き」かどうかで選ぶ
+	Vector2<float> toBall = _position - surface.GetterBegVector();
+	
+	Vector2<float> normal = 
+		(toBall.DotProd(normal1) > 0) ? normal1.Norm() : normal2.Norm();
+
+	//進行方向との関係で反射か加速かを決定
+	float dot = _velocity.DotProd(normal);
+
+	if (dot > 0) {
+		//外向きに進んでるなら減速or吸収(or 加速)
+		_velocity = _velocity + surfaceVelocity.Mult(0.2f);
+	}
+	else {
+		//反射
+		_velocity = _velocity - normal.Mult(2.0f * dot);
+	}
+	//位置補正:法線方向に小さく押し出す(すり抜け防止)
+	float offset = _r;
+	_position = _position + normal.Mult(offset);
+
+	//軽いランダム性
+	Vector2<float> tangent = Vector2<float>(normal.GetterY(), -normal.GetterX());//法線に直行
+	_velocity = _velocity + tangent.Mult(rand);
+
+	//速度制限(15)
+	if (_velocity.Abs() < 15.0f) {
+		_velocity = _velocity.Mult(1.05f);
+	}
+
+
+}
+
 void Ball::ReflectWall_Horizontal() {
 	_velocity.SetterX(-_velocity.GetterX());
 

@@ -42,6 +42,7 @@ public:
     void ReflectBlock_Vertical(std::shared_ptr<RectangleObject> obj);
     void ReflectBlock_Horizontal(std::shared_ptr<RectangleObject> obj);
 
-    void SetterAccel(float accel);
+    void ReflectFromSurface(const Segment& surface, const Vector2<float>& surfaceVelocity);
+
 };
 

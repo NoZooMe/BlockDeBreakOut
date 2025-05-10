@@ -129,3 +129,4 @@ ChatGPT‚ÉŠp“x‚ª•t‚¢‚½•Ç‚Æ‚Ì”»’è‚ð‹³‚¦‚Ä‚à‚ç‚Á‚½‚Ì‚Å‚»‚ê‚ðŽÀ‘•‚Å‚àBball‚É“–‚½‚è”
 GameMgr‚Ì‹ï‘Ì“I‚È•ª—£‚ÉŠÖ‚µ‚Ä‚ÍA“–‚½‚è”»’è‚ðColMgrAƒQ[ƒ€‚ÌƒŠƒXƒ^[ƒgAƒNƒŠƒA“™‚ÉŠÖ‚µ‚Ä‚ÍStageScene‚ÉIF‚ð’Ç‰Á‚µ‚Ä‚»‚ê‰z‚µ‚És‚¤B
 •ÛŽ‚·‚é‚È‚çƒXƒ}[ƒgƒ|ƒCƒ“ƒ^Aˆø”‚ÅŽQÆ‚·‚é‚¾‚¯‚È‚çT*‚ÅŽg‚¢•ª‚¯‚éB
 ‚Ü‚½AGameMgr“à‚ÌDraw‚Ì‚æ‚¤‚ÈAÅ‰‚©‚çˆø”‚ªŒˆ‚Ü‚Á‚Ä‚¢‚Änullptr‚ð‹–‚³‚È‚¢‚æ‚¤‚ÈÝŒv‚È‚çŽQÆ“n‚µ(const T&)‚ÅOkB‚Ü‚½Update•”‚Å‚ànull‚ð‹–‚³‚È‚¢‚È‚çT&‚ÅOkB
+Šp“x‚ð•Ï‚¦‚é‘€ì‚àŠ®—¹I ChatGpt—L”\‚·‚¬‚éB

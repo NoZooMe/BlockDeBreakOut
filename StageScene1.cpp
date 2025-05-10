@@ -88,7 +88,7 @@ void StageScene1::RequestDamage() {
 	_ball->Finalize();
 	_ball.reset();
 
-	_ball = std::make_shared<Ball>(_player->GetterPosX() + _player->GetterWidth() / 2, _player->GetterPosY() - Define::BALL_RADIUS);
+	_ball = std::make_shared<Ball>(_player->GetterPosX(), _player->GetterPosY() - (Define::BALL_RADIUS+Define::PLAYER_HEIGHT/2));
 	_ball->Initialize();
 }
 
@@ -100,7 +100,7 @@ void StageScene1::RequestContinue() {
 
 	_ball->Finalize();
 	_ball.reset();
-	_ball = std::make_shared<Ball>(_player->GetterPosX() + _player->GetterWidth() / 2,_player->GetterPosY() - Define::BALL_RADIUS);
+	_ball = std::make_shared<Ball>(_player->GetterPosX(),_player->GetterPosY() - (Define::BALL_RADIUS+Define::PLAYER_HEIGHT/2));
 	_ball->Initialize();
 
 	_bulletMgr->Finalize();
@@ -123,7 +123,7 @@ void StageScene1::RequestRestart() {
 
 	_ball->Finalize();
 	_ball.reset();
-	_ball = std::make_shared<Ball>(_player->GetterPosX() + _player->GetterWidth() / 2, _player->GetterPosY() - Define::BALL_RADIUS);
+	_ball = std::make_shared<Ball>(_player->GetterPosX(), _player->GetterPosY() - (Define::BALL_RADIUS + Define::PLAYER_HEIGHT/2));
 	_ball->Initialize();
 
 	_bulletMgr->Finalize();

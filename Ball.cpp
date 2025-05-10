@@ -21,7 +21,7 @@ void Ball::Finalize() {
 
 void Ball::Update() {
 	//‰Á‘¬“x‚Í“ü—Í‚É‰ž‚¶‚Ä(-5, 5)‚Ì”ÍˆÍ‚ðã‰º‚·‚é
-	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_A) != 0) {
+	/*if (Keyboard::getIns()->getPressingCount(KEY_INPUT_A) != 0) {
 		if (_acceleration >= -1.1) {
 			_acceleration -= 0.001;
 		}
@@ -30,7 +30,7 @@ void Ball::Update() {
 		if (_acceleration <= 1.1) {
 			_acceleration += 0.001;
 		}
-	}
+	}*/
 
 	if (rand < 0.5) {
 		rand += 0.01;

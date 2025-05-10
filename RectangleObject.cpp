@@ -1,23 +1,62 @@
 #include "RectangleObject.h"
 #include <DxLib.h>
 #include "Define.h"
+#include <cmath>
 
-RectangleObject::RectangleObject(float x, float y, int width, int height) : ShapeObject(x, y), width(width), height(height), vertSide1(x, y, x, y+height), vertSide2(x+width, y, x+width, y+height), 
-	horiSide1(x, y, x+width, y), horiSide2(x, y+height, x+width, y+height){
+RectangleObject::RectangleObject(float x, float y, int width, int height) : ShapeObject(x, y), width(width), height(height){
+	float halfwidth = width / 2.0f;
+	float halfheight = height / 2.0f;
+
+	//左上、右上、右下、左下(時計回り)
+	vertex[0] = Vector2<float>(x-halfwidth, y-halfheight);
+	vertex[1] = Vector2<float>(x+halfwidth, y-halfheight);
+	vertex[2] = Vector2<float>(x+halfwidth, y+halfheight);
+	vertex[3] = Vector2<float>(x-halfwidth, y+halfheight);
+
+	//左辺
+	vertSide1 = Segment(vertex[0], vertex[3]);
+	//右辺
+	vertSide2 = Segment(vertex[1], vertex[2]);
+	//上辺
+	horiSide1 = Segment(vertex[0], vertex[1]);
+	//下辺
+	horiSide2 = Segment(vertex[3], vertex[2]);
 
 }
 
 void RectangleObject::Update(){
 	ShapeObject::Update();
+	float halfwidth = width / 2.0f;
+	float halfheight = height / 2.0f;
+
+	Vector2<float> center = _position;
+
+	//ローカル座標系での頂点
+	Vector2<float> local[4] = {
+		{-halfwidth, -halfheight}, //左上
+		{ halfwidth, -halfheight}, //右上
+		{ halfwidth,  halfheight}, //右下
+		{-halfwidth,  halfheight}  //左下
+	};
+
+	//回転を加えてワールド座標系へ変換
+	for (int i = 0; i < 4; i++) {
+
+		vertex[i] = center + local[i].RotateVector(_angle);
+	}
 
 	//ここら辺はもう少し簡単にできない？
-	vertSide1.UpdateSegment(_position.GetterX(), _position.GetterY(), _position.GetterX(), _position.GetterY() + height);
-	vertSide2.UpdateSegment(_position.GetterX() + width, _position.GetterY(), _position.GetterX() + width, _position.GetterY() + height);
-	horiSide1.UpdateSegment(_position.GetterX(), _position.GetterY(), _position.GetterX() + width, _position.GetterY());
-	horiSide2.UpdateSegment(_position.GetterX(), _position.GetterY() + height, _position.GetterX() + width, _position.GetterY() + height);
+	vertSide1.UpdateSegment(vertex[0], vertex[3]);
+	vertSide2.UpdateSegment(vertex[1], vertex[2]);
+	horiSide1.UpdateSegment(vertex[0], vertex[1]);
+	horiSide2.UpdateSegment(vertex[3], vertex[2]);
 
+	
 }
 
 void RectangleObject::Draw() const {
-	DrawBox(_position.GetterX(), _position.GetterY(), _position.GetterX() + width, _position.GetterY() + height, Define::WHITE, true);
+	DrawLine(vertex[0].GetterX(), vertex[0].GetterY(), vertex[1].GetterX(), vertex[1].GetterY(), Define::WHITE);
+	DrawLine(vertex[1].GetterX(), vertex[1].GetterY(), vertex[2].GetterX(), vertex[2].GetterY(), Define::WHITE);
+	DrawLine(vertex[2].GetterX(), vertex[2].GetterY(), vertex[3].GetterX(), vertex[3].GetterY(), Define::WHITE);
+	DrawLine(vertex[3].GetterX(), vertex[3].GetterY(), vertex[0].GetterX(), vertex[0].GetterY(), Define::WHITE);
 }

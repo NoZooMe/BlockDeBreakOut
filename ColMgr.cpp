@@ -11,10 +11,13 @@ void ColMgr::Finalize() {
 }
 
 void ColMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, Player& player, Ball& ball) {
-	//player‚Æball
-	if (Col_RectAndBall(player, ball)) {
-		ball.ReflectFromSurface(*Col_RectAndBall(player, ball), player.GetterVelocity());
+	if (ball.CheckFlag((int)Ball::fBall::_move)) {
+		//player‚Æball
+		if (Col_RectAndBall(player, ball)) {
+			ball.ReflectFromSurface(*Col_RectAndBall(player, ball), player.GetterVelocity());
+		}
 	}
+	
 
 	//block‚Æball
 	for (int i = 0; i < Define::BLOCK_NUM; i++) {

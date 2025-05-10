@@ -35,7 +35,7 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, Player& player, B
 			ball.Update();
 		}
 		else {//ball‚ªplayer‚É’Ç]‚·‚é‚Æ‚«
-			ball.Update(player.GetterPosX() + player.GetterWidth() / 2, player.GetterPosY() - (ball.GetterR()));
+			ball.Update(player.GetterPosX(), player.GetterPosY() - (ball.GetterR()+Define::PLAYER_HEIGHT/2.0f));
 			if (Keyboard::getIns()->getPressingCount(KEY_INPUT_SPACE) != 0) {
 
 			}

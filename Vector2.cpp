@@ -6,6 +6,11 @@ template class Vector2<float>;
 template class Vector2<int>;
 
 template<typename T>
+Vector2<T>::Vector2() :_x(0), _y(0) {
+
+}
+
+template<typename T>
 
 Vector2<T>::Vector2(T iniX, T iniY) : _x(iniX), _y(iniY) {
 
@@ -84,8 +89,8 @@ float Vector2<T>::GetterAngle() const {
 template<typename T>
 Vector2<T> Vector2<T>::RotateVector(float angle) const {
 	//‰ñ“]s—ñ‚ðì—p
-	T x = cosf(angle) * this->GetterX() + -sinf(angle) * this->GetterY();
-	T y = sinf(angle) * this->GetterX() + cosf(angle) * this->GetterY();
+	T x = cosf(angle) * _x + -sinf(angle) * _y;
+	T y = sinf(angle) * _x + cosf(angle) * _y;
 
 	Vector2<T> rotateVector2(x, y);
 

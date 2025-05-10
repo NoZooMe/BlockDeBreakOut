@@ -6,6 +6,7 @@ class Vector2
 private:
 	T _x, _y;
 public:
+	Vector2();
 	Vector2(T x, T y);
 
 	//基本的にユーザー定義型の引数は参照渡し

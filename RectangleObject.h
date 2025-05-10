@@ -9,7 +9,8 @@ class RectangleObject :
 protected:
     //この二つのパラメータが長方形を特徴づける
     int width, height;
-  
+    //各頂点
+    Vector2<float> vertex[4];
 
 public:
 

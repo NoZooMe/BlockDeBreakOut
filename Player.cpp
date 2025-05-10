@@ -37,21 +37,22 @@ void Player::Update() {
 		}
 	}
 
-	/*
-	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_S) >= 1) {
-		_angle = Define::PI / 2;
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_D) >= 1) {
+		_angle = Define::PI / 4;
+	}
+	else if (Keyboard::getIns()->getPressingCount(KEY_INPUT_A) >= 1) {
+		_angle = -Define::PI / 4;
 	}
 	else {
 		_angle = 0;
 	}
-	*/
 }
 
 void Player::Draw() const {
 	//無敵になったら点滅
 	if (_mutekiCnt % 2 == 0) {
-		//中心座標を指定しているが……。
-		ShapeObject::Draw(_position.GetterX()+Define::PLAYER_WIDTH/2, _position.GetterY()+Define::PLAYER_HEIGHT/2, Image::getIns()->getPlayer());
+		ShapeObject::Draw(_position.GetterX(), _position.GetterY(), Image::getIns()->getPlayer());
+		RectangleObject::Draw();
 	}
 }
 
@@ -132,19 +133,19 @@ void Player::RotateRight() {
 void Player::Check_Out() {
 	//画面外なら個別に対応
 	//x座標について
-	if (_position.GetterX() < 0) {
-		_position.Setter(0, _position.GetterY());
+	if (_position.GetterX() - Define::PLAYER_WIDTH/2 < 0) {
+		_position.Setter(GetterWidth() / 2.0f, _position.GetterY());
 	}
-	else if (_position.GetterX() + GetterWidth() > Define::SCREEN_WIDTH) {
-		_position.Setter(Define::SCREEN_WIDTH - GetterWidth(), _position.GetterY());
+	else if (_position.GetterX() + GetterWidth()/2 > Define::SCREEN_WIDTH) {
+		_position.Setter(Define::SCREEN_WIDTH - GetterWidth()/2.0f, _position.GetterY());
 	}
 
 	//y座標について
-	if (_position.GetterY() < Define::SCREEN_HEIGHT * 3 / 5) {//画面上へは移動制御あり
-		_position.Setter(_position.GetterX(), Define::SCREEN_HEIGHT*3/5);
+	if (_position.GetterY() - Define::PLAYER_HEIGHT/2 < Define::SCREEN_HEIGHT * 3 / 5) {//画面上へは移動制御あり
+		_position.Setter(_position.GetterX(), Define::SCREEN_HEIGHT*3/5 + GetterHeight()/2.0f);
 	}
-	else if (_position.GetterY() + GetterHeight() > Define::SCREEN_HEIGHT) {
-		_position.Setter(_position.GetterX(), Define::SCREEN_HEIGHT - GetterHeight());
+	else if (_position.GetterY() + GetterHeight()/2 > Define::SCREEN_HEIGHT) {
+		_position.Setter(_position.GetterX(), Define::SCREEN_HEIGHT - GetterHeight()/2.0f);
 	}
 }
 

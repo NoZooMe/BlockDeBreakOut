@@ -1,4 +1,7 @@
 #include "BulletMgr.h"
+#include "SoundManager.h"
+#include "ResourceID.h"
+
 //#include <DxLib.h>
 
 //DxLibはデバッグ用
@@ -37,10 +40,12 @@ void BulletMgr::Draw() const {
 
 void BulletMgr::Set_StraightBullet(eBulletSize size, const Vector2<float>& position, float angle, int speed, int color) {
 	_vector.emplace_back(make_shared<Bullet>(position, angle, speed, 1, color, size));
+	SoundManager::getIns()->play(toString(ResourceID::ShotBulletSE));
 }
 
 void BulletMgr::Set_SinBullet(eBulletSize size, const Vector2<float>& position, float angle, int speed, int color) {
 	_vector.emplace_back(make_shared<Bullet>(position, angle, speed, 2, color, size));
+	SoundManager::getIns()->play(toString(ResourceID::ShotBulletSE));
 }
 
 void BulletMgr::CheckOut() {

@@ -1,6 +1,8 @@
 #include "GameScene.h"
 #include "Define.h"
 #include "Keyboard.h"
+#include "SoundManager.h"
+#include "ResourceID.h"
 #include <DxLib.h>
 
 const char* GameScene::ParameterTagLevel = "ParameterTagLevel";
@@ -40,6 +42,7 @@ void GameScene::Update() {
 			pose = false;
 		}
 		else {
+			SoundManager::getIns()->play(toString(ResourceID::OpenMenuSE));
 			pose = true;
 		}
 	}

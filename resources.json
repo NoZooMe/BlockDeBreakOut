@@ -1,0 +1,16 @@
+{
+  "Image": {
+    "Player": "images/Player.png"
+  },
+
+  "Sound": {
+    "BreakBlockSE": "sounds/breakblock.wav",
+    "DamageSE": "sounds/hit.wav",
+    "OpenMenuSE": "sounds/menu.wav",
+    "SelectMenuSE": "sounds/select.wav",
+    "ShotBulletSE": "sounds/shot.wav",
+    "ReflectSE": "sounds/reflect.wav",
+
+    "Stage1": "sounds/stage1.m4a"
+  }
+}

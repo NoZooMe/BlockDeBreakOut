@@ -1,12 +1,9 @@
 #include "Player.h"
 #include <DxLib.h>
 #include "Define.h"
-#include "Image.h"
+#include "ImageManager.h"
+#include "ResourceID.h"
 #include "Keyboard.h"
-
-//Player::Player(float iniX, float iniY, IDethPlayer* iListener) : Rectangle(iniX, iniY, WIDTH, HEIGHT), listener(iListener), direction(0, 0) {
-//
-//}
 
 Player::Player(float iniX, float iniY) : RectangleObject(iniX, iniY, Define::PLAYER_WIDTH, Define::PLAYER_HEIGHT), dirH(0), dirV(0), life(Define::PLAYER_LIFE), _mutekiCnt(0) {
 	
@@ -37,6 +34,10 @@ void Player::Update() {
 		}
 	}
 
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_RSHIFT) >= 1) {
+		
+	}
+
 	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_D) >= 1) {
 		_angle = Define::PI / 4;
 	}
@@ -51,7 +52,7 @@ void Player::Update() {
 void Player::Draw() const {
 	//–³“G‚É‚È‚Á‚½‚ç“_–Å
 	if (_mutekiCnt % 2 == 0) {
-		ShapeObject::Draw(_position.GetterX(), _position.GetterY(), Image::getIns()->getPlayer());
+		ShapeObject::Draw(_position.GetterX(), _position.GetterY(), ImageManager::getIns()->getImage(toString(ResourceID::Player)));
 		RectangleObject::Draw();
 	}
 }

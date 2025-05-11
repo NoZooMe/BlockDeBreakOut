@@ -1,5 +1,4 @@
 #include "ShapeObject.h"
-#include "Image.h"
 #include <DxLib.h>
 
 ShapeObject::ShapeObject(float posX, float posY) : _position(posX, posY), _velocity(0, 0), _flag(0){

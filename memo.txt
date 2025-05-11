@@ -130,3 +130,6 @@ GameMgr‚Ì‹ï‘Ì“I‚È•ª—£‚ÉŠÖ‚µ‚Ä‚ÍA“–‚½‚è”»’è‚ðColMgrAƒQ[ƒ€‚ÌƒŠƒXƒ^[ƒgAƒNƒŠƒA“
 •ÛŽ‚·‚é‚È‚çƒXƒ}[ƒgƒ|ƒCƒ“ƒ^Aˆø”‚ÅŽQÆ‚·‚é‚¾‚¯‚È‚çT*‚ÅŽg‚¢•ª‚¯‚éB
 ‚Ü‚½AGameMgr“à‚ÌDraw‚Ì‚æ‚¤‚ÈAÅ‰‚©‚çˆø”‚ªŒˆ‚Ü‚Á‚Ä‚¢‚Änullptr‚ð‹–‚³‚È‚¢‚æ‚¤‚ÈÝŒv‚È‚çŽQÆ“n‚µ(const T&)‚ÅOkB‚Ü‚½Update•”‚Å‚ànull‚ð‹–‚³‚È‚¢‚È‚çT&‚ÅOkB
 Šp“x‚ð•Ï‚¦‚é‘€ì‚àŠ®—¹I ChatGpt—L”\‚·‚¬‚éB
+
+05/11
+ƒŠƒ\[ƒXŠÇ—•”‚ð’Ç‰Á‚·‚éBŒãAƒXƒe[ƒWƒV[ƒ“‚ÌƒV[ƒPƒ“ƒX‚àŠÇ—‚µ‚½‚¢‚¯‚Ç¡“ú‚ÍƒŠƒ\[ƒXŠÇ—’Ç‰Á‚É—¯‚ß‚Ä‚¨‚¢‚½•û‚ª—¬Î‚É—Ç‚¢‚©ccB

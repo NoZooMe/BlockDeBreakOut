@@ -1,4 +1,6 @@
 #include "ColMgr.h"
+#include "SoundManager.h"
+#include "ResourceID.h"
 #include <cmath>
 #include <DxLib.h>
 
@@ -26,6 +28,7 @@ void ColMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, Player& player, Ba
 			if (Col_RectAndBall(*blockMgr.Getter_LiveBlock(i), ball)) {//“–‚½‚Á‚½‚ç
 				ball.ReflectFromSurface(*Col_RectAndBall(*blockMgr.Getter_LiveBlock(i), ball), blockMgr.Getter_LiveBlock(i)->GetterVelocity());
 				blockMgr.SetBlockFlag_Live(i, false);
+				SoundManager::getIns()->play(toString(ResourceID::BreakBlockSE));
 			}
 		}
 	}
@@ -37,6 +40,7 @@ void ColMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, Player& player, Ba
 			//–³“G‚Å‚È‚¢‚È‚ç–³“Gƒtƒ‰ƒO‚ðƒIƒ“
 			if (!player.isDamaged()) {
 				player.CallDecLife();
+				SoundManager::getIns()->play(toString(ResourceID::DamageSE));
 				player.DamagePlayer();
 			}
 			bulletMgr.DeleteBullet(i);

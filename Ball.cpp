@@ -1,6 +1,8 @@
 #include "Ball.h"
 #include "Define.h"
 #include "Keyboard.h"
+#include "SoundManager.h"
+#include "ResourceID.h"
 #include <cmath>
 #include <memory>
 #include <DxLib.h>
@@ -174,19 +176,21 @@ void Ball::ReflectFromSurface(const Segment& surface, const Vector2<float>& surf
 		_velocity = _velocity.Mult(1.05f);
 	}
 
-
+	SoundManager::getIns()->play(toString(ResourceID::ReflectSE));
 }
 
 void Ball::ReflectWall_Horizontal() {
 	_velocity.SetterX(-_velocity.GetterX());
 
 	_acceleration = 0;
+	SoundManager::getIns()->play(toString(ResourceID::ReflectSE));
 }
 
 void Ball::ReflectWall_Vertical() {
 	_velocity.SetterY(-_velocity.GetterY());
 
 	_acceleration = 0;
+	SoundManager::getIns()->play(toString(ResourceID::ReflectSE));
 }
 
 void Ball::Check_Out() {

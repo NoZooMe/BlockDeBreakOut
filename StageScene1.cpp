@@ -2,6 +2,9 @@
 #include "Macro.h"
 #include "Define.h"
 #include "eBulletSize.h"
+#include "SoundManager.h"
+#include "ResourceLoader.h"
+#include "ResourceID.h"
 
 using namespace std;
 
@@ -23,6 +26,9 @@ void StageScene1::Initialize() {
 	
 	_player->Initialize();
 	_ball->Initialize();
+
+	SoundManager::getIns()->load(toString(ResourceID::Stage1), ResourceLoader::getIns()->getSoundPath(toString(ResourceID::Stage1)));
+	SoundManager::getIns()->play(toString(ResourceID::Stage1), true);
 }
 
 void StageScene1::Finalize() {
@@ -33,6 +39,9 @@ void StageScene1::Finalize() {
 
 	_player->Finalize();
 	_ball->Finalize();
+
+	SoundManager::getIns()->stop(toString(ResourceID::Stage1));
+	SoundManager::getIns()->release(toString(ResourceID::Stage1));
 }
 
 void StageScene1::Update() {

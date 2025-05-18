@@ -160,16 +160,19 @@
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="BlockMgr.cpp" />
+    <ClCompile Include="BulletEvent.h" />
     <ClCompile Include="BulletMgr.cpp" />
     <ClCompile Include="CalcUtils.cpp" />
     <ClCompile Include="CircleObject.cpp" />
     <ClCompile Include="ColMgr.cpp" />
     <ClCompile Include="Define.cpp" />
     <ClCompile Include="Error.cpp" />
+    <ClCompile Include="ExprEval.cpp" />
     <ClCompile Include="Fps.cpp" />
     <ClCompile Include="GameMgr.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="ImageManager.cpp" />
+    <ClCompile Include="include\tinyexpr-master\tinyexpr.c" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="Looper.cpp" />
     <ClCompile Include="Choices.cpp" />
@@ -178,9 +181,11 @@
     <ClCompile Include="RectangleObject.cpp" />
     <ClCompile Include="ResourceID.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
+    <ClCompile Include="StageScriptLoader.cpp" />
     <ClCompile Include="Segment.cpp" />
     <ClCompile Include="ShapeObject.cpp" />
     <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="Stage1Script.cpp" />
     <ClCompile Include="StageScene1.cpp" />
     <ClCompile Include="SystemMain.cpp" />
     <ClCompile Include="main.cpp" />
@@ -202,6 +207,7 @@
     <ClInclude Include="eBulletSize.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="eScene.h" />
+    <ClInclude Include="ExprEval.h" />
     <ClInclude Include="Fps.h" />
     <ClInclude Include="GameMgr.h" />
     <ClInclude Include="GameScene.h" />
@@ -219,11 +225,14 @@
     <ClInclude Include="RectangleObject.h" />
     <ClInclude Include="ResourceID.h" />
     <ClInclude Include="ResourceLoader.h" />
+    <ClInclude Include="StageScriptLoader.h" />
     <ClInclude Include="Segment.h" />
     <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="Stage1Script.h" />
     <ClInclude Include="StageScene1.h" />
+    <ClInclude Include="StageScriptBase.h" />
     <ClInclude Include="SystemMain.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="TitleScene.h" />
@@ -231,6 +240,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="memo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources.json" />
+    <None Include="Stage1Script.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

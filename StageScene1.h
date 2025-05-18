@@ -6,6 +6,7 @@
 #include "GameMgr.h"
 #include "ColMgr.h"
 #include "IGameLifecycleHandler.h"
+#include "StageScriptBase.h"
 
 #include <memory>
 
@@ -33,6 +34,8 @@ private:
     std::shared_ptr<ColMgr> _colMgr;
     std::shared_ptr<Player> _player;
     std::shared_ptr<Ball> _ball;
+    //スクリプトを持つのはそのステージだけなのでunique
+    std::unique_ptr<StageScriptBase> _stageScript;
 
     int _cnt;
 

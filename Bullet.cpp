@@ -18,7 +18,7 @@ Bullet::Bullet(const Vector2<float>& position, float angle, int speed, int patte
 	case eBulletSize::Midium:
 		_r = Define::BULLET_SIZE_MIDIUM;
 		break;
-	case eBulletSize::Big:
+	case eBulletSize::Large:
 		_r = Define::BULLET_SIZE_BIG;
 		break;
 	default:

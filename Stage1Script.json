@@ -1,0 +1,46 @@
+[
+  {
+    "type": "StraightBullet",
+    "size": "Small",
+    "startFrame": 0,
+    "endFrame": 20,
+    "interval": 5,
+    "position": [ 0, "PLAYER_INIY" ],
+    "angle": "-PI * 1 / 12",
+    "speed": 10,
+    "layer": 1
+  },
+  {
+    "type": "SinBullet",
+    "size": "Small",
+    "startFrame": 0,
+    "endFrame": 20,
+    "interval": 5,
+    "position": [ 0, "PLAYER_INIY" ],
+    "angle": "-PI * 3 / 12",
+    "speed": 10,
+    "layer": 1
+  },
+  {
+    "type": "StraightBullet",
+    "size": "Midium",
+    "startFrame": 145,
+    "endFrame": 150,
+    "interval": 1,
+    "position": [ 0, "SCREEN_HEIGHT / 3" ],
+    "speed": 5,
+    "layer": 1, 
+    "targetPlayer" : true
+  },
+  {
+    "type": "SinBullet",
+    "size": "Small",
+    "startFrame": 0,
+    "endFrame": 20,
+    "interval": 5,
+    "position": [ 0, "PLAYER_INIY" ],
+    "speed": 10,
+    "layer": 1, 
+    "targetPlayer": true
+  }
+]

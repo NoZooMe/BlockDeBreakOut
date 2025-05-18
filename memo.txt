@@ -133,3 +133,6 @@ GameMgr‚Ì‹ï‘Ì“I‚È•ª—£‚ÉŠÖ‚µ‚Ä‚ÍA“–‚½‚è”»’è‚ðColMgrAƒQ[ƒ€‚ÌƒŠƒXƒ^[ƒgAƒNƒŠƒA“
 
 05/11
 ƒŠƒ\[ƒXŠÇ—•”‚ð’Ç‰Á‚·‚éBŒãAƒXƒe[ƒWƒV[ƒ“‚ÌƒV[ƒPƒ“ƒX‚àŠÇ—‚µ‚½‚¢‚¯‚Ç¡“ú‚ÍƒŠƒ\[ƒXŠÇ—’Ç‰Á‚É—¯‚ß‚Ä‚¨‚¢‚½•û‚ª—¬Î‚É—Ç‚¢‚©ccB
+
+05/18
+ƒXƒe[ƒWƒXƒNƒŠƒvƒg‚ðJSON‚ÅŠÇ—‚Å‚«‚é‚æ‚¤‚É•ÏXBŽŸ‚ÍPlayer‚ÌStatus‚ðì‚éB

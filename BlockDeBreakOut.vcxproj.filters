@@ -55,6 +55,12 @@
     <Filter Include="ソース ファイル\ResourceManager">
       <UniqueIdentifier>{b353c238-4698-4a3e-8e1e-adc1a4d613b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="JSON">
+      <UniqueIdentifier>{23c00338-6021-4be4-aeb5-011e9073bc1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Struct">
+      <UniqueIdentifier>{1d60cf56-6d50-4e88-a2ea-f0774995d888}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -152,6 +158,21 @@
     </ClCompile>
     <ClCompile Include="ResourceID.cpp">
       <Filter>ソース ファイル\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage1Script.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="StageScriptLoader.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletEvent.h">
+      <Filter>ヘッダー ファイル\Struct</Filter>
+    </ClCompile>
+    <ClCompile Include="ExprEval.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="include\tinyexpr-master\tinyexpr.c">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -272,8 +293,28 @@
     <ClInclude Include="ResourceID.h">
       <Filter>ヘッダー ファイル\ResourceManager</Filter>
     </ClInclude>
+    <ClInclude Include="StageScriptBase.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage1Script.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="StageScriptLoader.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ExprEval.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="memo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Stage1Script.json">
+      <Filter>JSON</Filter>
+    </None>
+    <None Include="resources.json">
+      <Filter>JSON</Filter>
+    </None>
   </ItemGroup>
 </Project>

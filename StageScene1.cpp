@@ -5,6 +5,7 @@
 #include "SoundManager.h"
 #include "ResourceLoader.h"
 #include "ResourceID.h"
+#include "Stage1Script.h"
 
 using namespace std;
 
@@ -16,6 +17,8 @@ StageScene1::StageScene1(ISceneChangedListener* impl, const Parameter& param) : 
 
 	_player = make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY);
 	_ball = make_shared<Ball>(Define::BALL_INIX, Define::BALL_INIY);
+	
+	_stageScript = make_unique<Stage1Script>("Stage1Script.json");
 }
 
 void StageScene1::Initialize() {
@@ -48,42 +51,33 @@ void StageScene1::Update() {
 	_gameMgr->Update(*_blockMgr, *_bulletMgr, *_player, *_ball);
 	_colMgr->Update(*_blockMgr, *_bulletMgr, *_player, *_ball);
 
-	//少し高いところ
-	Vector2<float> injectionPoint1(0, Define::PLAYER_INIY);
-	Vector2<float> injectionPoint2(Define::SCREEN_WIDTH, Define::PLAYER_INIY - 50);
-	//かなり高いところ
-	Vector2<float> injectionPoint3(0, Define::SCREEN_HEIGHT/3);
-	Vector2<float> injectionPoint4(Define::SCREEN_WIDTH, Define::SCREEN_HEIGHT/3 - 50);
-	//低いところ
-	Vector2<float> injectionPoint5(0, Define::SCREEN_HEIGHT - 10);
+	////少し高いところ
+	//Vector2<float> injectionPoint1(0, Define::PLAYER_INIY);
+	//Vector2<float> injectionPoint2(Define::SCREEN_WIDTH, Define::PLAYER_INIY - 50);
+	////かなり高いところ
+	//Vector2<float> injectionPoint3(0, Define::SCREEN_HEIGHT/3);
+	//Vector2<float> injectionPoint4(Define::SCREEN_WIDTH, Define::SCREEN_HEIGHT/3 - 50);
+	////低いところ
+	//Vector2<float> injectionPoint5(0, Define::SCREEN_HEIGHT - 10);
 
+	//ballが待ち状態、Playerのlifeが0以下、blockが一つもない時は弾幕を発生させない
+	if (!_ball->CheckFlag((int)Ball::fBall::_wait) && (_player->Getter_PlayerLife() >0) && (_blockMgr->Getter_LiveNum() >0)) {
+		//ポインタを入れてnullではないかどうかを確認している
+		if (_stageScript) {
+			_stageScript->Update(_cnt, *_bulletMgr, *_player, *_ball);
+		}
 
-	if (_cnt%200 >= 0 && _cnt%200 <= 20) {
-		_bulletMgr->Set_StraightBullet(eBulletSize::Small, injectionPoint1, -Define::PI*1/12, 10, 1);
-
-		_bulletMgr->Set_SinBullet(eBulletSize::Small, injectionPoint1, -Define::PI * 3 / 12, 10, 1);
-	}
-	if (_cnt % 200 >= 100 && _cnt % 200 <= 120) {
-		_bulletMgr->Set_StraightBullet(eBulletSize::Small, injectionPoint2, -Define::PI * 11 / 12, 10, 1);
-
-		_bulletMgr->Set_SinBullet(eBulletSize::Small, injectionPoint2, -Define::PI * 9 / 12, 10, 1);
+		_cnt++;
 	}
 
-	if (_cnt % 300 >= 145 && _cnt % 300 <= 150) {
-		Vector2<float> directionPlayer = _player->GetterPosition() - injectionPoint3;
-		_bulletMgr->Set_StraightBullet(eBulletSize::Midium, injectionPoint3, directionPlayer.GetterAngle(), 5, 1);
-	}
 
-	if (_cnt % 300 >= 200 && _cnt % 300 <= 205) {
-		Vector2<float> directionPlayer = _player->GetterPosition() - injectionPoint4;
-		_bulletMgr->Set_StraightBullet(eBulletSize::Midium, injectionPoint4, directionPlayer.GetterAngle(), 5, 1);
+	//もしplayerのlifeが0以下なら
+	if (_player->Getter_PlayerLife() <= 0) {
+		SoundManager::getIns()->stop(toString(ResourceID::Stage1));
 	}
+	
 
-	if (_cnt % 100 == 0) {
-		_bulletMgr->Set_StraightBullet(eBulletSize::Midium, injectionPoint5, 0, 10, 1);
-	}
-
-	_cnt++;
+	
 }
 
 void StageScene1::Draw() const {
@@ -117,7 +111,7 @@ void StageScene1::RequestContinue() {
 	_bulletMgr = std::make_shared<BulletMgr>();
 	_bulletMgr->Initialize();
 
-
+	SoundManager::getIns()->play(toString(ResourceID::Stage1), true);
 }
 
 void StageScene1::RequestClear() {
@@ -144,4 +138,6 @@ void StageScene1::RequestRestart() {
 	_blockMgr.reset();
 	_blockMgr = std::make_shared<BlockMgr>();
 	_blockMgr->Initialize();
+
+	SoundManager::getIns()->play(toString(ResourceID::Stage1), true);
 }

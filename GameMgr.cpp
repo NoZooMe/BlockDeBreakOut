@@ -23,12 +23,12 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, Player& player, B
 	if (player.Getter_PlayerLife() > 0 && blockMgr.Getter_LiveNum() != 0) {//残機があるかつクリアしてないとき
 		//画面外処理は各インスタンスに任せる.
 		
-		blockMgr.Update();
 		//Playerにも待ち状態を作ってこちらがやるのはflagのONのみにする。
-		//ballが待ち状態なら動けない。弾幕も同様。
+		//ballが待ち状態なら動けない。弾幕、ブロックも同様。
 		if (!ball.CheckFlag((int)Ball::fBall::_wait)) {
 			player.Update();
 			bulletMgr.Update();
+			blockMgr.Update();
 		}
 
 		if (ball.CheckFlag((int)Ball::fBall::_move)) {

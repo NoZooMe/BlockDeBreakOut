@@ -4,5 +4,5 @@ enum class eBulletSize
 {
 	Small, 
 	Midium,
-	Big
+	Large
 };

@@ -1,5 +1,6 @@
 #include "StageScriptLoader.h"
 #include "ExprEval.h"
+#include "CommandFactory.h"
 #include <nlohmann/json.hpp>
 #include <fstream>
 #include <iostream>
@@ -60,7 +61,7 @@ std::vector<BulletEvent>  StageScriptLoader::LoadStageScriptFromJSON(const std::
 			const char* toPlayerStr = e.targetPlayer ? "true" : "false";
 
 			sprintf_s(buffer, sizeof(buffer),
-				"[DEBUG] BulletEvent: type=%s, size=%s, pos=(%.1f, %.1f), angle=%s, speed=%.1f, interval=%d, startFrame=%d, endframe=%d, toPlayer=%s\n",
+				"[DEBUG] BulletEvent: type=%s, size=%s, pos=(%.1f, %.1f), angle=%s, speed=%.1f, interval=%d, startFrame=%d, endFrame=%d, toPlayer=%s\n",
 				e.type.c_str(), e.size.c_str(),
 				e.position.GetterX(), e.position.GetterY(),
 				e.angleExpr.c_str(), e.speed, e.interval, e.startFrame, e.endFrame, toPlayerStr);
@@ -74,4 +75,20 @@ std::vector<BulletEvent>  StageScriptLoader::LoadStageScriptFromJSON(const std::
 		}
 	}
 	return events;
+}
+
+std::vector<BulletCommand::TimedCommand> StageScriptLoader::LoadCommandsFromJSON(const std::string& path) {
+	std::ifstream file(path);
+	nlohmann::json j;
+	file >> j;
+
+	std::vector<BulletCommand::TimedCommand> commands;
+	for (const auto& item : j) {
+		int frame = item.value("frame", 0);
+		auto cmdJson = item["command"];
+		auto cmd = CommandFactory::CreateFromJSON(cmdJson);
+		commands.push_back(BulletCommand::TimedCommand{ frame, cmd });
+	}
+
+	return commands;
 }

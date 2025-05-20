@@ -7,7 +7,7 @@
 #include "ResourceID.h"
 #include <DxLib.h>
 
-Looper::Looper()
+Looper::Looper() : _exitGame(false)
 {
 	_keyboard = _keyboard->getIns();
 
@@ -44,15 +44,21 @@ Looper::~Looper()
 
 bool Looper::loop() 
 {
+	if (!_exitGame) {
+		_sceneStack.top()->Update();
+		_sceneStack.top()->Draw();
 
-	_sceneStack.top()->Update();
-	_sceneStack.top()->Draw();
+		_keyboard->update();
 
-	_keyboard->update();
+		_fps.draw();
+		_fps.wait();
+		return true;
+	}
+	else {
+		return false;
+	}
 
-	_fps.draw();
-	_fps.wait();
-	return true;
+	
 }
 
 void Looper::onSceneChanged(const eScene nextScene, const Parameter& parameter, const bool stackClear) {
@@ -75,4 +81,8 @@ void Looper::onSceneChanged(const eScene nextScene, const Parameter& parameter, 
 			;
 	}
 	_sceneStack.top()->Initialize();
+}
+
+void Looper::exitGame() {
+	_exitGame = true;
 }

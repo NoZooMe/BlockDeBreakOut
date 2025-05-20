@@ -8,7 +8,7 @@
 #include <DxLib.h>
 
 
-Ball::Ball(int x, int y) : CircleObject(x, y, Define::BALL_RADIUS), rand(0), _acceleration(0){
+Ball::Ball(int x, int y) : CircleObject(x, y, Define::BALL_RADIUS), rand(0){
 
 }
 
@@ -40,8 +40,6 @@ void Ball::Update() {
 	else {
 		rand = -0.5;
 	}
-
-	_velocity.SetterX(_velocity.GetterX() + _acceleration);
 
 	ShapeObject::Update();
 	Check_Out();
@@ -131,7 +129,6 @@ void Ball::ReflectBlock_Horizontal(std::shared_ptr<RectangleObject> obj) {
 		_position.SetterX(obj->GetterPosX() + obj->GetterWidth() + _r);
 	}
 
-	_acceleration = 0;
 	//è≠ÇµÉâÉìÉ_ÉÄê´+ëÅÇ≠Ç∑ÇÈ
 	_velocity.SetterY(_velocity.GetterY() + rand);
 	if (fabsf(_velocity.GetterX()) < 15) {
@@ -182,14 +179,12 @@ void Ball::ReflectFromSurface(const Segment& surface, const Vector2<float>& surf
 void Ball::ReflectWall_Horizontal() {
 	_velocity.SetterX(-_velocity.GetterX());
 
-	_acceleration = 0;
 	SoundManager::getIns()->play(toString(ResourceID::ReflectSE));
 }
 
 void Ball::ReflectWall_Vertical() {
 	_velocity.SetterY(-_velocity.GetterY());
 
-	_acceleration = 0;
 	SoundManager::getIns()->play(toString(ResourceID::ReflectSE));
 }
 

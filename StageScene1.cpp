@@ -18,7 +18,7 @@ StageScene1::StageScene1(ISceneChangedListener* impl, const Parameter& param) : 
 	_player = make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY);
 	_ball = make_shared<Ball>(Define::BALL_INIX, Define::BALL_INIY);
 	
-	_stageScript = make_unique<Stage1Script>("Stage1Script.json");
+	_stageScript = make_unique<Stage1Script>("Stage1Script.json", "Stage1Command.json");
 }
 
 void StageScene1::Initialize() {
@@ -48,11 +48,8 @@ void StageScene1::Finalize() {
 }
 
 void StageScene1::Update() {
-	_gameMgr->Update(*_blockMgr, *_bulletMgr, *_player, *_ball);
-	_colMgr->Update(*_blockMgr, *_bulletMgr, *_player, *_ball);
+	
 
-	////è≠ÇµçÇÇ¢Ç∆Ç±ÇÎ
-	//Vector2<float> injectionPoint1(0, Define::PLAYER_INIY);
 	//Vector2<float> injectionPoint2(Define::SCREEN_WIDTH, Define::PLAYER_INIY - 50);
 	////Ç©Ç»ÇËçÇÇ¢Ç∆Ç±ÇÎ
 	//Vector2<float> injectionPoint3(0, Define::SCREEN_HEIGHT/3);
@@ -77,7 +74,8 @@ void StageScene1::Update() {
 	}
 	
 
-	
+	_gameMgr->Update(*_blockMgr, *_bulletMgr, *_player, *_ball);
+	_colMgr->Update(*_blockMgr, *_bulletMgr, *_player, *_ball);
 }
 
 void StageScene1::Draw() const {
@@ -115,7 +113,7 @@ void StageScene1::RequestContinue() {
 }
 
 void StageScene1::RequestClear() {
-
+	SoundManager::getIns()->stop(toString(ResourceID::Stage1));
 }
 
 void StageScene1::RequestRestart() {

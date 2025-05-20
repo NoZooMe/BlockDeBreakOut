@@ -29,6 +29,7 @@ void ColMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, Player& player, Ba
 				ball.ReflectFromSurface(*Col_RectAndBall(*blockMgr.Getter_LiveBlock(i), ball), blockMgr.Getter_LiveBlock(i)->GetterVelocity());
 				blockMgr.SetBlockFlag_Live(i, false);
 				SoundManager::getIns()->play(toString(ResourceID::BreakBlockSE));
+				player.AddScore(10);
 			}
 		}
 	}

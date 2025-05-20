@@ -136,3 +136,6 @@ GameMgr‚Ì‹ï‘Ì“I‚È•ª—£‚ÉŠÖ‚µ‚Ä‚ÍA“–‚½‚è”»’è‚ðColMgrAƒQ[ƒ€‚ÌƒŠƒXƒ^[ƒgAƒNƒŠƒA“
 
 05/18
 ƒXƒe[ƒWƒXƒNƒŠƒvƒg‚ðJSON‚ÅŠÇ—‚Å‚«‚é‚æ‚¤‚É•ÏXBŽŸ‚ÍPlayer‚ÌStatus‚ðì‚éB
+
+05/19
+Še’e–‹‚Ìbehavior‚ÍBulletMgr‚ª’m‚Á‚Ä‚¢‚ÄAScript‚ÍJson‚É‰ž‚¶‚ÄBulletMgr‚ÌŠÖ”‚ðŒÄ‚Ño‚µ‚Ä‚¢‚éB

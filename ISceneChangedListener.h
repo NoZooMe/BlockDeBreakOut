@@ -8,4 +8,5 @@ public:
 	virtual ~ISceneChangedListener() = default;
 
 	virtual void onSceneChanged(const eScene nextScene, const Parameter& parameter, const bool stackClear) = 0;
+	virtual void exitGame() = 0;
 };

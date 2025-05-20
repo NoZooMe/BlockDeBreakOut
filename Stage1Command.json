@@ -1,0 +1,112 @@
+[
+  {
+    "frame": 150,
+    "command": {
+      "type": "OmniShot",
+      "position": [ 640, 360 ],
+      "speed": 5,
+      "numBullets": 8,
+      "size": "Small",
+      "color": 1
+    }
+  },
+  {
+    "frame": 200,
+    "command": {
+      "type": "OmniShot",
+      "position": [ 320, 100 ],
+      "speed": 8,
+      "numBullets": 16,
+      "size": "Midium",
+      "color": 2
+    }
+  },
+  {
+    "frame": 250,
+    "command": {
+      "type": "OmniSpiral",
+      "position": [ "SCREEN_WIDTH/2", "400" ],
+      "speed": 10,
+      "numBullets": 8,
+      "size": "Small",
+      "color": 1
+    }
+  },
+  {
+    "frame": 380,
+    "command": {
+      "type": "OmniShot",
+      "position": [ "SCREEN_WIDTH/2", "SCREEN_HEIGHT/3" ],
+      "speed": 8,
+      "numBullets": 16,
+      "size": "Small",
+      "color": 2
+    }
+  },
+  {
+    "frame": 381,
+    "command": {
+      "type": "OmniShot",
+      "position": [ "SCREEN_WIDTH/2", "SCREEN_HEIGHT/3" ],
+      "speed": 8,
+      "numBullets": 16,
+      "size": "Small",
+      "color": 2
+    }
+  },
+  {
+    "frame": 382,
+    "command": {
+      "type": "OmniShot",
+      "position": [ "SCREEN_WIDTH/2", "SCREEN_HEIGHT/3" ],
+      "speed": 8,
+      "numBullets": 16,
+      "size": "Small",
+      "color": 2
+    }
+  },
+  {
+    "frame": 383,
+    "command": {
+      "type": "OmniShot",
+      "position": [ "SCREEN_WIDTH/2", "SCREEN_HEIGHT/3" ],
+      "speed": 8,
+      "numBullets": 16,
+      "size": "Small",
+      "color": 2
+    }
+  },
+  {
+    "frame": 384,
+    "command": {
+      "type": "OmniShot",
+      "position": [ "SCREEN_WIDTH/2", "SCREEN_HEIGHT/3" ],
+      "speed": 8,
+      "numBullets": 16,
+      "size": "Small",
+      "color": 2
+    }
+  },
+  {
+    "frame": 385,
+    "command": {
+      "type": "OmniShot",
+      "position": [ "SCREEN_WIDTH/2", "SCREEN_HEIGHT/3" ],
+      "speed": 8,
+      "numBullets": 16,
+      "size": "Small",
+      "color": 2
+    }
+  },
+  {
+    "frame": 386,
+    "command": {
+      "type": "OmniShot",
+      "position": [ "SCREEN_WIDTH/2", "SCREEN_HEIGHT/3" ],
+      "speed": 8,
+      "numBullets": 16,
+      "size": "Small",
+      "color": 2
+    }
+  }
+]

@@ -13,6 +13,8 @@ protected:
     Vector2<float> _position;
     //速度ベクトル
     Vector2<float> _velocity;
+    //加速度ベクトル
+    Vector2<float> _acceleration;
 
 
     //角度.Velocityに三角関数を用いて入れたりする.
@@ -45,9 +47,16 @@ public:
     float GetterVelY() const { return _velocity.GetterY(); };
     Vector2<float> GetterVelocity() const { return _velocity; };
 
-    //positionのSetter.遠回りな気もするけどこれでいいのか.そもそも二段階でSetterを参照するプログラムではいけない気がする
+    float GetterAngle() const { return _angle; };
+
+    //positionのSetter。
     void SetterPosition(Vector2<float>& temp) {
         _position.Setter(temp.GetterX(), temp.GetterY());
+    }
+
+    //velocityのSetter
+    void SetterVelocity(Vector2<float> temp) {
+        _velocity.Setter(temp.GetterX(), temp.GetterY());
     }
 
     //flagのenumを渡すことでそのフラグが立っているかをboolで返す.外部呼出し可.

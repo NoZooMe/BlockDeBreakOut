@@ -17,6 +17,11 @@ public:
 
     void Set_StraightBullet(eBulletSize size, const Vector2<float>& position, float angle, int speed, int color);
     void Set_SinBullet(eBulletSize size, const Vector2<float>& position, float angle, int speed, int color);
+    void Set_SpiralBullet(eBulletSize size, const Vector2<float>& position, float angle, int speed, int color);
+    void Set_GravityBullet(eBulletSize size, const Vector2<float>& position, float angle, int speed, int color);
+    void Set_WeierstrassBullet(eBulletSize size, const Vector2<float>& position, float angle, int speed, int color);
+    
+    void AddBullet(eBulletSize size, const Vector2<float> pos, float angle, int speed, int color, std::shared_ptr<IBulletBehavior> behavior);
 
     void CheckOut();
 

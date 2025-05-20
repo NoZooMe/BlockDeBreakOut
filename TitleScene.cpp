@@ -46,7 +46,7 @@ void TitleScene::Update() {
 
 	}
 	else if (_titleMenu->Update() == 3) {
-		
+		_implSceneChangedListener->exitGame();
 	}
 }
 

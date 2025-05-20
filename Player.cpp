@@ -4,20 +4,27 @@
 #include "ImageManager.h"
 #include "ResourceID.h"
 #include "Keyboard.h"
+#include "ComplexTransform.h"
 
-Player::Player(float iniX, float iniY) : RectangleObject(iniX, iniY, Define::PLAYER_WIDTH, Define::PLAYER_HEIGHT), dirH(0), dirV(0), life(Define::PLAYER_LIFE), _mutekiCnt(0) {
-	
+Player::Player(float iniX, float iniY) : RectangleObject(iniX, iniY, Define::PLAYER_WIDTH, Define::PLAYER_HEIGHT), dirH(0), dirV(0),  _mutekiCnt(0) ,_t(0.0f), _dt(1.0f/60.0f){
 }
 
 void Player::Initialize() {
-	
+	WaveFlag(fPlayer::_onODE, false);
 }
 
 
 void Player::Update() {
 	if (!CheckFlag(fPlayer::_death)) {
 		Check_Direciton();
-		Set_Velocity();
+		//微分方程式による制御
+		if (!CheckFlag(fPlayer::_onODE)) {
+			Set_Velocity();
+		}
+		else {
+			//Set_VelocityODE(_t, _dt);
+			Set_VelocityLorenzA(_t, _dt);
+		}
 		RectangleObject::Update();
 		//画面外処理。もしも外に出ていたら強制的に戻す
 		Check_Out();
@@ -47,6 +54,28 @@ void Player::Update() {
 	else {
 		_angle = 0;
 	}
+
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_1) == 1) {
+		ComplexTransform::mode = SpaceTransformMode::Identity;
+	}
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_2) == 1) {
+		ComplexTransform::mode = SpaceTransformMode::Inverse;
+	}
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_3) == 1) {
+		ComplexTransform::mode = SpaceTransformMode::Sin;
+	}
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_4) == 1) {
+		ComplexTransform::mode = SpaceTransformMode::Exp;
+	}
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_5) == 1) {
+		ComplexTransform::mode = SpaceTransformMode::Square;
+	}
+
+	if (_status.lastScore < 100 && _status.score >= 100) {
+		_status.life++;
+	}
+	_status.lastScore = _status.score;
+	_t++;
 }
 
 void Player::Draw() const {
@@ -55,6 +84,9 @@ void Player::Draw() const {
 		ShapeObject::Draw(_position.GetterX(), _position.GetterY(), ImageManager::getIns()->getImage(toString(ResourceID::Player)));
 		RectangleObject::Draw();
 	}
+	//位置表示
+	//DrawFormatString(10, 50, GetColor(255, 255, 255), "pos=(%.1f, %.1f)", _position.GetterX(), _position.GetterY());
+	DrawFormatString(0, 50, GetColor(255, 255, 255), "Transform: %d", static_cast<int>(ComplexTransform::mode));
 }
 
 //向いている方向でdirVとdirHを変化.
@@ -64,24 +96,24 @@ void Player::Check_Direciton() {
 	dirH = 0;
 
 	if (CheckHitKey(KEY_INPUT_RIGHT)) {
-		dirV = 1;
+		dirH = 1;
 	}
 	else if (CheckHitKey(KEY_INPUT_LEFT)) {
-		dirV = -1;
+		dirH = -1;
 	}
 
 	if (CheckHitKey(KEY_INPUT_UP)) {
-		dirH = -1;
+		dirV = -1;
 	}
 	else if (CheckHitKey(KEY_INPUT_DOWN)) {
-		dirH = 1;
+		dirV = 1;
 	}
 }
 
 //Velocityはdirectionで変化する
 void Player::Set_Velocity() {
 	
-	_velocity.Setter(dirV, dirH);
+	_velocity.Setter(dirH, dirV);
 
 	//斜め入力なら正規化
 	if ((dirV!=0) && (dirH!=0)) {
@@ -89,6 +121,43 @@ void Player::Set_Velocity() {
 	}
 	_velocity = _velocity.Mult(speed);
 	
+}
+
+void Player::Set_VelocityODE(float t, float dt) {
+	Vector2<float> inputDir(0.0f, 0.0f);
+
+	inputDir.Setter(dirH, dirV);
+
+	//正規化　+　最大速度をかける
+	if (inputDir.Abs() > 0.0f) {
+		inputDir = inputDir.Norm().Mult(speed);
+	}
+
+
+	//加速度に目標速度への追従を設定
+	const float followRate = 3.0f;	//反応性
+	_acceleration = (inputDir - _velocity).Mult(followRate * dt);
+}
+
+void Player::Set_VelocityLorenzA(float t, float dt) {
+	float chaosStrength = 0.2f;
+	float noiseX = chaosStrength * (rand() % 100 - 50); // -1.0~1.0
+	float noiseY = chaosStrength * (rand() % 100 - 50);
+
+	Vector2<float> chaosDir;
+	chaosDir.Setter(noiseX, noiseY);
+
+	Vector2<float> inputDir(dirH, dirV);
+	//正規化　+　最大速度をかける
+	if (inputDir.Abs() > 0.0f) {
+		inputDir = inputDir.Norm().Mult(speed);
+	}
+
+	// 入力+カオス
+	Vector2<float> targetVel = inputDir + chaosDir;	//カオスを加える
+
+	const float followRate = 3.0f;
+	_acceleration = (targetVel - _velocity).Mult(followRate * dt);
 }
 
 void Player::SetPlayerFlag_OutVertical(bool value) {
@@ -151,7 +220,11 @@ void Player::Check_Out() {
 }
 
 void Player::CallDecLife() {
-	life--;
+	_status.life--;
+}
+
+void Player::CallIncLife() {
+	_status.life++;
 }
 
 Vector2<float> Player::GetterPosition() const {

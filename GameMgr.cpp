@@ -47,6 +47,7 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, Player& player, B
 			_implLifeCycle->RequestDamage();
 			player.CallDecLife();
 		}
+
 	}
 	else if(player.Getter_PlayerLife() <= 0){//残機が無くなったら
 		player.SetPlayerFlag_Death(true);
@@ -62,6 +63,8 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, Player& player, B
 	else if (blockMgr.Getter_LiveNum() <= 0) {//blockを全て消せたら
 		DrawString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2, "Game Clear!", Define::WHITE);
 		DrawString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2 + 15, "Restart is Spece", Define::WHITE);
+
+		_implLifeCycle->RequestClear();
 
 		//スペースが押されたらリスタート
 		 //ここはStageSceneでやる
@@ -86,4 +89,5 @@ void GameMgr::Draw(const BlockMgr& blockMgr, const BulletMgr& bulletMgr, const P
 	for (int i = 0; i < player.Getter_PlayerLife(); i++) {
 		DrawString(i*15, 10, "●", Define::WHITE);
 	}
+	DrawFormatString(0, 25, Define::WHITE, "%d", player.Getter_PlayerScore());
 }

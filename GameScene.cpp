@@ -77,3 +77,7 @@ void GameScene::Draw() const {
 void GameScene::onSceneChanged(const eScene nextScene, const Parameter& parameter, const bool stackClear) {
 
 }
+
+void GameScene::exitGame() {
+
+}

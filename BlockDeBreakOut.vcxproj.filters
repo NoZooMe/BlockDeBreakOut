@@ -61,6 +61,15 @@
     <Filter Include="ヘッダー ファイル\Struct">
       <UniqueIdentifier>{1d60cf56-6d50-4e88-a2ea-f0774995d888}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Bullet">
+      <UniqueIdentifier>{9b226037-4fea-4dc1-8c43-f852531c5d74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bullet\Behaviors">
+      <UniqueIdentifier>{1c857e91-881f-4a6c-8cd9-49c0b56cc364}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bullet\BulletCommand">
+      <UniqueIdentifier>{e59aa20e-eb96-4cec-9369-450108c8c9e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -138,9 +147,6 @@
     <ClCompile Include="Looper.cpp">
       <Filter>ソース ファイル\System</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>ソース ファイル\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="AbstractScene.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
@@ -165,13 +171,43 @@
     <ClCompile Include="StageScriptLoader.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="BulletEvent.h">
-      <Filter>ヘッダー ファイル\Struct</Filter>
-    </ClCompile>
     <ClCompile Include="ExprEval.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="include\tinyexpr-master\tinyexpr.c">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletEvent.h">
+      <Filter>ヘッダー ファイル\Struct</Filter>
+    </ClCompile>
+    <ClCompile Include="StraightBehavior.cpp">
+      <Filter>Bullet\Behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="SinBehavior.cpp">
+      <Filter>Bullet\Behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="SpiralBehavior.cpp">
+      <Filter>Bullet\Behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="GravityBehavior.cpp">
+      <Filter>Bullet\Behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="WeierstrassBehavior.cpp">
+      <Filter>Bullet\Behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="OmniShotCommand.cpp">
+      <Filter>Bullet\BulletCommand</Filter>
+    </ClCompile>
+    <ClCompile Include="OmniSpiralCommand.cpp">
+      <Filter>Bullet\BulletCommand</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandFactory.cpp">
+      <Filter>Bullet\BulletCommand</Filter>
+    </ClCompile>
+    <ClCompile Include="ComplexTransform.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -266,9 +302,6 @@
     <ClInclude Include="eScene.h">
       <Filter>ヘッダー ファイル\Enum</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>ヘッダー ファイル\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="AbstractScene.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
@@ -305,6 +338,45 @@
     <ClInclude Include="ExprEval.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="IBulletBehavior.h">
+      <Filter>Bullet\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="StraightBehavior.h">
+      <Filter>Bullet\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="SinBehavior.h">
+      <Filter>Bullet\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvertUtils.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SpiralBehavior.h">
+      <Filter>Bullet\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="GravityBehavior.h">
+      <Filter>Bullet\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="WeierstrassBehavior.h">
+      <Filter>Bullet\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletCommand.h">
+      <Filter>Bullet\BulletCommand</Filter>
+    </ClInclude>
+    <ClInclude Include="OmniShotCommand.h">
+      <Filter>Bullet\BulletCommand</Filter>
+    </ClInclude>
+    <ClInclude Include="OmniSpiralCommand.h">
+      <Filter>Bullet\BulletCommand</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandFactory.h">
+      <Filter>Bullet\BulletCommand</Filter>
+    </ClInclude>
+    <ClInclude Include="ComplexTransform.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="memo.txt" />
@@ -314,6 +386,9 @@
       <Filter>JSON</Filter>
     </None>
     <None Include="resources.json">
+      <Filter>JSON</Filter>
+    </None>
+    <None Include="Stage1Command.json">
       <Filter>JSON</Filter>
     </None>
   </ItemGroup>

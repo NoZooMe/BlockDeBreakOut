@@ -1,10 +1,12 @@
 #include "ShapeObject.h"
 #include <DxLib.h>
 
-ShapeObject::ShapeObject(float posX, float posY) : _position(posX, posY), _velocity(0, 0), _flag(0){
+ShapeObject::ShapeObject(float posX, float posY) : _position(posX, posY), _velocity(0, 0), _flag(0), _acceleration(0, 0){
 }
 
 void ShapeObject::Move() {
+	
+	_velocity = _velocity + _acceleration;
 	_position = _position + _velocity;
 }
 

@@ -18,8 +18,6 @@ private:
     //-1/2‚©‚ç1/2‚ğ“®‚­•Ï”
     float rand;
 
-    float _acceleration;
-
 public:
 
     //ƒtƒ‰ƒO\‘¢‘Ì

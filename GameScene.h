@@ -20,6 +20,7 @@ public:
     void Draw() const override;
 
     void onSceneChanged(const eScene nextScene, const Parameter& parameter, const bool stackClear) override;
+    void exitGame() override;
 
 private:
     int _level;

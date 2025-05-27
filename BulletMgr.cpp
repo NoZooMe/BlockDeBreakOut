@@ -38,9 +38,11 @@ void BulletMgr::Update() {
 }
 
 void BulletMgr::Draw() const {
+
 	for (auto bullet : _vector) {
 		bullet->Draw();
 	}
+
 }
 
 void BulletMgr::Set_StraightBullet(eBulletSize size, const Vector2<float>& position, float angle, int speed, int color) {

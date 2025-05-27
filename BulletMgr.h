@@ -29,6 +29,7 @@ public:
     int GetBulletNum() const;
     void DeleteBullet(int num);
 
+
 private:
     //’e‚Ì”z—ñ
     std::vector<std::shared_ptr<Bullet>> _vector;

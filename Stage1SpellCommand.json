@@ -1,0 +1,13 @@
+[
+  {
+    "frame": 1,
+    "command": {
+      "type": "OmniShot",
+      "position": [ "SCREEN_WIDTH/2", "SCREEN_HEIGHT/3" ],
+      "speed": 8,
+      "numBullets": 16,
+      "size": "Small",
+      "color": 2
+    }
+  }
+]

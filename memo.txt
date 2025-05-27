@@ -139,3 +139,19 @@ GameMgr‚Ì‹ï‘Ì“I‚È•ª—£‚ÉŠÖ‚µ‚Ä‚ÍA“–‚½‚è”»’è‚ðColMgrAƒQ[ƒ€‚ÌƒŠƒXƒ^[ƒgAƒNƒŠƒA“
 
 05/19
 Še’e–‹‚Ìbehavior‚ÍBulletMgr‚ª’m‚Á‚Ä‚¢‚ÄAScript‚ÍJson‚É‰ž‚¶‚ÄBulletMgr‚ÌŠÖ”‚ðŒÄ‚Ño‚µ‚Ä‚¢‚éB
+
+05/21
+’e–‹‚ð”ð‚¯‚é¨ƒuƒƒbƒN‚ð•ö‚·‚Ý‚½‚¢‚È•Ï‰»‚É‚µ‚½‚¢Bƒ{[ƒ‹‚ðÁ‚·A‚Ý‚½‚¢‚ÈƒRƒ}ƒ“ƒh‚à‚¢‚é‚©‚àB
+
+05/27
+ŽU‚ç‚Î‚è‚»‚¤‚¾‚Á‚½‚Ì‚Å‚â‚è‚½‚¢‚±‚Æ‚ð‘‚¢‚Æ‚­B
+~GLSL“±“üB‚±‚ê‚Í”g‚ð‘Å‚½‚¹‚éƒGƒtƒFƒNƒg‚ð‘S‘Ì‚É‚©‚¯‚½‚¢‚½‚ßB©‚±‚ñ‚È‚±‚ÆDxLib‚Åo—ˆ‚È‚¢‚Å‚·B
+Z•¡‘fŠÖ”‚Ì‹O“¹§ŒäB‚¹‚ß‚Äˆê‚Â‚Å‚¢‚¢‚©‚çŽg‚¦‚»‚¤‚È‹O“¹‚ÆA”ñüŒ`‚É•Ï‰»‚·‚é‘¬“x‚ðƒ}ƒV‚È’l‚É‚Å‚«‚é‚æ‚¤’²®
+ª‚±‚ê‚ªo—ˆ‚½‚çZ•KŽE‹Z§“x‚Ì“±“ü‚¾‚¯‚Çæ‚É‰º‚ð‚â‚éB
+ZUI‚ÌŽÀ‘•B‰æ–Ê‰E”¼•ª‚ÉƒLƒƒƒ‰‚ð’u‚¢‚ÄA•KŽE‹ZŽž‚ÉƒZƒŠƒt‚È‚Ç‚à’‚ç‚¹‚é
+ZƒAƒCƒeƒ€(ƒ{ƒ€)‚ÌŽÀ‘•B’e‚ðˆê‹C‚É“¾“_ƒAƒCƒeƒ€‚Éo—ˆ‚éƒAƒCƒeƒ€‚ðŽÀ‘•B‚»‚ÌÛ‚É‰æ–Ê‘S‘Ì‚ð—h‚ç‚µ‚½‚¢B
+Z‰ï˜bƒV[ƒPƒ“ƒX‚Ì’Ç‰ÁB
+‚±‚ê‚­‚ç‚¢‚Ü‚Åo—ˆ‚ê‚Î‚Æ‚è‚ ‚¦‚¸ˆê–Ê‚Íì‚ê‚é‚©‚ÈIIƒCƒ“ƒ^[ƒ“‘Il‚Ì‚½‚ß‚É‚±‚±‚Ü‚Å‚Íi‚ß‚éB
+‚ ‚Æ×‚©‚¢‚Æ‚±‚ë‚Å”wŒi‚Æ‚©l‚¦‚é•K—v‚ª‚ ‚éBŒ©‚½–Ú‚Í‚©‚È‚è‘åŽ–B
+
+ˆê–Êƒ{ƒX‚Í’Êí’e–‹¨•KŽE‹Z(…’†)@‚Ý‚½‚¢‚ÈŠ´‚¶‚©‚ÈB

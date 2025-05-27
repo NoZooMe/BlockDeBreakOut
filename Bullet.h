@@ -17,7 +17,7 @@ public:
     void Finalize() override;
     void Update() override;
     void Draw() const override;
-    void Draw(float x, float y);
+    
 
     bool CheckOut();
 
@@ -31,7 +31,9 @@ private:
     float _cnt;
 
     std::shared_ptr<IBulletBehavior> _behavior;
+    Vector2<float> _euclidPosition;  //–{—ˆ‚ÌˆÊ’u
 
     
+
 };
 

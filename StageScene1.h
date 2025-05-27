@@ -37,6 +37,7 @@ private:
     //スクリプトを持つのはそのステージだけなのでunique
     std::unique_ptr<StageScriptBase> _stageScript;
 
+
     int _cnt;
 
 

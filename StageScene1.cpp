@@ -18,6 +18,7 @@ StageScene1::StageScene1(ISceneChangedListener* impl, const Parameter& param) : 
 	_player = make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY);
 	_ball = make_shared<Ball>(Define::BALL_INIX, Define::BALL_INIY);
 	
+	//_stageScript = make_unique<Stage1Script>("Stage1SpellScript.json", "Stage1SpellCommand.json");
 	_stageScript = make_unique<Stage1Script>("Stage1Script.json", "Stage1Command.json");
 }
 
@@ -30,8 +31,10 @@ void StageScene1::Initialize() {
 	_player->Initialize();
 	_ball->Initialize();
 
+
 	SoundManager::getIns()->load(toString(ResourceID::Stage1), ResourceLoader::getIns()->getSoundPath(toString(ResourceID::Stage1)));
 	SoundManager::getIns()->play(toString(ResourceID::Stage1), true);
+
 }
 
 void StageScene1::Finalize() {
@@ -42,6 +45,7 @@ void StageScene1::Finalize() {
 
 	_player->Finalize();
 	_ball->Finalize();
+
 
 	SoundManager::getIns()->stop(toString(ResourceID::Stage1));
 	SoundManager::getIns()->release(toString(ResourceID::Stage1));
@@ -80,6 +84,7 @@ void StageScene1::Update() {
 
 void StageScene1::Draw() const {
 	_gameMgr->Draw(*_blockMgr, *_bulletMgr, *_player, *_ball);
+
 }
 
 

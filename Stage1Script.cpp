@@ -8,6 +8,8 @@
 Stage1Script::Stage1Script(const std::string& stagescriptPath, const std::string& commandPath) {
 	_events = StageScriptLoader::LoadStageScriptFromJSON(stagescriptPath);
 	_commands = StageScriptLoader::LoadCommandsFromJSON(commandPath);
+	 
+	
 	//// BulletEvent‚Ì’†g‚ð•¶Žš—ñ‰»‚µ‚Äo—Í
 	//for (const auto& e : _events) {
 	//	const char* toPlayerStr = e.targetPlayer ? "true" : "false";
@@ -87,6 +89,10 @@ void Stage1Script::Update(int cnt, BulletMgr& bulletMgr, const Player& player, c
 		if (cnt >= cmd.frame && (cnt - cmd.frame) % 800 == 0) {
 			cmd.command->Execute(bulletMgr);
 		}
+
+		/*if (cnt % 60 == 0) {
+			cmd.command->Execute(bulletMgr);
+		}*/
 	}
 
 }

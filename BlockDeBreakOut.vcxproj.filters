@@ -70,13 +70,13 @@
     <Filter Include="Bullet\BulletCommand">
       <UniqueIdentifier>{e59aa20e-eb96-4cec-9369-450108c8c9e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{d7b32b20-8edf-4be3-847e-f35fbc09ea63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="CalcUtils.cpp">
-      <Filter>ソース ファイル\System</Filter>
     </ClCompile>
     <ClCompile Include="Error.cpp">
       <Filter>ソース ファイル\System</Filter>
@@ -171,12 +171,6 @@
     <ClCompile Include="StageScriptLoader.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="ExprEval.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="include\tinyexpr-master\tinyexpr.c">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>Bullet</Filter>
     </ClCompile>
@@ -210,13 +204,19 @@
     <ClCompile Include="ComplexTransform.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="ExprEval.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="include\tinyexpr-master\tinyexpr.c">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="CalcUtils.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Singleton.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="CalcUtils.h">
-      <Filter>ヘッダー ファイル\System</Filter>
     </ClInclude>
     <ClInclude Include="Error.h">
       <Filter>ヘッダー ファイル\System</Filter>
@@ -335,9 +335,6 @@
     <ClInclude Include="StageScriptLoader.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ExprEval.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>Bullet</Filter>
     </ClInclude>
@@ -349,9 +346,6 @@
     </ClInclude>
     <ClInclude Include="SinBehavior.h">
       <Filter>Bullet\Behaviors</Filter>
-    </ClInclude>
-    <ClInclude Include="ConvertUtils.h">
-      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="SpiralBehavior.h">
       <Filter>Bullet\Behaviors</Filter>
@@ -377,6 +371,15 @@
     <ClInclude Include="ComplexTransform.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="CalcUtils.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ExprEval.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvertUtils.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="memo.txt" />
@@ -389,6 +392,12 @@
       <Filter>JSON</Filter>
     </None>
     <None Include="Stage1Command.json">
+      <Filter>JSON</Filter>
+    </None>
+    <None Include="Stage1SpellCommand.json">
+      <Filter>JSON</Filter>
+    </None>
+    <None Include="Stage1SpellScript.json">
       <Filter>JSON</Filter>
     </None>
   </ItemGroup>

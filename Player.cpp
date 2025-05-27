@@ -22,8 +22,8 @@ void Player::Update() {
 			Set_Velocity();
 		}
 		else {
-			//Set_VelocityODE(_t, _dt);
-			Set_VelocityLorenzA(_t, _dt);
+			Set_VelocityODE(_t, _dt);
+		//	Set_VelocityLorenzA(_t, _dt);
 		}
 		RectangleObject::Update();
 		//画面外処理。もしも外に出ていたら強制的に戻す
@@ -68,7 +68,22 @@ void Player::Update() {
 		ComplexTransform::mode = SpaceTransformMode::Exp;
 	}
 	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_5) == 1) {
-		ComplexTransform::mode = SpaceTransformMode::Square;
+		ComplexTransform::mode = SpaceTransformMode::Conj;
+	}
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_6) == 1) {
+		ComplexTransform::mode = SpaceTransformMode::Cos;
+	}
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_7) == 1) {
+		ComplexTransform::mode = SpaceTransformMode::Tan;
+	}
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_8) == 1) {
+		ComplexTransform::mode = SpaceTransformMode::Sinh;
+	}
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_9) == 1) {
+		ComplexTransform::mode = SpaceTransformMode::Gamma;
+	}
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_0) == 1) {
+		ComplexTransform::mode = SpaceTransformMode::Zeta;
 	}
 
 	if (_status.lastScore < 100 && _status.score >= 100) {
@@ -86,7 +101,8 @@ void Player::Draw() const {
 	}
 	//位置表示
 	//DrawFormatString(10, 50, GetColor(255, 255, 255), "pos=(%.1f, %.1f)", _position.GetterX(), _position.GetterY());
-	DrawFormatString(0, 50, GetColor(255, 255, 255), "Transform: %d", static_cast<int>(ComplexTransform::mode));
+	//複素関数の名前表示
+	DrawFormatString(0, 50, GetColor(255, 255, 255), "Transform: %s", ComplexTransform::ToString(ComplexTransform::mode).c_str());
 }
 
 //向いている方向でdirVとdirHを変化.

@@ -6,7 +6,7 @@
 #include <cmath>
 
 Bullet::Bullet(const Vector2<float>& position, float angle, int speed, std::shared_ptr<IBulletBehavior> b, int color, eBulletSize size)
-	: CircleObject(position.GetterX(), position.GetterY(), 0), _speed(speed), _color(color),  _cnt(0), _behavior(b){
+	: CircleObject(position.GetterX(), position.GetterY(), 0), _speed(speed), _color(color),  _cnt(0), _behavior(b), _euclidPosition(_position){
 	//全てのshapeObjectの角度はインスタンスで初期化されるべき。
 	_angle = angle;
 
@@ -37,10 +37,13 @@ void Bullet::Finalize() {
 }
 
 void Bullet::Update() {
-	_behavior->Update(*this);
+	_behavior->Update(*this);	// _velocityを更新する
+
+	//ユークリッド空間上で移動
+	_euclidPosition = _euclidPosition + _velocity;
 	
 
-	std::complex<float> z_screen(_position.GetterX(), _position.GetterY());
+	//std::complex<float> z_screen(_position.GetterX(), _position.GetterY());
 
 	//中心位置
 	float cx = Define::SCREEN_WIDTH / 2.0f;
@@ -49,8 +52,8 @@ void Bullet::Update() {
 	float scale = 80.0f;
 
 	// 画面座標 → 複素座標（中心が原点）
-	std::complex<float> z((z_screen.real() - cx) / scale,
-		-(z_screen.imag() - cy) / scale);  // y軸反転
+	std::complex<float> z((_euclidPosition.GetterX() - cx) / scale,
+		-(_euclidPosition.GetterY() - cy) / scale);  // y軸反転
 
 	// 2. 微小 z を補正（極回避）
 	const float epsilon = 1e-2f;
@@ -74,12 +77,16 @@ void Bullet::Update() {
 
 	
 
-	// 複素座標→画面座標に戻す
-	int transX = (cx + z_trans.real() * scale);
-	int transY = (cy - z_trans.imag() * scale);	//y軸反転
+	//// 複素座標→画面座標に戻す
+	//int transX = (cx + z_trans.real() * scale);
+	//int transY = (cy - z_trans.imag() * scale);	//y軸反転
 
-	DrawCircle(transX, transY, _r, GetColor(255, ((static_cast<int>(z_trans.real()) % 255) + 255) % 255, 
-		((static_cast<int>(z_trans.imag()) % 255) + 255) % 255));
+	/*DrawCircle(transX, transY, _r, GetColor(255, ((static_cast<int>(z_trans.real()) % 255) + 255) % 255, 
+		((static_cast<int>(z_trans.imag()) % 255) + 255) % 255));*/
+
+	//変換後の位置に反映(ShapeObjectの描画・当たり判定用)
+
+	_position.Setter(cx + z_trans.real() * scale, cy - z_trans.imag() * scale);
 
 	ShapeObject::Update();
 	_cnt++;
@@ -95,7 +102,13 @@ bool Bullet::CheckOut() {
 		|| _position.GetterY() + GetterR() <= 0 || _position.GetterY() - GetterR() >= Define::SCREEN_HEIGHT ) {
 		return true;
 	}
-	else {
+	else if(_euclidPosition.GetterX() + GetterR() <= 0 || _euclidPosition.GetterX() - GetterR() >= Define::SCREEN_WIDTH
+		|| _euclidPosition.GetterY() + GetterR() <= 0 || _euclidPosition.GetterY() - GetterR() >= Define::SCREEN_HEIGHT)
+	{
+		return true;
+	}
+	else 
+	{
 		return false;
 	}
 }

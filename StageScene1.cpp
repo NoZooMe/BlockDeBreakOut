@@ -17,6 +17,8 @@ StageScene1::StageScene1(ISceneChangedListener* impl, const Parameter& param) : 
 
 	_player = make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY);
 	_ball = make_shared<Ball>(Define::BALL_INIX, Define::BALL_INIY);
+
+	_gui = make_shared<Gui>();
 	
 	//_stageScript = make_unique<Stage1Script>("Stage1SpellScript.json", "Stage1SpellCommand.json");
 	_stageScript = make_unique<Stage1Script>("Stage1Script.json", "Stage1Command.json");
@@ -31,6 +33,7 @@ void StageScene1::Initialize() {
 	_player->Initialize();
 	_ball->Initialize();
 
+	_gui->Initialize();
 
 	SoundManager::getIns()->load(toString(ResourceID::Stage1), ResourceLoader::getIns()->getSoundPath(toString(ResourceID::Stage1)));
 	SoundManager::getIns()->play(toString(ResourceID::Stage1), true);
@@ -46,20 +49,13 @@ void StageScene1::Finalize() {
 	_player->Finalize();
 	_ball->Finalize();
 
+	_gui->Finalize();
 
 	SoundManager::getIns()->stop(toString(ResourceID::Stage1));
 	SoundManager::getIns()->release(toString(ResourceID::Stage1));
 }
 
 void StageScene1::Update() {
-	
-
-	//Vector2<float> injectionPoint2(Define::SCREEN_WIDTH, Define::PLAYER_INIY - 50);
-	////Ç©Ç»ÇËçÇÇ¢Ç∆Ç±ÇÎ
-	//Vector2<float> injectionPoint3(0, Define::SCREEN_HEIGHT/3);
-	//Vector2<float> injectionPoint4(Define::SCREEN_WIDTH, Define::SCREEN_HEIGHT/3 - 50);
-	////í·Ç¢Ç∆Ç±ÇÎ
-	//Vector2<float> injectionPoint5(0, Define::SCREEN_HEIGHT - 10);
 
 	//ballÇ™ë“ÇøèÛë‘ÅAPlayerÇÃlifeÇ™0à»â∫ÅAblockÇ™àÍÇ¬Ç‡Ç»Ç¢éûÇÕíeñãÇî≠ê∂Ç≥ÇπÇ»Ç¢
 	if (!_ball->CheckFlag((int)Ball::fBall::_wait) && (_player->Getter_PlayerLife() >0) && (_blockMgr->Getter_LiveNum() >0)) {
@@ -80,11 +76,12 @@ void StageScene1::Update() {
 
 	_gameMgr->Update(*_blockMgr, *_bulletMgr, *_player, *_ball);
 	_colMgr->Update(*_blockMgr, *_bulletMgr, *_player, *_ball);
+	_gui->Update(_player->Getter_Status());
 }
 
 void StageScene1::Draw() const {
 	_gameMgr->Draw(*_blockMgr, *_bulletMgr, *_player, *_ball);
-
+	_gui->Draw();
 }
 
 

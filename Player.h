@@ -1,17 +1,15 @@
 #pragma once
 #include "RectangleObject.h"
+#include "PlayerStatus.h"
 
 class Player :
     public RectangleObject
 {
 private:
 
-    struct Playerstatus {
-        int life = 5;
-        int score = 0;
-        int lastScore = 0;
+    struct PlayerStatus _status;
 
-    } _status;
+    int _lastScore;
 
     static const int speed = 10;
 
@@ -56,18 +54,18 @@ public:
         _rotateL, 
         _onODE, 
     };
+    
+    Vector2<float> GetterPosition() const;
 
+    //Status関係
+    PlayerStatus Getter_Status() const { return _status; };
     //Life関係
     void CallDecLife();
     void CallIncLife();
-    int Getter_PlayerLife() const { return _status.life; };
-
-
-    Vector2<float> GetterPosition() const;
-
+    int Getter_PlayerLife() const { return _status._life; };
     //PlayerのScoreを追加
-    void AddScore(int amount) { _status.score += amount; };
-    int Getter_PlayerScore() const { return _status.score; };
+    void AddScore(int amount) { _status._score += amount; };
+    int Getter_PlayerScore() const { return _status._score; };
 
     //外部呼出し用のflagセット関数
     void SetPlayerFlag_OutVertical(bool value);

@@ -5,6 +5,8 @@ public:
 	const static int SCREEN_WIDTH;		//ウィンドウサイズ横
 	const static int SCREEN_HEIGHT;		//ウィンドウサイズ縦
 
+	const static int DISPLAY_WIDTH;
+
 	const static float PI;		//円周率
 
 	const static int WHITE;
@@ -17,6 +19,7 @@ public:
 
 	//Player関連
 	const static int PLAYER_LIFE;
+	const static int PLAYER_BOMB;
 	const static int PLAYER_WIDTH;
 	const static int PLAYER_HEIGHT;
 	const static int PLAYER_INIX;

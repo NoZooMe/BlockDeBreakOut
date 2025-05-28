@@ -155,3 +155,7 @@ GameMgr‚Ì‹ï‘Ì“I‚È•ª—£‚ÉŠÖ‚µ‚Ä‚ÍA“–‚½‚è”»’è‚ðColMgrAƒQ[ƒ€‚ÌƒŠƒXƒ^[ƒgAƒNƒŠƒA“
 ‚ ‚Æ×‚©‚¢‚Æ‚±‚ë‚Å”wŒi‚Æ‚©l‚¦‚é•K—v‚ª‚ ‚éBŒ©‚½–Ú‚Í‚©‚È‚è‘åŽ–B
 
 ˆê–Êƒ{ƒX‚Í’Êí’e–‹¨•KŽE‹Z(…’†)@‚Ý‚½‚¢‚ÈŠ´‚¶‚©‚ÈB
+
+05/28
+HLSL‚È‚çG‚ê‚é‚ç‚µ‚¢‚¯‚ÇƒVƒF[ƒ_[‚Í¡‰ñ‚ÍŒ©‘—‚è‚Å‚¢‚¢‚©‚Ècc‚Æ‚¢‚¤ˆóÛB‰æ–Ê‘S‘Ì‚Ö‚ÌŒø‰Ê‚Í‚Ü‚½¡“xARust‚ÅŽ©ìƒQ[ƒ€ì‚éŽž‚É‚Å‚à”é–§Šî’n‚ðì‚è‚Ü‚µ‚å‚¤B
+UI‚Í‚Æ‚è‚ ‚¦‚¸“±“üB‰æ‘œ‚Ç‚¤‚·‚é‚©§ì‚µ‚Ä‚¢‚­BŽŸ‚ÍƒAƒCƒeƒ€‚ð’Ç‰Á‚µ‚æ‚¤I

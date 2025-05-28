@@ -23,7 +23,6 @@ public:
     int GetterWidth() const { return width; };
     int GetterHeight() const { return height; };
 
-    //‚±‚êPublic‚Å‚Á‚Ä‚é‚Ì­‚µ•|‚¢
     Segment vertSide1, vertSide2, horiSide1, horiSide2;
 
 };

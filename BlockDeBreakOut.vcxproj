@@ -178,6 +178,7 @@
     <ClCompile Include="GameMgr.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GravityBehavior.cpp" />
+    <ClCompile Include="Gui.cpp" />
     <ClCompile Include="ImageManager.cpp" />
     <ClCompile Include="include\tinyexpr-master\tinyexpr.c" />
     <ClCompile Include="Keyboard.cpp" />
@@ -229,6 +230,7 @@
     <ClInclude Include="GameMgr.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GravityBehavior.h" />
+    <ClInclude Include="Gui.h" />
     <ClInclude Include="IBulletBehavior.h" />
     <ClInclude Include="IGameLifecycleHandler.h" />
     <ClInclude Include="IInstanceDeleteListener.h" />
@@ -242,6 +244,7 @@
     <ClInclude Include="OmniShotCommand.h" />
     <ClInclude Include="Parameter.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerStatus.h" />
     <ClInclude Include="RectangleObject.h" />
     <ClInclude Include="ResourceID.h" />
     <ClInclude Include="ResourceLoader.h" />

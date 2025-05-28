@@ -85,9 +85,4 @@ void GameMgr::Draw(const BlockMgr& blockMgr, const BulletMgr& bulletMgr, const P
 		bulletMgr.Draw();
 	}
 	
-
-	for (int i = 0; i < player.Getter_PlayerLife(); i++) {
-		DrawString(i*15, 10, "œ", Define::WHITE);
-	}
-	DrawFormatString(0, 25, Define::WHITE, "%d", player.Getter_PlayerScore());
 }

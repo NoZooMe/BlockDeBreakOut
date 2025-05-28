@@ -213,6 +213,9 @@
     <ClCompile Include="CalcUtils.cpp">
       <Filter>Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="Gui.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Singleton.h">
@@ -379,6 +382,12 @@
     </ClInclude>
     <ClInclude Include="ConvertUtils.h">
       <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStatus.h">
+      <Filter>ヘッダー ファイル\Struct</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

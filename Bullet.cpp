@@ -43,8 +43,6 @@ void Bullet::Update() {
 	_euclidPosition = _euclidPosition + _velocity;
 	
 
-	//std::complex<float> z_screen(_position.GetterX(), _position.GetterY());
-
 	//中心位置
 	float cx = Define::SCREEN_WIDTH / 2.0f;
 	float cy = Define::SCREEN_HEIGHT / 2.0f;
@@ -76,14 +74,6 @@ void Bullet::Update() {
 	}
 
 	
-
-	//// 複素座標→画面座標に戻す
-	//int transX = (cx + z_trans.real() * scale);
-	//int transY = (cy - z_trans.imag() * scale);	//y軸反転
-
-	/*DrawCircle(transX, transY, _r, GetColor(255, ((static_cast<int>(z_trans.real()) % 255) + 255) % 255, 
-		((static_cast<int>(z_trans.imag()) % 255) + 255) % 255));*/
-
 	//変換後の位置に反映(ShapeObjectの描画・当たり判定用)
 
 	_position.Setter(cx + z_trans.real() * scale, cy - z_trans.imag() * scale);

@@ -6,7 +6,8 @@
 #include "Keyboard.h"
 #include "ComplexTransform.h"
 
-Player::Player(float iniX, float iniY) : RectangleObject(iniX, iniY, Define::PLAYER_WIDTH, Define::PLAYER_HEIGHT), dirH(0), dirV(0),  _mutekiCnt(0) ,_t(0.0f), _dt(1.0f/60.0f){
+Player::Player(float iniX, float iniY) : RectangleObject(iniX, iniY, Define::PLAYER_WIDTH, Define::PLAYER_HEIGHT), dirH(0), dirV(0),  _mutekiCnt(0) ,_t(0.0f), _dt(1.0f/60.0f), 
+	_lastScore(0){
 }
 
 void Player::Initialize() {
@@ -25,6 +26,7 @@ void Player::Update() {
 			Set_VelocityODE(_t, _dt);
 		//	Set_VelocityLorenzA(_t, _dt);
 		}
+		
 		RectangleObject::Update();
 		//画面外処理。もしも外に出ていたら強制的に戻す
 		Check_Out();
@@ -86,10 +88,11 @@ void Player::Update() {
 		ComplexTransform::mode = SpaceTransformMode::Zeta;
 	}
 
-	if (_status.lastScore < 100 && _status.score >= 100) {
-		_status.life++;
+	//Scoreが100を上回ったらライフ加算
+	if (_lastScore < 100 && _status._score >= 100) {
+		_status._life++;
 	}
-	_status.lastScore = _status.score;
+	_lastScore = _status._score;
 	_t++;
 }
 
@@ -233,14 +236,35 @@ void Player::Check_Out() {
 	else if (_position.GetterY() + GetterHeight()/2 > Define::SCREEN_HEIGHT) {
 		_position.Setter(_position.GetterX(), Define::SCREEN_HEIGHT - GetterHeight()/2.0f);
 	}
+
+
+	//当たり判定は頂点で管理してるのでここを忘れると頂点の更新が遅れて当たり判定が少し飛び出す。
+	float halfwidth = width / 2.0f;
+	float halfheight = height / 2.0f;
+
+	//左上、右上、右下、左下(時計回り)
+	vertex[0] = Vector2<float>(_position.GetterX() - halfwidth, _position.GetterY() - halfheight);
+	vertex[1] = Vector2<float>(_position.GetterX() + halfwidth, _position.GetterY() - halfheight);
+	vertex[2] = Vector2<float>(_position.GetterX() + halfwidth, _position.GetterY() + halfheight);
+	vertex[3] = Vector2<float>(_position.GetterX() - halfwidth, _position.GetterY() + halfheight);
+
+	//右辺
+	vertSide1.UpdateSegment(vertex[0], vertex[3]);
+	//左辺
+	vertSide2.UpdateSegment(vertex[1], vertex[2]);
+	//上辺
+	horiSide1.UpdateSegment(vertex[0], vertex[1]);
+	//下辺
+	horiSide2.UpdateSegment(vertex[3], vertex[2]);
+
 }
 
 void Player::CallDecLife() {
-	_status.life--;
+	_status._life--;
 }
 
 void Player::CallIncLife() {
-	_status.life++;
+	_status._life++;
 }
 
 Vector2<float> Player::GetterPosition() const {

@@ -1,8 +1,10 @@
 #include "Define.h"
 #include <DxLib.h>
 
-const int Define::SCREEN_WIDTH = 1280;		//ウィンドウサイズ横
+const int Define::SCREEN_WIDTH = 1000;		//ウィンドウサイズ横
 const int Define::SCREEN_HEIGHT = 960;		//ウィンドウサイズ縦
+
+const int Define::DISPLAY_WIDTH = 1280;
 
 const float Define::PI = 3.141592654f;		//円周率
 
@@ -16,6 +18,7 @@ const int Define::HARD = 2;
 
 //Player関連
 const int Define::PLAYER_LIFE = 5;
+const int Define::PLAYER_BOMB = 5;
 const int Define::PLAYER_WIDTH = 160;
 const int Define::PLAYER_HEIGHT = 16;
 const int Define::PLAYER_INIX = SCREEN_WIDTH / 2;
@@ -28,7 +31,7 @@ const int Define::BALL_INIX = SCREEN_WIDTH/2;
 const int Define::BALL_INIY = PLAYER_INIY - (BALL_RADIUS+PLAYER_HEIGHT/2);
 
 //block関連
-const int Define::BLOCK_WIDTH = 128;
+const int Define::BLOCK_WIDTH = SCREEN_WIDTH/10;
 const int Define::BLOCK_HEIGHT = 60;
 const int Define::BLOCK_ROW = 10;
 const int Define::BLOCK_GAPX = 0;

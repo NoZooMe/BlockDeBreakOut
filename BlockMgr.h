@@ -22,7 +22,7 @@ public:
 
     int Getter_BlockNUM() const { return NUM; };
 
-    //生きているブロックへのポインタを返す
+    //生きているブロックへのポインタを返す。ここ、生ポインタでいい気がする。
     std::shared_ptr<RectangleObject> Getter_LiveBlock(int num) const;
 
     //i番目のブロックの_liveフラグをvalueの値に

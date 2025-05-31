@@ -6,9 +6,11 @@
 #include <cmath>
 
 Bullet::Bullet(const Vector2<float>& position, float angle, int speed, std::shared_ptr<IBulletBehavior> b, int color, eBulletSize size)
-	: CircleObject(position.GetterX(), position.GetterY(), 0), _speed(speed), _color(color),  _cnt(0), _behavior(b), _euclidPosition(_position){
+	: CircleObject(position.GetterX(), position.GetterY(), 0), _speed(speed),  _cnt(0), _behavior(b), _euclidPosition(_position){
 	//全てのshapeObjectの角度はインスタンスで初期化されるべき。
 	_angle = angle;
+
+	_color = color;
 
 	//まずコンストラクタ使ってrを初期化してから代入し直すってものなんか変な気がするけど……。
 	switch (size) {

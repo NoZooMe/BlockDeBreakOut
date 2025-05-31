@@ -2,13 +2,18 @@
 #include "Define.h"
 #include "Keyboard.h"
 #include "Macro.h"
+#include "SoundManager.h"
+#include "ResourceID.h"
 #include <DxLib.h>
 #include <optional>
+#include <random>
 
 using namespace std;
 
 GameMgr::GameMgr(IGameLifeCycleHandler* impl){
 	_implLifeCycle = impl;
+	_itemCnt = 0;
+	_itemCntMax = 0;
 }
 
 void GameMgr::Initialize() {
@@ -17,18 +22,21 @@ void GameMgr::Initialize() {
 void GameMgr::Finalize() {
 }
 
-void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, Player& player, Ball& ball) {
+void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr, Player& player, Ball& ball, const std::vector<CollisionEvent>& evCol) {
 
 	//残機があるときとないときで分岐
 	if (player.Getter_PlayerLife() > 0 && blockMgr.Getter_LiveNum() != 0) {//残機があるかつクリアしてないとき
 		//画面外処理は各インスタンスに任せる.
 		
+		//衝突処理
+		CollisionProcess(blockMgr, bulletMgr, itemMgr, player, ball, evCol);
 		//Playerにも待ち状態を作ってこちらがやるのはflagのONのみにする。
 		//ballが待ち状態なら動けない。弾幕、ブロックも同様。
 		if (!ball.CheckFlag((int)Ball::fBall::_wait)) {
 			player.Update();
 			bulletMgr.Update();
 			blockMgr.Update();
+			itemMgr.Update();
 		}
 
 		if (ball.CheckFlag((int)Ball::fBall::_move)) {
@@ -67,22 +75,102 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, Player& player, B
 		_implLifeCycle->RequestClear();
 
 		//スペースが押されたらリスタート
-		 //ここはStageSceneでやる
 		if (Keyboard::getIns()->getPressingCount(KEY_INPUT_SPACE) == 1) {
 			//playerの終了と初期化処理
 			_implLifeCycle->RequestRestart();
 		}
 	}
 
-	
+
 }
 
-void GameMgr::Draw(const BlockMgr& blockMgr, const BulletMgr& bulletMgr, const Player& player, const Ball& ball) const {
+void GameMgr::Draw(const BlockMgr& blockMgr, const BulletMgr& bulletMgr, const ItemMgr& itemMgr, const Player& player, const Ball& ball) const {
 	if (!player.CheckFlag((int)Player::fPlayer::_death)) {
 		player.Draw();
 		ball.Draw();
 		blockMgr.Draw();
 		bulletMgr.Draw();
+		itemMgr.Draw();
 	}
 	
+}
+
+void GameMgr::CollisionProcess(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr, Player& player, Ball& ball, const std::vector<CollisionEvent>& evCol) {
+	for (const auto& ev : evCol) {
+		switch (ev._type) {
+		case eCollisionEvent::BallToPlayer:
+			ball.ReflectFromSurface(*ev._surface, *ev._vector);
+			break;
+		case eCollisionEvent::BallToBlock:
+			//PowerItem効果中は反射しない
+			if (!ball.CheckFlag(static_cast<int>(Ball::fBall::_power))) {
+				ball.ReflectFromSurface(*ev._surface, blockMgr.Getter_LiveBlock(ev._index)->GetterVelocity());
+			}
+			else {
+				_itemCnt++;
+				if (_itemCnt >= _itemCntMax) {
+					ball.WaveFlag(static_cast<int>(Ball::fBall::_power), false);
+					_itemCnt = 0;
+					_itemCntMax = 0;
+				}
+			}
+			SoundManager::getIns()->play(toString(ResourceID::BreakBlockSE));
+			player.AddScore(10);
+			if (ItemGenerate(itemMgr, blockMgr, ev._index)) {
+				//ここアイテム生成の効果音等
+			}
+			blockMgr.SetBlockFlag_Live(ev._index, false);
+			break;
+		case eCollisionEvent::BulletToPlayer:
+			//無敵でないなら無敵フラグをオン
+			if (!player.isDamaged()) {
+				player.CallDecLife();
+				SoundManager::getIns()->play(toString(ResourceID::DamageSE));
+				player.DamagePlayer();
+			}
+			bulletMgr.DeleteBullet(ev._index);
+			break;
+		case eCollisionEvent::ItemToPlayer: {	//一時変数を使うのでスコープを明示指定
+			ItemContext temp = { player, ball };
+			//もしImmidiateItemならCntに値を入れる
+			if (std::holds_alternative<ImmidiateItem>(itemMgr.GetterItem(ev._index)->GetterVariant())) {
+				_itemCntMax = std::get<ImmidiateItem>(itemMgr.GetterItem(ev._index)->GetterVariant())._time;
+			}
+			itemMgr.CallEffect(ev._index, temp);
+			
+			break;
+		}
+		default:
+			ERR("存在しない当たり判定イベントです");
+			break;
+		}
+	}
+}
+
+bool GameMgr::ItemGenerate(ItemMgr& itemMgr, BlockMgr& blockMgr, int blockIndex) {
+	std::random_device rd;		//非決定的な初期化
+	std::mt19937 gen(rd());		//メルセンヌ・ツイタスタで生成器を初期化
+
+	std::uniform_int_distribution<> dist(0, 100);
+
+	int result = dist(gen);
+
+	//Blockの位置を取得
+	float x = blockMgr.Getter_LiveBlock(blockIndex)->GetterPosX();
+	float y = blockMgr.Getter_LiveBlock(blockIndex)->GetterPosY();
+
+	if (result < 30) {
+		itemMgr.Generate(eItemName::Score, x, y);
+		return true;
+	}
+	else if (result >= 35 && result < 45) {
+		itemMgr.Generate(eItemName::PowerUp, x, y);
+		return true;
+	}
+	else if (result >= 45 && result < 50) {
+		itemMgr.Generate(eItemName::Bomb, x, y);
+		return true;
+	}
+	return false;
+
 }

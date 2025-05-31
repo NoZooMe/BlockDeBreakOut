@@ -19,6 +19,11 @@ void Gui::Draw() const {
 	for (int i = 0; i < _drawnStatus._life; ++i) {
 		DrawString(Define::SCREEN_WIDTH + (100) + i * 15, Define::SCREEN_HEIGHT/2 + 20, "œ", Define::WHITE);
 	}
-	DrawString(Define::SCREEN_WIDTH + (100), Define::SCREEN_HEIGHT / 2 + 45, "Score", Define::WHITE);
-	DrawFormatString(Define::SCREEN_WIDTH + (100), Define::SCREEN_HEIGHT / 2 + 70, Define::WHITE, "%d", _drawnStatus);
+	DrawString(Define::SCREEN_WIDTH + (100), Define::SCREEN_HEIGHT/2 + 45, "Bomb", Define::WHITE);
+	for (int i = 0; i < _drawnStatus._bomb; ++i) {
+		DrawString(Define::SCREEN_WIDTH + (100) + i * 15, Define::SCREEN_HEIGHT/2 + 70, "š", Define::WHITE);
+	}
+
+	DrawString(Define::SCREEN_WIDTH + (100), Define::SCREEN_HEIGHT / 2 + 90, "Score", Define::WHITE);
+	DrawFormatString(Define::SCREEN_WIDTH + (100), Define::SCREEN_HEIGHT / 2 + 110, Define::WHITE, "%d", _drawnStatus);
 }

@@ -26,7 +26,6 @@ public:
     //BehaviorƒZƒbƒgŠÖ”
     void SetBehavior(std::shared_ptr<IBulletBehavior> b) { _behavior = b; };
 private:
-    int _color;
     int _speed;
     float _cnt;
 

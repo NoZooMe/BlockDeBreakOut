@@ -1,11 +1,11 @@
 #include "StageScene1.h"
 #include "Macro.h"
 #include "Define.h"
-#include "eBulletSize.h"
 #include "SoundManager.h"
 #include "ResourceLoader.h"
 #include "ResourceID.h"
 #include "Stage1Script.h"
+#include "Keyboard.h"
 
 using namespace std;
 
@@ -14,9 +14,11 @@ StageScene1::StageScene1(ISceneChangedListener* impl, const Parameter& param) : 
 	_bulletMgr = make_shared<BulletMgr>();
 	_gameMgr = make_shared<GameMgr>(dynamic_cast<IGameLifeCycleHandler*>(this));
 	_colMgr = make_shared<ColMgr>();
+	_itemMgr = make_shared<ItemMgr>();
 
 	_player = make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY);
 	_ball = make_shared<Ball>(Define::BALL_INIX, Define::BALL_INIY);
+
 
 	_gui = make_shared<Gui>();
 	
@@ -29,6 +31,7 @@ void StageScene1::Initialize() {
 	_bulletMgr->Initialize();
 	_blockMgr->Initialize();
 	_colMgr->Initialize();
+	_itemMgr->Initialize();
 	
 	_player->Initialize();
 	_ball->Initialize();
@@ -45,6 +48,7 @@ void StageScene1::Finalize() {
 	_blockMgr->Finalize();
 	_bulletMgr->Finalize();
 	_colMgr->Finalize();
+	_itemMgr->Finalize();
 
 	_player->Finalize();
 	_ball->Finalize();
@@ -72,16 +76,22 @@ void StageScene1::Update() {
 	if (_player->Getter_PlayerLife() <= 0) {
 		SoundManager::getIns()->stop(toString(ResourceID::Stage1));
 	}
-	
 
-	_gameMgr->Update(*_blockMgr, *_bulletMgr, *_player, *_ball);
-	_colMgr->Update(*_blockMgr, *_bulletMgr, *_player, *_ball);
+	if(Keyboard::getIns()->getPressingCount(KEY_INPUT_S) == 1) {
+		_itemMgr->Generate(eItemName::Score, 200, 200);
+	}
+
+	_colMgr->Update(*_blockMgr, *_bulletMgr, *_itemMgr, *_player, *_ball, _colEvArray);
+	_gameMgr->Update(*_blockMgr, *_bulletMgr, *_itemMgr, *_player, *_ball, _colEvArray);
 	_gui->Update(_player->Getter_Status());
+
+	_colEvArray.clear();
 }
 
 void StageScene1::Draw() const {
-	_gameMgr->Draw(*_blockMgr, *_bulletMgr, *_player, *_ball);
+	_gameMgr->Draw(*_blockMgr, *_bulletMgr, *_itemMgr, *_player, *_ball);
 	_gui->Draw();
+	_itemMgr->Draw();
 }
 
 

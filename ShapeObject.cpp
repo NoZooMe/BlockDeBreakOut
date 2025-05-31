@@ -1,7 +1,8 @@
 #include "ShapeObject.h"
+#include "Define.h"
 #include <DxLib.h>
 
-ShapeObject::ShapeObject(float posX, float posY) : _position(posX, posY), _velocity(0, 0), _flag(0), _acceleration(0, 0){
+ShapeObject::ShapeObject(float posX, float posY) : _position(posX, posY), _velocity(0, 0), _flag(0), _acceleration(0, 0), _color(Define::WHITE){
 }
 
 void ShapeObject::Move() {

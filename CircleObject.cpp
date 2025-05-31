@@ -7,5 +7,5 @@ CircleObject::CircleObject(float x, float y, int r) :ShapeObject::ShapeObject(x,
 }
 
 void CircleObject::Draw() const {
-	DrawCircle(_position.GetterX(), _position.GetterY(), _r, Define::WHITE);
+	DrawCircle(_position.GetterX(), _position.GetterY(), _r, _color);
 }

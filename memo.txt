@@ -159,3 +159,9 @@ GameMgr‚Ì‹ï‘Ì“I‚È•ª—£‚ÉŠÖ‚µ‚Ä‚ÍA“–‚½‚è”»’è‚ðColMgrAƒQ[ƒ€‚ÌƒŠƒXƒ^[ƒgAƒNƒŠƒA“
 05/28
 HLSL‚È‚çG‚ê‚é‚ç‚µ‚¢‚¯‚ÇƒVƒF[ƒ_[‚Í¡‰ñ‚ÍŒ©‘—‚è‚Å‚¢‚¢‚©‚Ècc‚Æ‚¢‚¤ˆóÛB‰æ–Ê‘S‘Ì‚Ö‚ÌŒø‰Ê‚Í‚Ü‚½¡“xARust‚ÅŽ©ìƒQ[ƒ€ì‚éŽž‚É‚Å‚à”é–§Šî’n‚ðì‚è‚Ü‚µ‚å‚¤B
 UI‚Í‚Æ‚è‚ ‚¦‚¸“±“üB‰æ‘œ‚Ç‚¤‚·‚é‚©§ì‚µ‚Ä‚¢‚­BŽŸ‚ÍƒAƒCƒeƒ€‚ð’Ç‰Á‚µ‚æ‚¤I
+ƒAƒCƒeƒ€‚Ímap<enum, struct>‚Ý‚½‚¢‚ÈŠ´‚¶‚ÅŠÇ—‚µ‚æ‚¤‚©‚ÈB
+
+05/30
+ƒAƒCƒeƒ€‚ð“±“ü’†BAbstractItem.effect‚Å‘½‘Š«‚ð’è‹`‚µ‚½‚Ì‚ÅAŒÄ‚Ño‚·‚Æ‚«‚É‚»‚ê‚¾‚¯ŒÄ‚Ño‚¹‚Î‚æ‚­‚È‚Á‚½BŒ‹‰ÊAeItemName‚ª‚¢‚ç‚È‚­‚È‚Á‚½‹C‚ª‚·‚éB©‚»‚ñ‚È‚±‚Æ‚È‚¢‚Å‚·B
+“–‚½‚è”»’è‚ðColMgr‚ÉAÕ“Ë‚µ‚½Œã‚Ì“®ì‚ðGameMgr‚ÉˆÚ“®’†B‚È‚ñ‚©Õ“Ë‚ªƒJƒNƒJƒN‚·‚é‚æ‚¤‚É‚È‚Á‚½‚©‚à‚µ‚ê‚È‚¢B
+Item“±“ü‚Å‚«‚½‚Ì‚ÅAŽŸ‚Íƒ{ƒ€‚ÌŽÀ‘•I ‚±‚êAGameMgr‚ÉÕ“Ëˆ—‚ðˆÚ‚µ‚½‚¨‰A‚Å’µ‚Ë•Ô‚ç‚È‚¢ƒ{[ƒ‹‚Æ‚©ì‚è‚â‚·‚¢‚Ì¦‚¢‚ÈB

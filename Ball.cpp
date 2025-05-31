@@ -8,7 +8,7 @@
 #include <DxLib.h>
 
 
-Ball::Ball(int x, int y) : CircleObject(x, y, Define::BALL_RADIUS), rand(0){
+Ball::Ball(float x, float y) : CircleObject(x, y, Define::BALL_RADIUS), rand(0){
 
 }
 
@@ -22,23 +22,11 @@ void Ball::Finalize() {
 }
 
 void Ball::Update() {
-	//加速度は入力に応じて(-5, 5)の範囲を上下する
-	/*if (Keyboard::getIns()->getPressingCount(KEY_INPUT_A) != 0) {
-		if (_acceleration >= -1.1) {
-			_acceleration -= 0.001;
-		}
-	}
-	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_D) != 0) {
-		if (_acceleration <= 1.1) {
-			_acceleration += 0.001;
-		}
-	}*/
-
 	if (rand < 0.5) {
-		rand += 0.01;
+		rand += 0.01f;
 	}
 	else {
-		rand = -0.5;
+		rand = -0.5f;
 	}
 
 	ShapeObject::Update();
@@ -58,7 +46,7 @@ void Ball::Update(float playerX, float playerY) {
 		//急ごしらえradianと直線
 		float radian = ((float)(static_cast<int>(_angle) % 360) / 180 * Define::PI) * 2 ;
 		DrawLine(_position.GetterX(), _position.GetterY(), _position.GetterX() + 100*cosf(radian), _position.GetterY() - fabsf(100*sinf(radian)), Define::GREEN, 0);
-		if (Keyboard::getIns()->getReleasingCount(KEY_INPUT_SPACE) == 1) {			
+		if (Keyboard::getIns()->getReleasingCount(KEY_INPUT_SPACE) == 1) {	
 			_velocity.Setter(SPEED*cosf(radian), -fabsf(SPEED*sinf(radian)));
 			WaveFlag((int)fBall::_move, true);
 			WaveFlag((int)fBall::_wait, false);
@@ -106,7 +94,6 @@ void Ball::ReflectBlock_Vertical(std::shared_ptr<RectangleObject> obj) {
 	}
 }
 
-//別に今のままでもいいけど、角に当たった時の判定を別に用意するとか、反射にランダム性を持たせるとかも面白そう。
 void Ball::ReflectBlock_Horizontal(std::shared_ptr<RectangleObject> obj) {
 	//Blockの中心が自分より右かどうか
 	bool conditionA = (obj->GetterPosX() + obj->GetterWidth() / 2 > _position.GetterX());
@@ -118,8 +105,6 @@ void Ball::ReflectBlock_Horizontal(std::shared_ptr<RectangleObject> obj) {
 	else {//速度を足す場合
 		_velocity.SetterX(_velocity.GetterX() + obj->GetterVelX() / 5);
 	}
-	
-
 
 	//すり抜け防止
 	if (conditionA) {//左から衝突

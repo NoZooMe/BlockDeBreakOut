@@ -55,8 +55,8 @@ void RectangleObject::Update(){
 }
 
 void RectangleObject::Draw() const {
-	DrawLine(vertex[0].GetterX(), vertex[0].GetterY(), vertex[1].GetterX(), vertex[1].GetterY(), Define::WHITE);
-	DrawLine(vertex[1].GetterX(), vertex[1].GetterY(), vertex[2].GetterX(), vertex[2].GetterY(), Define::WHITE);
-	DrawLine(vertex[2].GetterX(), vertex[2].GetterY(), vertex[3].GetterX(), vertex[3].GetterY(), Define::WHITE);
-	DrawLine(vertex[3].GetterX(), vertex[3].GetterY(), vertex[0].GetterX(), vertex[0].GetterY(), Define::WHITE);
+	DrawLine(vertex[0].GetterX(), vertex[0].GetterY(), vertex[1].GetterX(), vertex[1].GetterY(), _color);
+	DrawLine(vertex[1].GetterX(), vertex[1].GetterY(), vertex[2].GetterX(), vertex[2].GetterY(), _color);
+	DrawLine(vertex[2].GetterX(), vertex[2].GetterY(), vertex[3].GetterX(), vertex[3].GetterY(), _color);
+	DrawLine(vertex[3].GetterX(), vertex[3].GetterY(), vertex[0].GetterX(), vertex[0].GetterY(), _color);
 }

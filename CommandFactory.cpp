@@ -19,7 +19,7 @@ std::shared_ptr<BulletCommand> CommandFactory::CreateFromJSON(const nlohmann::js
 
         float speed = j.value("speed", 5.0f);
         int numBullets = j.value("numBullets", 8);
-        int color = j.value("color", 0);
+        int color = j.value("color", Define::WHITE);
 
         std::string sizeStr = j.value("size", "Small");
         eBulletSize size = ConvertUtils::StringToSize(sizeStr);
@@ -35,7 +35,7 @@ std::shared_ptr<BulletCommand> CommandFactory::CreateFromJSON(const nlohmann::js
 
         int numBullets = j.value("numBullets", 5);
         float speed = j.value("speed", 5.0f);
-        int color = j.value("color", 0);
+        int color = j.value("color", Define::WHITE);
 
         std::string sizeStr = j.value("size", "Small");
         eBulletSize size = ConvertUtils::StringToSize(sizeStr);

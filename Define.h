@@ -1,11 +1,13 @@
 #pragma once
+#include "Vector2.h"
+
 class Define final
 {
 public:
-	const static int SCREEN_WIDTH;		//ウィンドウサイズ横
-	const static int SCREEN_HEIGHT;		//ウィンドウサイズ縦
+	const static float SCREEN_WIDTH;		//ウィンドウサイズ横
+	const static float SCREEN_HEIGHT;		//ウィンドウサイズ縦
 
-	const static int DISPLAY_WIDTH;
+	const static float DISPLAY_WIDTH;
 
 	const static float PI;		//円周率
 
@@ -20,13 +22,13 @@ public:
 	//Player関連
 	const static int PLAYER_LIFE;
 	const static int PLAYER_BOMB;
-	const static int PLAYER_WIDTH;
-	const static int PLAYER_HEIGHT;
-	const static int PLAYER_INIX;
-	const static int PLAYER_INIY;
-	const static int PLAYER_SCREEN_HEIGHT;
-	const static int PLAYER_IMAGESIZEX;
-	const static int PLAYER_IMAGESIZEY;
+	const static float PLAYER_WIDTH;
+	const static float PLAYER_HEIGHT;
+	const static float PLAYER_INIX;
+	const static float PLAYER_INIY;
+	const static float PLAYER_SCREEN_HEIGHT;
+	const static float PLAYER_IMAGESIZEX;
+	const static float PLAYER_IMAGESIZEY;
 
 	//ball関連
 	const static int BALL_RADIUS;
@@ -46,5 +48,11 @@ public:
 	const static int BULLET_SIZE_SMALL;
 	const static int BULLET_SIZE_MIDIUM;
 	const static int BULLET_SIZE_BIG;
+
+	//item関連
+	const static Vector2<float> ITEM_SPEED;
+	const static int ITEM_WIDTH;
+	const static int ITEM_HEIGHT;
+	const static int ITEM_POWER_TIME;
 };
 

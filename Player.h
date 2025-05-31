@@ -5,9 +5,54 @@
 class Player :
     public RectangleObject
 {
+public:
+    Player(float iniX, float iniY);
+    void Initialize() override ;
+    void Finalize() override {};
+    void Update() override;
+    void Draw() const override;
+
+    //具体的なフラグの構造体
+    enum fPlayer {
+        _outVertical,
+        _outHorizontal,
+        _move,
+        _death,
+        _muteki, 
+        _rotateR,
+        _rotateL, 
+        _onODE, 
+    };
+    
+    //アクセサ
+    Vector2<float> GetterPosition() const;
+
+    //Status関係
+    PlayerStatus Getter_Status() const { return _status; };
+    //Life
+    void CallDecLife();
+    void CallIncLife();
+    int Getter_PlayerLife() const { return _status._life; };
+    //Bomb
+    void CallDecBomb();
+    void CallIncBomb();
+    //Score
+    void AddScore(int amount) { _status._score += amount; };
+    int Getter_PlayerScore() const { return _status._score; };
+
+    //外部呼出し用のflagセット関数
+    void SetPlayerFlag_OutVertical(bool value);
+    void SetPlayerFlag_OutHorizontal(bool value);
+    void SetPlayerFlag_Move(bool value);
+    void SetPlayerFlag_Death(bool value);
+
+    //ダメージを受けた時に呼び出される関数
+    void DamagePlayer();
+    bool isDamaged() const;
+
 private:
 
-    struct PlayerStatus _status;
+    PlayerStatus _status;
 
     int _lastScore;
 
@@ -36,46 +81,8 @@ private:
     // dy/dt = x(ρ - x) - y
     void Set_VelocityLorenzA(float t, float dt);
 
-public:
-    Player(float iniX, float iniY);
-    void Initialize() override ;
-    void Finalize() override {};
-    void Update() override;
-    void Draw() const override;
-
-    //具体的なフラグの構造体
-    enum fPlayer {
-        _outVertical,
-        _outHorizontal,
-        _move,
-        _death,
-        _muteki, 
-        _rotateR,
-        _rotateL, 
-        _onODE, 
-    };
     
-    Vector2<float> GetterPosition() const;
-
-    //Status関係
-    PlayerStatus Getter_Status() const { return _status; };
-    //Life関係
-    void CallDecLife();
-    void CallIncLife();
-    int Getter_PlayerLife() const { return _status._life; };
-    //PlayerのScoreを追加
-    void AddScore(int amount) { _status._score += amount; };
-    int Getter_PlayerScore() const { return _status._score; };
-
-    //外部呼出し用のflagセット関数
-    void SetPlayerFlag_OutVertical(bool value);
-    void SetPlayerFlag_OutHorizontal(bool value);
-    void SetPlayerFlag_Move(bool value);
-    void SetPlayerFlag_Death(bool value);
-
-    //ダメージを受けた時に呼び出される関数
-    void DamagePlayer();
-    bool isDamaged() const;
+    void AdjustPosition();
 
 };
 

@@ -73,6 +73,9 @@
     <Filter Include="Utilities">
       <UniqueIdentifier>{d7b32b20-8edf-4be3-847e-f35fbc09ea63}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Data">
+      <UniqueIdentifier>{1bb455e4-2cff-4baf-b39b-0a04aa661683}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -215,6 +218,21 @@
     </ClCompile>
     <ClCompile Include="Gui.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractItem.cpp">
+      <Filter>ソース ファイル\GameObject\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="BombItem.cpp">
+      <Filter>ソース ファイル\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemMgr.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerItem.cpp">
+      <Filter>ソース ファイル\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreItem.cpp">
+      <Filter>ソース ファイル\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -388,6 +406,39 @@
     </ClInclude>
     <ClInclude Include="PlayerStatus.h">
       <Filter>ヘッダー ファイル\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="eItemName.h">
+      <Filter>ヘッダー ファイル\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemPattern.h">
+      <Filter>ヘッダー ファイル\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemVariant.h">
+      <Filter>ヘッダー ファイル\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractItem.h">
+      <Filter>ヘッダー ファイル\GameObject\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemContext.h">
+      <Filter>ヘッダー ファイル\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemMgr.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="eCollisionEvent.h">
+      <Filter>ヘッダー ファイル\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisitonEvent.h">
+      <Filter>ヘッダー ファイル\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="BombItem.h">
+      <Filter>ヘッダー ファイル\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerItem.h">
+      <Filter>ヘッダー ファイル\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreItem.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

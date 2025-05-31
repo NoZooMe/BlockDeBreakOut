@@ -7,8 +7,7 @@
     "interval": 800,
     "position": [ 0, "PLAYER_INIY" ],
     "angle": "-PI * 1 / 12",
-    "speed": 10,
-    "layer": 1
+    "speed": 10
   },
   {
     "type": "StraightBullet",
@@ -18,8 +17,7 @@
     "interval": 800,
     "position": [ "SCREEN_WIDTH", "PLAYER_INIY" ],
     "angle": "-PI * 13 / 12",
-    "speed": 10,
-    "layer": 1
+    "speed": 10
   },
   {
     "type": "StraightBullet",
@@ -30,7 +28,6 @@
     "position": [ "SCREEN_WIDTH/2", "PLAYER_INIY/2" ],
     "angle": "-PI * 13 / 12",
     "speed": 10,
-    "layer": 1,
     "targetPlayer": true
   },
   {
@@ -41,8 +38,7 @@
     "interval": 800,
     "position": [ 0, "PLAYER_INIY" ],
     "angle": "-PI * 1 / 12",
-    "speed": 10,
-    "layer": 1
+    "speed": 10
   },
   {
     "type": "StraightBullet",
@@ -52,8 +48,7 @@
     "interval": 800,
     "position": [ 0, "PLAYER_INIY" ],
     "angle": "-PI * 1 / 12",
-    "speed": 10,
-    "layer": 1
+    "speed": 10
   },
   {
     "type": "SinBullet",
@@ -63,8 +58,7 @@
     "interval": 800,
     "position": [ "SCREEN_WIDTH", "PLAYER_INIY" ],
     "angle": "-PI * 13 / 12",
-    "speed": 10,
-    "layer": 1
+    "speed": 10
   },
   {
     "type": "StraightBullet",
@@ -74,8 +68,7 @@
     "interval": 800,
     "position": [ "SCREEN_WIDTH", "PLAYER_INIY" ],
     "angle": "-PI * 13 / 12",
-    "speed": 10,
-    "layer": 1
+    "speed": 10
   },
   {
     "type": "StraightBullet",
@@ -86,7 +79,6 @@
     "position": [ "SCREEN_WIDTH/2", 0 ],
     "angle": "-PI * 13 / 12",
     "speed": 15,
-    "layer": 1,
     "targetPlayer": true
   },
   {
@@ -98,7 +90,6 @@
     "position": [ "SCREEN_WIDTH/2", 0 ],
     "angle": "-PI * 13 / 12",
     "speed": 15,
-    "layer": 1,
     "targetPlayer": true
   },
   {
@@ -110,7 +101,6 @@
     "position": [ "SCREEN_WIDTH/2", 0 ],
     "angle": "-PI * 13 / 12",
     "speed": 15,
-    "layer": 1,
     "targetPlayer": true
   },
   {
@@ -122,7 +112,6 @@
     "position": [ "SCREEN_WIDTH/2", 0 ],
     "angle": "-PI * 13 / 12",
     "speed": 15,
-    "layer": 1,
     "targetPlayer": true
   },
   {
@@ -134,7 +123,6 @@
     "position": [ "SCREEN_WIDTH/2", 0 ],
     "angle": "-PI * 13 / 12",
     "speed": 15,
-    "layer": 1,
     "targetPlayer": true
   }
 ]

@@ -159,6 +159,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractItem.cpp" />
+    <ClCompile Include="BombItem.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="AbstractScene.cpp" />
     <ClCompile Include="Ball.cpp" />
@@ -181,15 +183,18 @@
     <ClCompile Include="Gui.cpp" />
     <ClCompile Include="ImageManager.cpp" />
     <ClCompile Include="include\tinyexpr-master\tinyexpr.c" />
+    <ClCompile Include="ItemMgr.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="Looper.cpp" />
     <ClCompile Include="Choices.cpp" />
     <ClCompile Include="OmniShotCommand.cpp" />
     <ClCompile Include="Parameter.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PowerItem.cpp" />
     <ClCompile Include="RectangleObject.cpp" />
     <ClCompile Include="ResourceID.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
+    <ClCompile Include="ScoreItem.cpp" />
     <ClCompile Include="SinBehavior.cpp" />
     <ClCompile Include="SpiralBehavior.cpp" />
     <ClCompile Include="OmniSpiralCommand.cpp" />
@@ -208,6 +213,8 @@
     <ClCompile Include="WeierstrassBehavior.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractItem.h" />
+    <ClInclude Include="BombItem.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="AbstractScene.h" />
     <ClInclude Include="Ball.h" />
@@ -217,16 +224,19 @@
     <ClInclude Include="BulletMgr.h" />
     <ClInclude Include="CalcUtils.h" />
     <ClInclude Include="CircleObject.h" />
+    <ClInclude Include="CollisitonEvent.h" />
     <ClInclude Include="ColMgr.h" />
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="ComplexTransform.h" />
     <ClInclude Include="ConvertUtils.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="eBulletSize.h" />
+    <ClInclude Include="eCollisionEvent.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="eScene.h" />
     <ClInclude Include="ExprEval.h" />
     <ClInclude Include="Fps.h" />
+    <ClInclude Include="ItemContext.h" />
     <ClInclude Include="GameMgr.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GravityBehavior.h" />
@@ -237,6 +247,10 @@
     <ClInclude Include="ImageManager.h" />
     <ClInclude Include="IResourceManager.h" />
     <ClInclude Include="ISceneChangedListener.h" />
+    <ClInclude Include="eItemName.h" />
+    <ClInclude Include="ItemMgr.h" />
+    <ClInclude Include="ItemPattern.h" />
+    <ClInclude Include="ItemVariant.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Looper.h" />
     <ClInclude Include="Macro.h" />
@@ -245,9 +259,11 @@
     <ClInclude Include="Parameter.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStatus.h" />
+    <ClInclude Include="PowerItem.h" />
     <ClInclude Include="RectangleObject.h" />
     <ClInclude Include="ResourceID.h" />
     <ClInclude Include="ResourceLoader.h" />
+    <ClInclude Include="ScoreItem.h" />
     <ClInclude Include="SinBehavior.h" />
     <ClInclude Include="SpiralBehavior.h" />
     <ClInclude Include="OmniSpiralCommand.h" />

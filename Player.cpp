@@ -28,9 +28,9 @@ void Player::Update() {
 		}
 		
 		RectangleObject::Update();
+
 		//画面外処理。もしも外に出ていたら強制的に戻す
 		Check_Out();
-
 		//無敵フラグがオンならcntを増やす
 		if (CheckFlag(fPlayer::_muteki)) {
 			_mutekiCnt++;
@@ -224,20 +224,51 @@ void Player::Check_Out() {
 	//x座標について
 	if (_position.GetterX() - Define::PLAYER_WIDTH/2 < 0) {
 		_position.Setter(GetterWidth() / 2.0f, _position.GetterY());
+		AdjustPosition();
 	}
 	else if (_position.GetterX() + GetterWidth()/2 > Define::SCREEN_WIDTH) {
 		_position.Setter(Define::SCREEN_WIDTH - GetterWidth()/2.0f, _position.GetterY());
+		AdjustPosition();
 	}
 
 	//y座標について
 	if (_position.GetterY() - Define::PLAYER_HEIGHT/2 < Define::SCREEN_HEIGHT * 3 / 5) {//画面上へは移動制御あり
 		_position.Setter(_position.GetterX(), Define::SCREEN_HEIGHT*3/5 + GetterHeight()/2.0f);
+		AdjustPosition();
 	}
 	else if (_position.GetterY() + GetterHeight()/2 > Define::SCREEN_HEIGHT) {
 		_position.Setter(_position.GetterX(), Define::SCREEN_HEIGHT - GetterHeight()/2.0f);
+		AdjustPosition();
 	}
+}
 
+void Player::CallDecLife() {
+	_status._life--;
+}
 
+void Player::CallIncLife() {
+	_status._life++;
+}
+
+void Player::CallDecBomb() {
+	_status._bomb--;
+}
+
+void Player::CallIncBomb() {
+	_status._bomb++;
+}
+
+Vector2<float> Player::GetterPosition() const {
+
+	float tempX = _position.GetterX();
+	float tempY = _position.GetterY();
+
+	Vector2<float> posVec(tempX, tempY);
+
+	return posVec;
+}
+
+void Player::AdjustPosition() {
 	//当たり判定は頂点で管理してるのでここを忘れると頂点の更新が遅れて当たり判定が少し飛び出す。
 	float halfwidth = width / 2.0f;
 	float halfheight = height / 2.0f;
@@ -256,23 +287,4 @@ void Player::Check_Out() {
 	horiSide1.UpdateSegment(vertex[0], vertex[1]);
 	//下辺
 	horiSide2.UpdateSegment(vertex[3], vertex[2]);
-
-}
-
-void Player::CallDecLife() {
-	_status._life--;
-}
-
-void Player::CallIncLife() {
-	_status._life++;
-}
-
-Vector2<float> Player::GetterPosition() const {
-
-	float tempX = _position.GetterX() + Define::PLAYER_WIDTH/2;
-	float tempY = _position.GetterY() + Define::PLAYER_HEIGHT/2;
-
-	Vector2<float> posVec(tempX, tempY);
-
-	return posVec;
 }

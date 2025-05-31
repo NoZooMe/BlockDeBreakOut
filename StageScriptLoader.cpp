@@ -1,6 +1,7 @@
 #include "StageScriptLoader.h"
 #include "ExprEval.h"
 #include "CommandFactory.h"
+#include "Define.h"
 #include <nlohmann/json.hpp>
 #include <fstream>
 #include <iostream>
@@ -49,9 +50,9 @@ std::vector<BulletEvent>  StageScriptLoader::LoadStageScriptFromJSON(const std::
 			//角度(存在しない場合でも"0"文字列を使う)
 			e.angleExpr = item.value("angle", "0");
 
-			//速度とレイヤー
+			//速度とレイヤー(本当は色)
 			e.speed = item.value("speed",  5.0f);
-			e.layer = item.value("layer", 0);
+			e.layer = item.value("layer", Define::WHITE);
 
 			e.targetPlayer = item.value("targetPlayer", false);
 

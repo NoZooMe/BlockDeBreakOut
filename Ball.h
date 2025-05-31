@@ -5,29 +5,17 @@
 class Ball :
     public CircleObject
 {
-private:    
-
-    const static int SPEED = 5;
-
-    void ReflectWall_Vertical();
-    void ReflectWall_Horizontal();
-
-    //
-    void Check_Out();
-
-    //-1/2‚©‚ç1/2‚ğ“®‚­•Ï”
-    float rand;
 
 public:
-
     //ƒtƒ‰ƒO\‘¢‘Ì
     enum class fBall {
         _move,
         _out, 
-        _wait
+        _wait,
+        _power
     };
 
-    Ball(int x, int y);
+    Ball(float x, float y);
 
     void Initialize() override ;
     void Finalize() override ;
@@ -42,5 +30,18 @@ public:
 
     void ReflectFromSurface(const Segment& surface, const Vector2<float>& surfaceVelocity);
 
+
+
+private:   
+
+    const static int SPEED = 5;
+
+    void ReflectWall_Vertical();
+    void ReflectWall_Horizontal();
+
+    void Check_Out();
+
+    //-1/2‚©‚ç1/2‚ğ“®‚­•Ï”
+    float rand;
 };
 

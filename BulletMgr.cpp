@@ -96,5 +96,7 @@ int BulletMgr::GetBulletNum() const {
 }
 
 void BulletMgr::DeleteBullet(int num) {
-	_vector.erase(_vector.begin() + num);
+	if (num >= 0 && num < _vector.size()) {
+		_vector.erase(_vector.begin() + num);
+	}
 }

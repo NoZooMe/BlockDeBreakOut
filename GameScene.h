@@ -2,12 +2,18 @@
 #include "AbstractScene.h"
 #include "Choices.h"
 #include "StageScene1.h"
+#include "DialogueScene1.h"
 #include "ISceneChangedListener.h"
 #include <memory>
 class GameScene :
     public AbstractScene, public ISceneChangedListener
 {
 public:
+    enum class GamePhase {
+        Dialogue1, 
+        Stage1,
+        Finished
+    };
     const static char* ParameterTagStage;
     const static char* ParameterTagLevel;
 
@@ -31,5 +37,7 @@ private:
     const static char* GameMenu2;
 
     bool pose;
+    GamePhase _phase;
+    std::shared_ptr<AbstractScene> _currentScene;
 };
 

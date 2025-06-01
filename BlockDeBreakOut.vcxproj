@@ -159,6 +159,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractDialogueScene.cpp" />
     <ClCompile Include="AbstractItem.cpp" />
     <ClCompile Include="AbstractStageScene.cpp" />
     <ClCompile Include="BombItem.cpp" />
@@ -175,6 +176,7 @@
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="ComplexTransform.cpp" />
     <ClCompile Include="Define.cpp" />
+    <ClCompile Include="DialogueScene1.cpp" />
     <ClCompile Include="DialogueScriptLoader.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="ExprEval.cpp" />
@@ -216,6 +218,7 @@
     <ClCompile Include="WeierstrassBehavior.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractDialogueScene.h" />
     <ClInclude Include="AbstractItem.h" />
     <ClInclude Include="AbstractStageScene.h" />
     <ClInclude Include="BombItem.h" />
@@ -234,6 +237,7 @@
     <ClInclude Include="ComplexTransform.h" />
     <ClInclude Include="ConvertUtils.h" />
     <ClInclude Include="Define.h" />
+    <ClInclude Include="DialogueScene1.h" />
     <ClInclude Include="DialogueScriptLoader.h" />
     <ClInclude Include="eBulletSize.h" />
     <ClInclude Include="eCollisionEvent.h" />
@@ -292,6 +296,7 @@
     <Text Include="memo.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Dialogue1Script.json" />
     <None Include="resources.json" />
     <None Include="Stage1Command.json" />
     <None Include="Stage1Script.json" />

@@ -19,6 +19,7 @@ GameScene::GameScene(ISceneChangedListener* impl, const Parameter& parameter) : 
 	Parameter param;
 
 	_stageScene1 = make_shared<StageScene1>(this, param);
+	_currentScene = make_shared<DialogueScene1>(this, param);
 
 	map<int, string> gameMenu;
 	gameMenu[0] = GameMenu1;
@@ -28,11 +29,11 @@ GameScene::GameScene(ISceneChangedListener* impl, const Parameter& parameter) : 
 }
 
 void GameScene::Initialize() {
-	_stageScene1->Initialize();
+	_currentScene->Initialize();
 }
 
 void GameScene::Finalize() {
-	_stageScene1->Finalize();
+	_currentScene->Finalize();
 }
 
 void GameScene::Update() {
@@ -59,13 +60,13 @@ void GameScene::Update() {
 		}
 	}
 	else {
-		_stageScene1->Update();
+		_currentScene->Update();
 	}
 }
 
 void GameScene::Draw() const {
 	
-	_stageScene1->Draw();
+	_currentScene->Draw();
 	if (pose) {
 		_gameMenu->Draw();
 	}
@@ -75,7 +76,12 @@ void GameScene::Draw() const {
 }
 
 void GameScene::onSceneChanged(const eScene nextScene, const Parameter& parameter, const bool stackClear) {
-
+	_currentScene->Finalize();
+	switch (nextScene) {
+	case eScene::Stage1:
+		_currentScene = std::make_shared<StageScene1>(this, parameter);
+	}
+	_currentScene->Initialize();
 }
 
 void GameScene::exitGame() {

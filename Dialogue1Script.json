@@ -1,0 +1,20 @@
+[
+  {
+    "speaker": "Alice",
+    "text": "準備は出来てる？",
+    "leftImage": "alice.png",
+    "rightImage": "bob.png"
+  },
+  {
+    "speaker": "Bob",
+    "text": "もちろん。",
+    "leftImage": "alice.png",
+    "rightImage": "bob.png"
+  },
+  {
+    "speaker": "Alice",
+    "text": "じゃあ行こうか。",
+    "leftImage": "alice.png",
+    "rightImage": "bob.png"
+  }
+]

@@ -150,7 +150,7 @@ GameMgr‚Ì‹ï‘Ì“I‚È•ª—£‚ÉŠÖ‚µ‚Ä‚ÍA“–‚½‚è”»’è‚ðColMgrAƒQ[ƒ€‚ÌƒŠƒXƒ^[ƒgAƒNƒŠƒA“
 ª‚±‚ê‚ªo—ˆ‚½‚çZ•KŽE‹Z§“x‚Ì“±“ü‚¾‚¯‚Çæ‚É‰º‚ð‚â‚éB
 ZUI‚ÌŽÀ‘•B‰æ–Ê‰E”¼•ª‚ÉƒLƒƒƒ‰‚ð’u‚¢‚ÄA•KŽE‹ZŽž‚ÉƒZƒŠƒt‚È‚Ç‚à’‚ç‚¹‚é
 ƒAƒCƒeƒ€(ƒ{ƒ€)‚ÌŽÀ‘•B’e‚ðˆê‹C‚É“¾“_ƒAƒCƒeƒ€‚Éo—ˆ‚éƒAƒCƒeƒ€‚ðŽÀ‘•B‚»‚ÌÛ‚É‰æ–Ê‘S‘Ì‚ð—h‚ç‚µ‚½‚¢B
-Z‰ï˜bƒV[ƒPƒ“ƒX‚Ì’Ç‰ÁB
+‰ï˜bƒV[ƒPƒ“ƒX‚Ì’Ç‰ÁB
 ‚±‚ê‚­‚ç‚¢‚Ü‚Åo—ˆ‚ê‚Î‚Æ‚è‚ ‚¦‚¸ˆê–Ê‚Íì‚ê‚é‚©‚ÈIIƒCƒ“ƒ^[ƒ“‘Il‚Ì‚½‚ß‚É‚±‚±‚Ü‚Å‚Íi‚ß‚éB
 ‚ ‚Æ×‚©‚¢‚Æ‚±‚ë‚Å”wŒi‚Æ‚©l‚¦‚é•K—v‚ª‚ ‚éBŒ©‚½–Ú‚Í‚©‚È‚è‘åŽ–B
 
@@ -170,3 +170,6 @@ Item“±“ü‚Å‚«‚½‚Ì‚ÅAŽŸ‚Íƒ{ƒ€‚ÌŽÀ‘•I ‚±‚êAGameMgr‚ÉÕ“Ëˆ—‚ðˆÚ‚µ‚½‚¨‰A‚Å’µ‚Ë•Ô
 ƒAƒCƒeƒ€“±“üŠ®—¹Bƒ{ƒ€‚ÌƒVƒXƒeƒ€‚ðŽÀ‘•‚µ‚Ä‚¢‚­B‚â‚è‚½‚¢‚±‚Æ‚ÍA‰æ–Ê‚ð—h‚ç‚·¨’e–‹‚ðÁ‹Ž¨ƒXƒRƒAƒAƒCƒeƒ€‚É•ÏŠ·¨ƒXƒRƒAƒAƒCƒeƒ€‚ÍƒvƒŒƒCƒ„[‚ÉW‚Ü‚éB
 ‚ ‚ÆA’e‚Æƒ{[ƒ‹‚ª“–‚½‚Á‚½‚çƒXƒRƒAƒAƒCƒeƒ€‚É‚È‚é‚æ‚¤‚ÈŒø‰Ê‚àŽÀ‘•‚µ‚Ä‚¢‚­BGameMgr‚É‚ÍBulletToScore‚Æ‚¢‚¤ŠÖ”‚ðŽÀ‘•‚µ‚æ‚¤‚©‚ÈB
 ƒ{ƒ€ŽÀ‘•Š®—¹II@Œã‚Í‰ï˜bB
+
+06/01
+‰ï˜bƒV[ƒ“‚ÌŽÀ‘•Š®—¹BƒLƒƒƒ‰‚ÌŠG‚ªo—ˆ‚ê‚Î‚»‚ê‚ð•\Ž¦‚µ‚½‚èAStageScene’†‚É‰¡‚ÉƒeƒLƒXƒg‚ð•\Ž¦‚µ‚½‚¢B

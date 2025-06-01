@@ -50,6 +50,8 @@ public:
     void DamagePlayer();
     bool isDamaged() const;
 
+    bool TryUseBomb();
+
 private:
 
     PlayerStatus _status;

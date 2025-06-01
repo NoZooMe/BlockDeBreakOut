@@ -29,6 +29,7 @@ public:
 	const static float PLAYER_SCREEN_HEIGHT;
 	const static float PLAYER_IMAGESIZEX;
 	const static float PLAYER_IMAGESIZEY;
+	const static int PLAYER_BOMBTIME;
 
 	//ballŠÖ˜A
 	const static int BALL_RADIUS;
@@ -54,5 +55,6 @@ public:
 	const static int ITEM_WIDTH;
 	const static int ITEM_HEIGHT;
 	const static int ITEM_POWER_TIME;
+	const static int ITEM_FLOATING_TIME;
 };
 

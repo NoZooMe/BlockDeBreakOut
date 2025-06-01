@@ -24,6 +24,7 @@ const float Define::PLAYER_HEIGHT = 16.0f;
 const float Define::PLAYER_INIX = SCREEN_WIDTH / 2;
 const float Define::PLAYER_INIY = SCREEN_HEIGHT * 5 / 6;
 const float Define::PLAYER_SCREEN_HEIGHT = SCREEN_HEIGHT * 3 / 5;
+const int Define::PLAYER_BOMBTIME = 3;
 
 //ballŠÖ˜A
 const int Define::BALL_RADIUS = 20;
@@ -49,3 +50,4 @@ const Vector2<float> Define::ITEM_SPEED = Vector2<float>(0, 5);
 const int Define::ITEM_WIDTH = 40;
 const int Define::ITEM_HEIGHT = ITEM_WIDTH;
 const int Define::ITEM_POWER_TIME = 5;
+const int Define::ITEM_FLOATING_TIME = 1;

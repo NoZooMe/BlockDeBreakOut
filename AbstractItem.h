@@ -19,6 +19,8 @@ public:
 
 	ItemDataVariant GetterVariant() const { return _type; };
 
+	//速度を変更したいアイテムが出てきたので仮想関数を実装
+	virtual void SetVelocity(const Vector2<float>& playerPosition) {};
 
 protected:
 	ItemDataVariant _type;

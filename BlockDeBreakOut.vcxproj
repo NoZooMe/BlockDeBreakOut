@@ -195,6 +195,7 @@
     <ClCompile Include="ResourceID.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
     <ClCompile Include="ScoreItem.cpp" />
+    <ClCompile Include="ScoreItemToPlayer.cpp" />
     <ClCompile Include="SinBehavior.cpp" />
     <ClCompile Include="SpiralBehavior.cpp" />
     <ClCompile Include="OmniSpiralCommand.cpp" />
@@ -264,6 +265,7 @@
     <ClInclude Include="ResourceID.h" />
     <ClInclude Include="ResourceLoader.h" />
     <ClInclude Include="ScoreItem.h" />
+    <ClInclude Include="ScoreItemToPlayer.h" />
     <ClInclude Include="SinBehavior.h" />
     <ClInclude Include="SpiralBehavior.h" />
     <ClInclude Include="OmniSpiralCommand.h" />

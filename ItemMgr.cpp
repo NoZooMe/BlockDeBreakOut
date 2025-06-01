@@ -1,5 +1,10 @@
 #include "ItemMgr.h"
 #include "Macro.h"
+#include <algorithm>
+
+ItemMgr::ItemMgr() : _playerPosition(0, 0) {
+
+}
 
 void ItemMgr::Initialize() {
 	for (auto item : _itemArray) {
@@ -15,9 +20,20 @@ void ItemMgr::Finalize() {
 
 void ItemMgr::Update() {
 	for (auto item : _itemArray) {
+		if (!item) continue;	// nullptr防止
+		item->SetVelocity(_playerPosition);
 		item->Update();
 	}
 	CheckOut();
+
+	//高インデックスから削除。
+	std::sort(_eraseQueue.begin(), _eraseQueue.end(), std::greater<int>());
+	for (int idx : _eraseQueue) {
+		if (idx >= 0 && idx < _itemArray.size()) {
+			_itemArray.erase(_itemArray.begin() + idx);
+		}
+	}
+	_eraseQueue.clear();
 }
 
 void ItemMgr::Draw() const {
@@ -37,6 +53,9 @@ void ItemMgr::Generate(const eItemName& name, float x, float y) {
 	case Score:
 		_itemArray.emplace_back(std::make_shared<ScoreItem>(x, y));
 		break;
+	case ScoreToPlayer:
+		_itemArray.emplace_back(std::make_shared <ScoreItemToPlayer>(x, y));
+		break;
 	default:	//ここエラー処理いれる。
 		ERR("存在しないItemNameです");
 		break;
@@ -54,7 +73,7 @@ AbstractItem* ItemMgr::GetterItem(int num) {
 void ItemMgr::CallEffect(int num, ItemContext& ctx) {
 	if (num >= 0 && num < _itemArray.size()) {
 		_itemArray[num]->Effect(ctx);
-		_itemArray.erase(_itemArray.begin() + num);
+		_eraseQueue.push_back(num);
 	}
 }
 
@@ -69,4 +88,8 @@ void ItemMgr::CheckOut() {
 			++it;
 		}
 	}
+}
+
+void ItemMgr::SetPlayerPosition(const Vector2<float>& playerPosition) {
+	_playerPosition = playerPosition;
 }

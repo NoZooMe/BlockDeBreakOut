@@ -1,6 +1,7 @@
 
 enum eItemName {
-	Score, 
+	Score,
+	ScoreToPlayer,
 	Life,
 	Bomb, 
 	SpeedUp,

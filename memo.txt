@@ -149,7 +149,7 @@ GameMgr‚Ì‹ï‘Ì“I‚È•ª—£‚ÉŠÖ‚µ‚Ä‚ÍA“–‚½‚è”»’è‚ðColMgrAƒQ[ƒ€‚ÌƒŠƒXƒ^[ƒgAƒNƒŠƒA“
 Z•¡‘fŠÖ”‚Ì‹O“¹§ŒäB‚¹‚ß‚Äˆê‚Â‚Å‚¢‚¢‚©‚çŽg‚¦‚»‚¤‚È‹O“¹‚ÆA”ñüŒ`‚É•Ï‰»‚·‚é‘¬“x‚ðƒ}ƒV‚È’l‚É‚Å‚«‚é‚æ‚¤’²®
 ª‚±‚ê‚ªo—ˆ‚½‚çZ•KŽE‹Z§“x‚Ì“±“ü‚¾‚¯‚Çæ‚É‰º‚ð‚â‚éB
 ZUI‚ÌŽÀ‘•B‰æ–Ê‰E”¼•ª‚ÉƒLƒƒƒ‰‚ð’u‚¢‚ÄA•KŽE‹ZŽž‚ÉƒZƒŠƒt‚È‚Ç‚à’‚ç‚¹‚é
-ZƒAƒCƒeƒ€(ƒ{ƒ€)‚ÌŽÀ‘•B’e‚ðˆê‹C‚É“¾“_ƒAƒCƒeƒ€‚Éo—ˆ‚éƒAƒCƒeƒ€‚ðŽÀ‘•B‚»‚ÌÛ‚É‰æ–Ê‘S‘Ì‚ð—h‚ç‚µ‚½‚¢B
+ƒAƒCƒeƒ€(ƒ{ƒ€)‚ÌŽÀ‘•B’e‚ðˆê‹C‚É“¾“_ƒAƒCƒeƒ€‚Éo—ˆ‚éƒAƒCƒeƒ€‚ðŽÀ‘•B‚»‚ÌÛ‚É‰æ–Ê‘S‘Ì‚ð—h‚ç‚µ‚½‚¢B
 Z‰ï˜bƒV[ƒPƒ“ƒX‚Ì’Ç‰ÁB
 ‚±‚ê‚­‚ç‚¢‚Ü‚Åo—ˆ‚ê‚Î‚Æ‚è‚ ‚¦‚¸ˆê–Ê‚Íì‚ê‚é‚©‚ÈIIƒCƒ“ƒ^[ƒ“‘Il‚Ì‚½‚ß‚É‚±‚±‚Ü‚Å‚Íi‚ß‚éB
 ‚ ‚Æ×‚©‚¢‚Æ‚±‚ë‚Å”wŒi‚Æ‚©l‚¦‚é•K—v‚ª‚ ‚éBŒ©‚½–Ú‚Í‚©‚È‚è‘åŽ–B
@@ -165,3 +165,8 @@ UI‚Í‚Æ‚è‚ ‚¦‚¸“±“üB‰æ‘œ‚Ç‚¤‚·‚é‚©§ì‚µ‚Ä‚¢‚­BŽŸ‚ÍƒAƒCƒeƒ€‚ð’Ç‰Á‚µ‚æ‚¤I
 ƒAƒCƒeƒ€‚ð“±“ü’†BAbstractItem.effect‚Å‘½‘Š«‚ð’è‹`‚µ‚½‚Ì‚ÅAŒÄ‚Ño‚·‚Æ‚«‚É‚»‚ê‚¾‚¯ŒÄ‚Ño‚¹‚Î‚æ‚­‚È‚Á‚½BŒ‹‰ÊAeItemName‚ª‚¢‚ç‚È‚­‚È‚Á‚½‹C‚ª‚·‚éB©‚»‚ñ‚È‚±‚Æ‚È‚¢‚Å‚·B
 “–‚½‚è”»’è‚ðColMgr‚ÉAÕ“Ë‚µ‚½Œã‚Ì“®ì‚ðGameMgr‚ÉˆÚ“®’†B‚È‚ñ‚©Õ“Ë‚ªƒJƒNƒJƒN‚·‚é‚æ‚¤‚É‚È‚Á‚½‚©‚à‚µ‚ê‚È‚¢B
 Item“±“ü‚Å‚«‚½‚Ì‚ÅAŽŸ‚Íƒ{ƒ€‚ÌŽÀ‘•I ‚±‚êAGameMgr‚ÉÕ“Ëˆ—‚ðˆÚ‚µ‚½‚¨‰A‚Å’µ‚Ë•Ô‚ç‚È‚¢ƒ{[ƒ‹‚Æ‚©ì‚è‚â‚·‚¢‚Ì¦‚¢‚ÈB
+
+05/31
+ƒAƒCƒeƒ€“±“üŠ®—¹Bƒ{ƒ€‚ÌƒVƒXƒeƒ€‚ðŽÀ‘•‚µ‚Ä‚¢‚­B‚â‚è‚½‚¢‚±‚Æ‚ÍA‰æ–Ê‚ð—h‚ç‚·¨’e–‹‚ðÁ‹Ž¨ƒXƒRƒAƒAƒCƒeƒ€‚É•ÏŠ·¨ƒXƒRƒAƒAƒCƒeƒ€‚ÍƒvƒŒƒCƒ„[‚ÉW‚Ü‚éB
+‚ ‚ÆA’e‚Æƒ{[ƒ‹‚ª“–‚½‚Á‚½‚çƒXƒRƒAƒAƒCƒeƒ€‚É‚È‚é‚æ‚¤‚ÈŒø‰Ê‚àŽÀ‘•‚µ‚Ä‚¢‚­BGameMgr‚É‚ÍBulletToScore‚Æ‚¢‚¤ŠÖ”‚ðŽÀ‘•‚µ‚æ‚¤‚©‚ÈB
+ƒ{ƒ€ŽÀ‘•Š®—¹II@Œã‚Í‰ï˜bB

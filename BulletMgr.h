@@ -28,7 +28,7 @@ public:
     std::shared_ptr<Bullet> GetBullet(int i) const;
     int GetBulletNum() const;
     void DeleteBullet(int num);
-
+    void DeleteAllBullet();
 
 private:
     //’e‚Ì”z—ñ

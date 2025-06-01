@@ -14,6 +14,14 @@ GameMgr::GameMgr(IGameLifeCycleHandler* impl){
 	_implLifeCycle = impl;
 	_itemCnt = 0;
 	_itemCntMax = 0;
+	_isBombActive = false;
+	_bombCoolCnt = 0;
+	_dx = _dy = 0;
+	_shakeScreenBuffer = MakeScreen(Define::SCREEN_WIDTH, Define::SCREEN_HEIGHT, TRUE);
+	_isShake = false;
+	_shakeTime = 0;
+	_shakePower = 0;
+	_shakeCnt = 0;
 }
 
 void GameMgr::Initialize() {
@@ -56,6 +64,44 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr,
 			player.CallDecLife();
 		}
 
+		//Bomb
+		if (player.TryUseBomb()) {
+			if (!_isBombActive) {
+				_isBombActive = true;
+				player.CallDecBomb();
+				ShakeScreen(40, 20);
+				
+				for (int i = 0; i < bulletMgr.GetBulletNum(); ++i) {
+					Vector2<float> temp = bulletMgr.GetBullet(i)->GetterPosition();
+					itemMgr.Generate(eItemName::ScoreToPlayer, temp.GetterX(), temp.GetterY());
+				}
+			}
+		}
+
+		if (_isBombActive) {
+			//ボム時間中は弾幕を消し続ける
+			bulletMgr.DeleteAllBullet();
+			_bombCoolCnt++;
+			itemMgr.SetPlayerPosition(player.GetterPosition());
+			if (_bombCoolCnt >= Define::PLAYER_BOMBTIME * 60) {
+				_bombCoolCnt = 0;
+				_isBombActive = false;
+			}
+		}
+
+		//ScreenShake
+		if (_isShake) {
+			_shakeCnt++;
+
+			_dx = (rand() % _shakePower * 2) - _shakePower;
+			_dy = (rand() % _shakePower * 2) - _shakePower;
+
+			if (_shakeCnt >= _shakeTime) {
+				_shakeCnt = 0;
+				_isShake = false;
+				_dx = _dy = 0;
+			}
+		}
 	}
 	else if(player.Getter_PlayerLife() <= 0){//残機が無くなったら
 		player.SetPlayerFlag_Death(true);
@@ -80,19 +126,23 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr,
 			_implLifeCycle->RequestRestart();
 		}
 	}
-
-
 }
 
 void GameMgr::Draw(const BlockMgr& blockMgr, const BulletMgr& bulletMgr, const ItemMgr& itemMgr, const Player& player, const Ball& ball) const {
 	if (!player.CheckFlag((int)Player::fPlayer::_death)) {
+
+		SetDrawScreen(_shakeScreenBuffer);
+		ClearDrawScreen();
+
 		player.Draw();
 		ball.Draw();
 		blockMgr.Draw();
 		bulletMgr.Draw();
 		itemMgr.Draw();
+
+		SetDrawScreen(DX_SCREEN_BACK);
+		DrawGraph(_dx, _dy, _shakeScreenBuffer, TRUE);
 	}
-	
 }
 
 void GameMgr::CollisionProcess(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr, Player& player, Ball& ball, const std::vector<CollisionEvent>& evCol) {
@@ -131,13 +181,15 @@ void GameMgr::CollisionProcess(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr
 			bulletMgr.DeleteBullet(ev._index);
 			break;
 		case eCollisionEvent::ItemToPlayer: {	//一時変数を使うのでスコープを明示指定
+			auto item = itemMgr.GetterItem(ev._index);
+			if (!item) break; // nullptr
+
 			ItemContext temp = { player, ball };
 			//もしImmidiateItemならCntに値を入れる
 			if (std::holds_alternative<ImmidiateItem>(itemMgr.GetterItem(ev._index)->GetterVariant())) {
 				_itemCntMax = std::get<ImmidiateItem>(itemMgr.GetterItem(ev._index)->GetterVariant())._time;
 			}
 			itemMgr.CallEffect(ev._index, temp);
-			
 			break;
 		}
 		default:
@@ -173,4 +225,10 @@ bool GameMgr::ItemGenerate(ItemMgr& itemMgr, BlockMgr& blockMgr, int blockIndex)
 	}
 	return false;
 
+}
+
+void GameMgr::ShakeScreen(int power, int duration) {
+	_shakePower = power;
+	_shakeTime = duration;
+	_isShake = true;
 }

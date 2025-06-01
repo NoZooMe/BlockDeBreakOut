@@ -288,3 +288,11 @@ void Player::AdjustPosition() {
 	//‰º•Ó
 	horiSide2.UpdateSegment(vertex[3], vertex[2]);
 }
+
+bool Player::TryUseBomb() {
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_Z) == 1 && _status._bomb > 0) {
+		
+		return true;
+	}
+	return false;
+}

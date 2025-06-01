@@ -100,3 +100,7 @@ void BulletMgr::DeleteBullet(int num) {
 		_vector.erase(_vector.begin() + num);
 	}
 }
+
+void BulletMgr::DeleteAllBullet() {
+	_vector.clear();
+}

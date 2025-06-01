@@ -160,6 +160,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AbstractItem.cpp" />
+    <ClCompile Include="AbstractStageScene.cpp" />
     <ClCompile Include="BombItem.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="AbstractScene.cpp" />
@@ -174,6 +175,7 @@
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="ComplexTransform.cpp" />
     <ClCompile Include="Define.cpp" />
+    <ClCompile Include="DialogueScriptLoader.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="ExprEval.cpp" />
     <ClCompile Include="Fps.cpp" />
@@ -215,6 +217,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractItem.h" />
+    <ClInclude Include="AbstractStageScene.h" />
     <ClInclude Include="BombItem.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="AbstractScene.h" />
@@ -231,6 +234,7 @@
     <ClInclude Include="ComplexTransform.h" />
     <ClInclude Include="ConvertUtils.h" />
     <ClInclude Include="Define.h" />
+    <ClInclude Include="DialogueScriptLoader.h" />
     <ClInclude Include="eBulletSize.h" />
     <ClInclude Include="eCollisionEvent.h" />
     <ClInclude Include="Error.h" />

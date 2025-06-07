@@ -1,5 +1,6 @@
 #include "StraightBehavior.h"
 #include "Bullet.h"
+#include <cmath>
 
 void StraightBehavior::Update(Bullet& bullet) {
     float angle = bullet.GetterAngle();

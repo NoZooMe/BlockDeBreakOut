@@ -2,9 +2,10 @@
 #include "Fps.h"
 #include "ISceneChangedListener.h"
 #include "AbstractScene.h"
-#include "Keyboard.h"
 #include <memory>
 #include <stack>
+
+class Keyboard;
 
 class Looper final : public ISceneChangedListener
 {
@@ -18,7 +19,7 @@ public:
 private:
 	Fps _fps;
 	std::stack<std::shared_ptr<AbstractScene>> _sceneStack;
-	//Singletonはスマートポインタじゃなくていい……のかな？
+	//Singletonはスマートポインタじゃなくていい……のかな？ 勝手にデストラクタしてくれる？
 	Keyboard* _keyboard;
 	bool _exitGame;
 };

@@ -1,6 +1,5 @@
 #pragma once
 #include "eCollisionEvent.h"
-#include "ShapeObject.h"
 #include "Vector2.h"
 #include "Segment.h"
 #include <optional>

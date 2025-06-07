@@ -5,6 +5,7 @@
 #include "SoundManager.h"
 #include "ResourceLoader.h"
 #include "ResourceID.h"
+#include "Keyboard.h"
 #include <DxLib.h>
 
 Looper::Looper() : _exitGame(false)

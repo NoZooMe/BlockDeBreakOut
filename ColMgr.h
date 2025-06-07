@@ -1,16 +1,17 @@
 #pragma once
-#include "Task.h"
-#include "RectangleObject.h"
-#include "CircleObject.h"
-#include "Player.h"
-#include "Ball.h"
-#include "BulletMgr.h"
-#include "BlockMgr.h"
-#include "ItemMgr.h"
-#include "CollisitonEvent.h"
 #include <vector>
 #include <optional>
 
+class RectangleObject;
+class CircleObject;
+class Player;
+class Ball;
+class BulletMgr;
+class BlockMgr;
+class ItemMgr;
+class Segment;
+struct CollisionEvent;
+template<typename T> class Vector2;
 
 class ColMgr
 {

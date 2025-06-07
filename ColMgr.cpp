@@ -1,5 +1,14 @@
 #define NOMINMAX
 #include "ColMgr.h"
+
+#include "RectangleObject.h"
+#include "CircleObject.h"
+#include "Player.h"
+#include "Ball.h"
+#include "BulletMgr.h"
+#include "BlockMgr.h"
+#include "ItemMgr.h"
+#include "CollisitonEvent.h"
 #include <cmath>
 #include <algorithm>
 #include <DxLib.h>

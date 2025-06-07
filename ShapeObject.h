@@ -63,7 +63,6 @@ protected:
     //4byte‚Ü‚Å‚Ìflag
     int _flag;
 
-
     int _color;
 };
 

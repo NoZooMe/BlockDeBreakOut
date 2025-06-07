@@ -3,6 +3,9 @@
 #include "Macro.h"
 #include "Define.h"
 #include "Keyboard.h"
+#include "ResourceID.h"
+#include "SoundManager.h"
+#include "ResourceLoader.h"
 
 using namespace std;
 
@@ -88,25 +91,20 @@ void AbstractStageScene::Draw() const {
 
 void AbstractStageScene::RequestDamage() {
 	_ball->Finalize();
-	_ball.reset();
-
 	_ball = std::make_shared<Ball>(_player->GetterPosX(), _player->GetterPosY() - (Define::BALL_RADIUS + Define::PLAYER_HEIGHT / 2));
 	_ball->Initialize();
 }
 
 void AbstractStageScene::RequestContinue() {
 	_player->Finalize();
-	_player.reset();
 	_player = std::make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY);
 	_player->Initialize();
 
 	_ball->Finalize();
-	_ball.reset();
 	_ball = std::make_shared<Ball>(_player->GetterPosX(), _player->GetterPosY() - (Define::BALL_RADIUS + Define::PLAYER_HEIGHT / 2));
 	_ball->Initialize();
 
 	_bulletMgr->Finalize();
-	_bulletMgr.reset();
 	_bulletMgr = std::make_shared<BulletMgr>();
 	_bulletMgr->Initialize();
 
@@ -119,24 +117,24 @@ void AbstractStageScene::RequestClear() {
 
 void AbstractStageScene::RequestRestart() {
 	_player->Finalize();
-	_player.reset();
 	_player = std::make_shared<Player>(Define::PLAYER_INIX, Define::PLAYER_INIY);
 	_player->Initialize();
 
 	_ball->Finalize();
-	_ball.reset();
 	_ball = std::make_shared<Ball>(_player->GetterPosX(), _player->GetterPosY() - (Define::BALL_RADIUS + Define::PLAYER_HEIGHT / 2));
 	_ball->Initialize();
 
 	_bulletMgr->Finalize();
-	_bulletMgr.reset();
 	_bulletMgr = std::make_shared<BulletMgr>();
 	_bulletMgr->Initialize();
 
 	_blockMgr->Finalize();
-	_blockMgr.reset();
 	_blockMgr = std::make_shared<BlockMgr>();
 	_blockMgr->Initialize();
+
+	_itemMgr->Finalize();
+	_itemMgr = std::make_shared<ItemMgr>();
+	_itemMgr->Initialize();
 
 	SoundManager::getIns()->play(toString(GetStageBGM()), true);
 }

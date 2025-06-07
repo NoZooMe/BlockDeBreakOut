@@ -1,5 +1,6 @@
 #pragma once
 #include "ShapeObject.h"
+
 //’ŠÛƒNƒ‰ƒX
 class CircleObject :
     public ShapeObject

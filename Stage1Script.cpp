@@ -2,6 +2,10 @@
 #include "ExprEval.h"
 #include "Define.h"
 #include "StageScriptLoader.h"
+#include "Ball.h"
+#include "Player.h"
+#include "eBulletSize.h"
+#include "BulletMgr.h"
 #include <iostream>
 #include <Windows.h>
 

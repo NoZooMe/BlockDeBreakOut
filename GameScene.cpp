@@ -3,6 +3,8 @@
 #include "Keyboard.h"
 #include "SoundManager.h"
 #include "ResourceID.h"
+#include "StageScene1.h"
+#include "DialogueScene1.h"
 #include <DxLib.h>
 
 const char* GameScene::ParameterTagLevel = "ParameterTagLevel";
@@ -18,8 +20,7 @@ GameScene::GameScene(ISceneChangedListener* impl, const Parameter& parameter) : 
 
 	Parameter param;
 
-	_stageScene1 = make_shared<StageScene1>(this, param);
-	_currentScene = make_shared<DialogueScene1>(this, param);
+	_currentScene = make_shared<StageScene1>(this, param);
 
 	map<int, string> gameMenu;
 	gameMenu[0] = GameMenu1;

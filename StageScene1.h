@@ -7,6 +7,7 @@ class StageScene1 :
 public:
     StageScene1(ISceneChangedListener* impl, const Parameter& param);
     ~StageScene1() = default;
+    void Update() override;
 
 private:
     void InitStageScript() override;

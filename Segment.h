@@ -1,7 +1,5 @@
 #pragma once
-
 #include"Vector2.h"
-
 
 //ü•ªƒNƒ‰ƒX
 class Segment

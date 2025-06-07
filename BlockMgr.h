@@ -1,8 +1,6 @@
 #pragma once
 #include "Task.h"
 #include "Block.h"
-#include "Ball.h"
-#include "Define.h"
 
 #include <vector>
 #include <memory>

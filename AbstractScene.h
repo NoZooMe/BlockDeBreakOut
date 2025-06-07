@@ -1,7 +1,8 @@
 #pragma once
 #include "Task.h"
-#include "ISceneChangedListener.h"
 #include "Parameter.h"
+class ISceneChangedListener;
+
 class AbstractScene : public Task
 {
 protected:

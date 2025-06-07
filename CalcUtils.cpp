@@ -1,8 +1,5 @@
 #include "CalcUtils.h"
-
-#include "CalcUtils.h"
 #include <cmath>
-#include <DxLib.h>
 
 /*
 *@brief val‚Ì¬”“_‘æpointˆÊ‚ğlÌŒÜ“ü‚µ‚ÄŠÛ‚ß‚é

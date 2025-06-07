@@ -1,7 +1,10 @@
 #pragma once
 #include "CircleObject.h"
-#include "RectangleObject.h"
 #include <memory>
+class RectangleObject;
+class Segment;
+template <typename T> class Vector2;
+
 class Ball :
     public CircleObject
 {
@@ -43,5 +46,7 @@ private:
 
     //-1/2‚©‚ç1/2‚ğ“®‚­•Ï”
     float rand;
+    //powerCnt
+    int _powerCnt;
 };
 

@@ -1,6 +1,5 @@
 #pragma once
 #include "IBulletBehavior.h"
-#include <cmath>
 class StraightBehavior :
     public IBulletBehavior
 {

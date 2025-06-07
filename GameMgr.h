@@ -1,12 +1,13 @@
 #pragma once
-#include "Player.h"
-#include "Ball.h"
-#include "BlockMgr.h"
-#include "BulletMgr.h"
-#include "ItemMgr.h"
-#include "IGameLifecycleHandler.h"
-#include "CollisitonEvent.h"
-#include <memory>
+class Player;
+class Ball;
+class BlockMgr;
+class BulletMgr;
+class ItemMgr;
+class IGameLifeCycleHandler;
+struct CollisionEvent;
+
+#include<vector>
 
 class GameMgr
 {

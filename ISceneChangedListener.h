@@ -1,6 +1,6 @@
 #pragma once
-#include "Parameter.h"
 #include "eScene.h"
+class Parameter;
 
 class  ISceneChangedListener{
 public:

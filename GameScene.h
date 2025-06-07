@@ -1,8 +1,6 @@
 #pragma once
 #include "AbstractScene.h"
 #include "Choices.h"
-#include "StageScene1.h"
-#include "DialogueScene1.h"
 #include "ISceneChangedListener.h"
 #include <memory>
 class GameScene :
@@ -31,7 +29,6 @@ public:
 private:
     int _level;
     std::shared_ptr<Choices> _gameMenu;
-    std::shared_ptr<StageScene1> _stageScene1;
 
     const static char* GameMenu1;
     const static char* GameMenu2;

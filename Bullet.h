@@ -1,10 +1,9 @@
 #pragma once
 #include "CircleObject.h"
 #include "Vector2.h"
-#include "Player.h"
-#include <memory>
 #include "eBulletSize.h"
 #include "IBulletBehavior.h"
+#include <memory>
 
 class Bullet :
     public CircleObject

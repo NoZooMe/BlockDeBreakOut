@@ -3,12 +3,13 @@
 #include "Keyboard.h"
 #include "SoundManager.h"
 #include "ResourceID.h"
+#include "RectangleObject.h"
 #include <cmath>
 #include <memory>
 #include <DxLib.h>
 
 
-Ball::Ball(float x, float y) : CircleObject(x, y, Define::BALL_RADIUS), rand(0){
+Ball::Ball(float x, float y) : CircleObject(x, y, Define::BALL_RADIUS), rand(0), _powerCnt(0){
 
 }
 
@@ -22,6 +23,18 @@ void Ball::Finalize() {
 }
 
 void Ball::Update() {
+
+	//powerÉAÉCÉeÉÄ
+	if (CheckFlag(static_cast<int>(fBall::_power))) {
+		_powerCnt++;
+		if (_powerCnt >= Define::ITEM_POWER_TIME * 60) {
+			WaveFlag(static_cast<int>(fBall::_power), false);
+		}
+	}
+	else {
+		_powerCnt = 0;
+	}
+
 	if (rand < 0.5) {
 		rand += 0.01f;
 	}
@@ -31,6 +44,13 @@ void Ball::Update() {
 
 	ShapeObject::Update();
 	Check_Out();
+
+	if (CheckFlag(static_cast<int>(fBall::_power))) {
+		_color = Define::RED;
+	}
+	else {
+		_color = Define::WHITE;
+	}
 }
 
 void Ball::Update(float playerX, float playerY) {
@@ -55,12 +75,18 @@ void Ball::Update(float playerX, float playerY) {
 
 	}
 
+	if (CheckFlag(static_cast<int>(fBall::_power))) {
+		_color = Define::RED;
+	}
+	else {
+		_color = Define::WHITE;
+	}
 	
 }
 
 void Ball::Draw() const {
+
 	CircleObject::Draw();
-	DrawFormatString(0, 640, GetColor(255, 255, 255), "%f", _velocity.GetterY());
 }
 
 //êÖïΩÇ…ìñÇΩÇ¡ÇΩéûÇ…êÇíºÇ…íµÇÀÇÈîªíË

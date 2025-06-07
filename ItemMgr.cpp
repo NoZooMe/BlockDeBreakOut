@@ -1,5 +1,10 @@
 #include "ItemMgr.h"
 #include "Macro.h"
+#include "BombItem.h"
+#include "PowerItem.h"
+#include "ScoreItem.h"
+#include "ScoreItemToPlayer.h"
+#include "eItemName.h"
 #include <algorithm>
 
 ItemMgr::ItemMgr() : _playerPosition(0, 0) {

@@ -1,6 +1,6 @@
 #pragma once
-#include "ShapeObject.h"
 #include <memory>
+class ShapeObject;
 
 class  IInstanceDeleteListener {
 public:

@@ -1,9 +1,17 @@
 #include "GameMgr.h"
+#include "Player.h"
+#include "Ball.h"
+#include "BlockMgr.h"
+#include "BulletMgr.h"
+#include "ItemMgr.h"
+#include "IGameLifecycleHandler.h"
+#include "CollisitonEvent.h"
 #include "Define.h"
 #include "Keyboard.h"
 #include "Macro.h"
 #include "SoundManager.h"
 #include "ResourceID.h"
+#include "eItemName.h"
 #include <DxLib.h>
 #include <optional>
 #include <random>
@@ -40,26 +48,22 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr,
 		CollisionProcess(blockMgr, bulletMgr, itemMgr, player, ball, evCol);
 		//Playerにも待ち状態を作ってこちらがやるのはflagのONのみにする。
 		//ballが待ち状態なら動けない。弾幕、ブロックも同様。
-		if (!ball.CheckFlag((int)Ball::fBall::_wait)) {
+		if (!ball.CheckFlag(static_cast<int>(Ball::fBall::_wait))) {
 			player.Update();
 			bulletMgr.Update();
 			blockMgr.Update();
 			itemMgr.Update();
 		}
 
-		if (ball.CheckFlag((int)Ball::fBall::_move)) {
+		if (ball.CheckFlag(static_cast<int>(Ball::fBall::_move))) {
 			ball.Update();
 		}
 		else {//ballがplayerに追従するとき
 			ball.Update(player.GetterPosX(), player.GetterPosY() - (ball.GetterR()+Define::PLAYER_HEIGHT/2.0f));
-			if (Keyboard::getIns()->getPressingCount(KEY_INPUT_SPACE) != 0) {
-
-			}
-
 		}
 
 		//ボールが下に落ちた時
-		if (ball.CheckFlag((int)Ball::fBall::_out)) {
+		if (ball.CheckFlag(static_cast<int>(Ball::fBall::_out))) {
 			_implLifeCycle->RequestDamage();
 			player.CallDecLife();
 		}
@@ -155,14 +159,6 @@ void GameMgr::CollisionProcess(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr
 			//PowerItem効果中は反射しない
 			if (!ball.CheckFlag(static_cast<int>(Ball::fBall::_power))) {
 				ball.ReflectFromSurface(*ev._surface, blockMgr.Getter_LiveBlock(ev._index)->GetterVelocity());
-			}
-			else {
-				_itemCnt++;
-				if (_itemCnt >= _itemCntMax) {
-					ball.WaveFlag(static_cast<int>(Ball::fBall::_power), false);
-					_itemCnt = 0;
-					_itemCntMax = 0;
-				}
 			}
 			SoundManager::getIns()->play(toString(ResourceID::BreakBlockSE));
 			player.AddScore(10);

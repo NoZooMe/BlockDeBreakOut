@@ -1,6 +1,5 @@
 #pragma once
 #include "AbstractScene.h"
-#include "ISceneChangedListener.h"
 #include "BlockMgr.h"
 #include "BulletMgr.h"
 #include "GameMgr.h"
@@ -10,9 +9,8 @@
 #include "IGameLifecycleHandler.h"
 #include "StageScriptBase.h"
 #include "Gui.h"
-#include "ResourceID.h"
-#include "SoundManager.h"
-#include "ResourceLoader.h"
+
+enum class ResourceID;
 
 #include <memory>
 class AbstractStageScene :

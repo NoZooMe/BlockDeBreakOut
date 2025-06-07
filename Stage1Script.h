@@ -4,6 +4,7 @@
 #include "BulletEvent.h"
 #include "BulletCommand.h"
 #include <string>
+#include <vector>
 
 class Stage1Script : public StageScriptBase {
 public:

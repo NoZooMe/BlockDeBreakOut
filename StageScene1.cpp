@@ -2,12 +2,22 @@
 #include "Macro.h"
 #include "Define.h"
 #include "Stage1Script.h"
+#include "Keyboard.h"
+#include "eItemName.h"
+#include "ResourceID.h"
 
 using namespace std;
 
 
 StageScene1::StageScene1(ISceneChangedListener* impl, const Parameter& param) : AbstractStageScene(impl, param){
 	
+}
+
+void StageScene1::Update() {
+	AbstractStageScene::Update();
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_S) == 1) {
+		_itemMgr->Generate(eItemName::PowerUp, 200, 200);
+	}
 }
 
 void StageScene1::InitStageScript() {

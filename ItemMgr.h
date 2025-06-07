@@ -1,13 +1,9 @@
 #pragma once
-#include "Player.h"
 #include "AbstractItem.h"
-#include "eItemName.h"
-#include "BombItem.h"
-#include "PowerItem.h"
-#include "ScoreItem.h"
-#include "ScoreItemToPlayer.h"
 #include <vector>
 #include <memory>
+enum eItemName;
+template<typename T> class Vector2;
 
 class ItemMgr
 {

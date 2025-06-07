@@ -1,8 +1,8 @@
 #pragma once
+class BulletMgr;
+class Player;
+class Ball;
 
-#include "BulletMgr.h"
-#include "Player.h"
-#include "Ball.h"
 class StageScriptBase
 {
 public:

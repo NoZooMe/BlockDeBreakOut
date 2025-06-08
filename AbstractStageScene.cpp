@@ -10,7 +10,7 @@
 using namespace std;
 
 AbstractStageScene::AbstractStageScene(ISceneChangedListener* impl, const Parameter& param) :
-	AbstractScene(impl, param), _cnt(0) {
+	AbstractScene(impl, param), _cnt(0), _currentScriptIndex(0){
 	_blockMgr = make_shared<BlockMgr>();
 	_bulletMgr = make_shared<BulletMgr>();
 	_gameMgr = make_shared<GameMgr>(dynamic_cast<IGameLifeCycleHandler*>(this));
@@ -39,7 +39,7 @@ void AbstractStageScene::Initialize() {
 	InitStageScript();
 
 	SoundManager::getIns()->load(toString(GetStageBGM()), ResourceLoader::getIns()->getSoundPath(toString(GetStageBGM())));
-	SoundManager::getIns()->play(toString(GetStageBGM()), true);
+	//SoundManager::getIns()->play(toString(GetStageBGM()), true);
 }
 
 void AbstractStageScene::Finalize() {
@@ -60,10 +60,13 @@ void AbstractStageScene::Finalize() {
 
 void AbstractStageScene::Update() {
 
+	//Block数で弾幕タイプを変化
+	ChangeCurrentScript(_blockMgr->Getter_LiveNum());
+
 	//ballが待ち状態、Playerのlifeが0以下、blockが一つもない時は弾幕を発生させない
 	if (!_ball->CheckFlag((int)Ball::fBall::_wait) && (_player->Getter_PlayerLife() > 0) && (_blockMgr->Getter_LiveNum() > 0)) {
-		//ポインタを入れてnullではないかどうかを確認している
-		if (_stageScript) {
+		//_stageScriptが空でないか確認
+		if (!_stageScript.empty()) {
 			UpdateStageScript(_cnt);
 		}
 
@@ -108,7 +111,7 @@ void AbstractStageScene::RequestContinue() {
 	_bulletMgr = std::make_shared<BulletMgr>();
 	_bulletMgr->Initialize();
 
-	SoundManager::getIns()->play(toString(GetStageBGM()), true);
+	//SoundManager::getIns()->play(toString(GetStageBGM()), true);
 }
 
 void AbstractStageScene::RequestClear() {
@@ -136,5 +139,5 @@ void AbstractStageScene::RequestRestart() {
 	_itemMgr = std::make_shared<ItemMgr>();
 	_itemMgr->Initialize();
 
-	SoundManager::getIns()->play(toString(GetStageBGM()), true);
+	//SoundManager::getIns()->play(toString(GetStageBGM()), true);
 }

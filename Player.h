@@ -58,7 +58,7 @@ private:
 
     int _lastScore;
 
-    static const int speed = 10;
+    int _speed;
 
     //Player‚Ì•ûŒü‚ğ•\‚·•Ï”.8•ûŒü.
     int dirV, dirH;
@@ -83,8 +83,10 @@ private:
     // dy/dt = x(ƒÏ - x) - y
     void Set_VelocityLorenzA(float t, float dt);
 
-    
     void AdjustPosition();
 
+    void DrawExtendGraph() const;
+
+    int _animationCnt;
 };
 

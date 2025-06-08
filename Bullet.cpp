@@ -1,9 +1,11 @@
+#define NOMINMAX
 #include "Bullet.h"
 #include "Macro.h"
 #include "Define.h"
 #include "ComplexTransform.h"
-#include "DxLib.h"
+#include <DxLib.h>
 #include <cmath>
+#include <algorithm>
 
 Bullet::Bullet(const Vector2<float>& position, float angle, int speed, std::shared_ptr<IBulletBehavior> b, int color, eBulletSize size)
 	: CircleObject(position.GetterX(), position.GetterY(), 0), _speed(speed),  _cnt(0), _behavior(b), _euclidPosition(_position){
@@ -49,7 +51,8 @@ void Bullet::Update() {
 	float cx = Define::SCREEN_WIDTH / 2.0f;
 	float cy = Define::SCREEN_HEIGHT / 2.0f;
 
-	float scale = 80.0f;
+	//大きくすれば拡大。小さくすれば縮小
+	float scale = 300.0f;
 
 	// 画面座標 → 複素座標（中心が原点）
 	std::complex<float> z((_euclidPosition.GetterX() - cx) / scale,
@@ -75,9 +78,13 @@ void Bullet::Update() {
 		z_trans = std::polar(scaledMag, std::arg(z_trans));
 	}
 
+	float hue = (std::atan2(z_trans.imag(), z_trans.real()) + Define::PI) / (2.0f * Define::PI); // [0, 1]
+	float sat = 1.0f;
+	float val = std::min(1.0f, std::tanh(std::sqrt(z_trans.real() * z_trans.real() + z_trans.imag() * z_trans.imag())) * 1.5f);
 	
-	//変換後の位置に反映(ShapeObjectの描画・当たり判定用)
+	_color = ComplexTransform::HSVtoRGB(hue, sat, val);
 
+	//変換後の位置に反映(ShapeObjectの描画・当たり判定用)
 	_position.Setter(cx + z_trans.real() * scale, cy - z_trans.imag() * scale);
 
 	ShapeObject::Update();
@@ -90,6 +97,7 @@ void Bullet::Draw() const{
 }
 
 bool Bullet::CheckOut() {
+	//_positionが外にでてもeuclidPositionが外にでても消す
 	if (_position.GetterX() + GetterR() <= 0 || _position.GetterX() - GetterR() >= Define::SCREEN_WIDTH
 		|| _position.GetterY() + GetterR() <= 0 || _position.GetterY() - GetterR() >= Define::SCREEN_HEIGHT ) {
 		return true;

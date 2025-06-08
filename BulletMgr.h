@@ -33,6 +33,7 @@ public:
 private:
     //弾の配列
     std::vector<std::shared_ptr<Bullet>> _vector;
+    std::vector<int> _eraseQueue;	//削除予定のインデックス
 
 };
 

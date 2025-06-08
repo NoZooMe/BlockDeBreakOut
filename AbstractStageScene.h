@@ -34,6 +34,7 @@ protected:
     virtual void InitStageScript() = 0;
     virtual void UpdateStageScript(int cnt) = 0;
     virtual ResourceID GetStageBGM() const = 0;
+    virtual void ChangeCurrentScript(int BlockNum) = 0;
 
     std::shared_ptr<BlockMgr> _blockMgr;
     std::shared_ptr<BulletMgr> _bulletMgr;
@@ -45,9 +46,10 @@ protected:
     std::shared_ptr<Gui> _gui;
 
     int _cnt;
+    int _currentScriptIndex;
 
     //スクリプトを持つのはそのステージだけなのでunique
-    std::unique_ptr<StageScriptBase> _stageScript;
+    std::vector<std::unique_ptr<StageScriptBase>> _stageScript;
     std::vector<CollisionEvent> _colEvArray;
 };
 

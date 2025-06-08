@@ -44,6 +44,9 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr,
 	if (player.Getter_PlayerLife() > 0 && blockMgr.Getter_LiveNum() != 0) {//残機があるかつクリアしてないとき
 		//画面外処理は各インスタンスに任せる.
 		
+		//プレイヤーの位置をホーミングするアイテムの為、プレイヤーの位置をitemMgrに保存。
+		itemMgr.SetPlayerPosition(player.GetterPosition());
+
 		//衝突処理
 		CollisionProcess(blockMgr, bulletMgr, itemMgr, player, ball, evCol);
 		//Playerにも待ち状態を作ってこちらがやるのはflagのONのみにする。
@@ -60,6 +63,11 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr,
 		}
 		else {//ballがplayerに追従するとき
 			ball.Update(player.GetterPosX(), player.GetterPosY() - (ball.GetterR()+Define::PLAYER_HEIGHT/2.0f));
+		}
+
+		//Xボタンを押された時、ボールはplayerの方向に戻る
+		if (Keyboard::getIns()->getPressingCount(KEY_INPUT_X) == 1) {
+			ball.WaveFlag(static_cast<int>(Ball::fBall::_move), false);
 		}
 
 		//ボールが下に落ちた時
@@ -86,7 +94,6 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr,
 			//ボム時間中は弾幕を消し続ける
 			bulletMgr.DeleteAllBullet();
 			_bombCoolCnt++;
-			itemMgr.SetPlayerPosition(player.GetterPosition());
 			if (_bombCoolCnt >= Define::PLAYER_BOMBTIME * 60) {
 				_bombCoolCnt = 0;
 				_isBombActive = false;
@@ -186,6 +193,12 @@ void GameMgr::CollisionProcess(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr
 				_itemCntMax = std::get<ImmidiateItem>(itemMgr.GetterItem(ev._index)->GetterVariant())._time;
 			}
 			itemMgr.CallEffect(ev._index, temp);
+			break;
+		}
+		case eCollisionEvent::BallToBullet: {
+			Vector2<float> temp = bulletMgr.GetBullet(ev._index)->GetterPosition();
+			itemMgr.Generate(eItemName::ScoreToPlayer, temp.GetterX(), temp.GetterY());
+			bulletMgr.DeleteBullet(ev._index);
 			break;
 		}
 		default:

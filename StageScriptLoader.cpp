@@ -83,12 +83,15 @@ std::vector<BulletCommand::TimedCommand> StageScriptLoader::LoadCommandsFromJSON
 	nlohmann::json j;
 	file >> j;
 
+
 	std::vector<BulletCommand::TimedCommand> commands;
 	for (const auto& item : j) {
 		int frame = item.value("frame", 0);
 		auto cmdJson = item["command"];
 		auto cmd = CommandFactory::CreateFromJSON(cmdJson);
-		commands.push_back(BulletCommand::TimedCommand{ frame, cmd });
+		int duration = item.value("duration", 60);
+		bool useDuration = item.value("useDuration", false);
+		commands.push_back(BulletCommand::TimedCommand{ frame, cmd, duration, useDuration });
 	}
 
 	return commands;

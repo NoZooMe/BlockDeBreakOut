@@ -4,11 +4,9 @@
 #include "Define.h"
 #include "ConvertUtils.h"
 #include "ExprEval.h"
+#include "Macro.h"
 
 std::shared_ptr<BulletCommand> CommandFactory::CreateFromJSON(const nlohmann::json& j) {
-
-
-
 	std::string type = j.value("type", "");
     if (type == "OmniShot") {
         auto posArray = j["position"];
@@ -43,5 +41,6 @@ std::shared_ptr<BulletCommand> CommandFactory::CreateFromJSON(const nlohmann::js
         return std::make_shared<OmniSpiralCommand>(pos, numBullets, speed, color, size);
     }
 
-    throw std::runtime_error("Unknown command type: " + type);
+    ERR("à”ê}ÇµÇƒÇ¢Ç»Ç¢commandTypeÇ≈Ç∑");
+    return nullptr;
 }

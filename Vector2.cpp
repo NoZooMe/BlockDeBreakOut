@@ -18,6 +18,12 @@ Vector2<T>::Vector2(T iniX, T iniY) : _x(iniX), _y(iniY) {
 
 template<typename T>
 
+Vector2<T>::Vector2(const Vector2<T>& other) : _x(other.GetterX()), _y(other.GetterY()){
+
+}
+
+template<typename T>
+
 Vector2<T> Vector2<T>::operator+(const Vector2& vector) const{
 	Vector2 addVec(this->GetterX() + vector.GetterX(), this->GetterY() + vector.GetterY());
 

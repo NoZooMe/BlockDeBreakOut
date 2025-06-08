@@ -22,6 +22,7 @@ public:
 	//PlayerŠÖ˜A
 	const static int PLAYER_LIFE;
 	const static int PLAYER_BOMB;
+	const static int PLAYER_SPEED;
 	const static float PLAYER_WIDTH;
 	const static float PLAYER_HEIGHT;
 	const static float PLAYER_INIX;

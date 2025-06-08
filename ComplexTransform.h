@@ -23,6 +23,7 @@ public:
 
 	static std::complex<float> Apply(const std::complex<float>& z);
 	static std::string ToString(SpaceTransformMode mode);
+	static int HSVtoRGB(float h, float s, float v);
 	~ComplexTransform() = delete;
 private:
 	//状態を持つ必要が無いなら静的なメンバで。

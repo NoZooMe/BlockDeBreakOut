@@ -19,6 +19,7 @@ const int Define::HARD = 2;
 //PlayerŠÖ˜A
 const int Define::PLAYER_LIFE = 5;
 const int Define::PLAYER_BOMB = 5;
+const int Define::PLAYER_SPEED = 10;
 const float Define::PLAYER_WIDTH = 160.0f;
 const float Define::PLAYER_HEIGHT = 16.0f;
 const float Define::PLAYER_INIX = SCREEN_WIDTH / 2;

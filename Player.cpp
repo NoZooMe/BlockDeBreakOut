@@ -7,7 +7,7 @@
 #include "ComplexTransform.h"
 
 Player::Player(float iniX, float iniY) : RectangleObject(iniX, iniY, Define::PLAYER_WIDTH, Define::PLAYER_HEIGHT), dirH(0), dirV(0),  _mutekiCnt(0) ,_t(0.0f), _dt(1.0f/60.0f), 
-	_lastScore(0){
+	_lastScore(0), _animationCnt(0), _speed(Define::PLAYER_SPEED){
 }
 
 void Player::Initialize() {
@@ -24,7 +24,7 @@ void Player::Update() {
 		}
 		else {
 			Set_VelocityODE(_t, _dt);
-		//	Set_VelocityLorenzA(_t, _dt);
+			//Set_VelocityLorenzA(_t, _dt);
 		}
 		
 		RectangleObject::Update();
@@ -92,6 +92,36 @@ void Player::Update() {
 	if (_lastScore < 100 && _status._score >= 100) {
 		_status._life++;
 	}
+
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_LSHIFT) >= 1) {
+		if (_width > Define::PLAYER_WIDTH / 2) {
+			_width *= 0.9;
+		}
+		else {
+			_width = Define::PLAYER_WIDTH / 2;
+		}
+	}
+	else {
+		if (_width < Define::PLAYER_WIDTH) {
+			_animationCnt++;
+			//30フレームでπ/2に
+			float temp = Define::PI / 360.f * _animationCnt;
+			_width = Define::DISPLAY_WIDTH * sinf(temp) + Define::PLAYER_WIDTH/2;
+
+		}
+		else {
+			_width = Define::PLAYER_WIDTH;
+			_animationCnt = 0;
+		}
+	}
+
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_LCONTROL) >= 1) {
+		_speed = Define::PLAYER_SPEED * 2;
+	}
+	else {
+		_speed = Define::PLAYER_SPEED;
+	}
+
 	_lastScore = _status._score;
 	_t++;
 }
@@ -99,9 +129,11 @@ void Player::Update() {
 void Player::Draw() const {
 	//無敵になったら点滅
 	if (_mutekiCnt % 2 == 0) {
-		ShapeObject::Draw(_position.GetterX(), _position.GetterY(), ImageManager::getIns()->getImage(toString(ResourceID::Player)));
+		
+		Player::DrawExtendGraph();
 		RectangleObject::Draw();
 	}
+	DrawFormatString(200, 200, Define::WHITE, "%d", _width);
 	//位置表示
 	//DrawFormatString(10, 50, GetColor(255, 255, 255), "pos=(%.1f, %.1f)", _position.GetterX(), _position.GetterY());
 	//複素関数の名前表示
@@ -138,7 +170,7 @@ void Player::Set_Velocity() {
 	if ((dirV!=0) && (dirH!=0)) {
 		_velocity = _velocity.Norm();
 	}
-	_velocity = _velocity.Mult(speed);
+	_velocity = _velocity.Mult(_speed);
 	
 }
 
@@ -149,7 +181,7 @@ void Player::Set_VelocityODE(float t, float dt) {
 
 	//正規化　+　最大速度をかける
 	if (inputDir.Abs() > 0.0f) {
-		inputDir = inputDir.Norm().Mult(speed);
+		inputDir = inputDir.Norm().Mult(_speed);
 	}
 
 
@@ -169,7 +201,7 @@ void Player::Set_VelocityLorenzA(float t, float dt) {
 	Vector2<float> inputDir(dirH, dirV);
 	//正規化　+　最大速度をかける
 	if (inputDir.Abs() > 0.0f) {
-		inputDir = inputDir.Norm().Mult(speed);
+		inputDir = inputDir.Norm().Mult(_speed);
 	}
 
 	// 入力+カオス
@@ -222,21 +254,21 @@ void Player::RotateRight() {
 void Player::Check_Out() {
 	//画面外なら個別に対応
 	//x座標について
-	if (_position.GetterX() - Define::PLAYER_WIDTH/2 < 0) {
+	if (_position.GetterX() - _width/2 < 0) {
 		_position.Setter(GetterWidth() / 2.0f, _position.GetterY());
 		AdjustPosition();
 	}
-	else if (_position.GetterX() + GetterWidth()/2 > Define::SCREEN_WIDTH) {
+	else if (_position.GetterX() + _width/2 > Define::SCREEN_WIDTH) {
 		_position.Setter(Define::SCREEN_WIDTH - GetterWidth()/2.0f, _position.GetterY());
 		AdjustPosition();
 	}
 
 	//y座標について
-	if (_position.GetterY() - Define::PLAYER_HEIGHT/2 < Define::SCREEN_HEIGHT * 3 / 5) {//画面上へは移動制御あり
+	if (_position.GetterY() - _height/2 < Define::SCREEN_HEIGHT * 3 / 5) {//画面上へは移動制御あり
 		_position.Setter(_position.GetterX(), Define::SCREEN_HEIGHT*3/5 + GetterHeight()/2.0f);
 		AdjustPosition();
 	}
-	else if (_position.GetterY() + GetterHeight()/2 > Define::SCREEN_HEIGHT) {
+	else if (_position.GetterY() + _height/2 > Define::SCREEN_HEIGHT) {
 		_position.Setter(_position.GetterX(), Define::SCREEN_HEIGHT - GetterHeight()/2.0f);
 		AdjustPosition();
 	}
@@ -270,8 +302,8 @@ Vector2<float> Player::GetterPosition() const {
 
 void Player::AdjustPosition() {
 	//当たり判定は頂点で管理してるのでここを忘れると頂点の更新が遅れて当たり判定が少し飛び出す。
-	float halfwidth = width / 2.0f;
-	float halfheight = height / 2.0f;
+	float halfwidth = _width / 2.0f;
+	float halfheight = _height / 2.0f;
 
 	//左上、右上、右下、左下(時計回り)
 	vertex[0] = Vector2<float>(_position.GetterX() - halfwidth, _position.GetterY() - halfheight);
@@ -295,4 +327,14 @@ bool Player::TryUseBomb() {
 		return true;
 	}
 	return false;
+}
+
+void Player::DrawExtendGraph() const {
+
+	double extendRate = static_cast<double>(_width) / static_cast<double>(Define::PLAYER_WIDTH);
+	int x = static_cast<int>(_position.GetterX());
+	int y = static_cast<int>(_position.GetterY());
+
+	DrawRotaGraph3(x, y, Define::PLAYER_WIDTH/2, _height/2, extendRate, 1.0, _angle,
+		ImageManager::getIns()->getImage(toString(ResourceID::Player)), false);
 }

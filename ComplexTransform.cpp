@@ -1,5 +1,7 @@
 #include "ComplexTransform.h"
 #include "Define.h"
+#include <DxLib.h>
+#include <algorithm>
 
 SpaceTransformMode ComplexTransform::mode = SpaceTransformMode::Identity;
 
@@ -46,6 +48,32 @@ const std::unordered_map<SpaceTransformMode, std::string> ComplexTransform::_mod
 std::string ComplexTransform::ToString(SpaceTransformMode mode) {
 	auto it = _modeToStr.find(mode);
 	return (it != _modeToStr.end()) ? it->second : "Unkown";
+}
+
+int ComplexTransform::HSVtoRGB(float h, float s, float v) {
+	float r, g, b;
+	float c = v * s;
+	float hp = h * 6.0f;
+	float x = c * (1.0f - std::fabs(std::fmod(hp, 2.0f) - 1.0f));
+	float m = v - c;
+
+	if (0 <= hp && hp < 1) { r = c; g = x; b = 0; }
+	else if (1 <= hp && hp < 2) { r = x; g = c; b = 0; }
+	else if (2 <= hp && hp < 3) { r = 0; g = c; b = x; }
+	else if (3 <= hp && hp < 4) { r = 0; g = x; b = c; }
+	else if (4 <= hp && hp < 5) { r = x; g = 0; b = c; }
+	else if (5 <= hp && hp < 6) { r = c; g = 0; b = x; }
+	else { r = 0; g = 0; b = 0; }
+
+	r += m;
+	g += m;
+	b += m;
+
+	int R = std::clamp(static_cast<int>(r * 255.0f), 0, 255);
+	int G = std::clamp(static_cast<int>(g * 255.0f), 0, 255);
+	int B = std::clamp(static_cast<int>(b * 255.0f), 0, 255);
+
+	return GetColor(R, G, B);
 }
 
 std::complex<float> ComplexTransform::Gamma(std::complex<float> z) {

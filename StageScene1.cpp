@@ -5,6 +5,7 @@
 #include "Keyboard.h"
 #include "eItemName.h"
 #include "ResourceID.h"
+#include "ComplexTransform.h"
 
 using namespace std;
 
@@ -15,14 +16,11 @@ StageScene1::StageScene1(ISceneChangedListener* impl, const Parameter& param) : 
 
 void StageScene1::Update() {
 	AbstractStageScene::Update();
-	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_S) == 1) {
-		_itemMgr->Generate(eItemName::PowerUp, 200, 200);
-	}
 }
 
 void StageScene1::InitStageScript() {
-	//_stageScript = make_unique<Stage1Script>("Stage1SpellScript.json", "Stage1SpellCommand.json");
-	_stageScript = make_unique<Stage1Script>("Stage1Script.json", "Stage1Command.json");
+	_stageScript.push_back(make_unique<Stage1Script>("Stage1Script.json", "Stage1Command.json"));
+	_stageScript.push_back(make_unique<Stage1Script>("Stage1SpellScript.json", "Stage1SpellCommand.json"));
 }
 
 ResourceID StageScene1::GetStageBGM() const{
@@ -30,5 +28,23 @@ ResourceID StageScene1::GetStageBGM() const{
 }
 
 void StageScene1::UpdateStageScript(int cnt) {
-	_stageScript->Update(cnt, *_bulletMgr, *_player, *_ball);
+	_stageScript[_currentScriptIndex]->Update(cnt, *_bulletMgr, *_player, *_ball);
+}
+
+void StageScene1::ChangeCurrentScript(int BlockNum) {
+	int newIndex;
+
+	if (BlockNum > Define::BLOCK_NUM/2) {
+		newIndex = 0;
+	}
+	else {
+		newIndex = 1;
+		//テスト。
+		ComplexTransform::mode = SpaceTransformMode::Sinh;
+	}
+
+	if (_currentScriptIndex != newIndex) {
+		_currentScriptIndex = newIndex;
+		_cnt = 0;
+	}
 }

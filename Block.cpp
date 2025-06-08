@@ -1,7 +1,7 @@
 #include "Block.h"
 #include "DxLib.h"
 
-Block::Block(float x, float y, float width, float height, int col):RectangleObject(x, y, width, height), color(col) {
+Block::Block(float x, float y, float _width, float _height, int col):RectangleObject(x, y, _width, _height), color(col) {
 
 }
 

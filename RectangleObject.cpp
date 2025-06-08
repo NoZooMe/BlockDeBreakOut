@@ -3,9 +3,9 @@
 #include "Define.h"
 #include <cmath>
 
-RectangleObject::RectangleObject(float x, float y, int width, int height) : ShapeObject(x, y), width(width), height(height){
-	float halfwidth = width / 2.0f;
-	float halfheight = height / 2.0f;
+RectangleObject::RectangleObject(float x, float y, int _width, int _height) : ShapeObject(x, y), _width(_width), _height(_height){
+	float halfwidth = _width / 2.0f;
+	float halfheight = _height / 2.0f;
 
 	//左上、右上、右下、左下(時計回り)
 	vertex[0] = Vector2<float>(x-halfwidth, y-halfheight);
@@ -26,8 +26,8 @@ RectangleObject::RectangleObject(float x, float y, int width, int height) : Shap
 
 void RectangleObject::Update(){
 	ShapeObject::Update();
-	float halfwidth = width / 2.0f;
-	float halfheight = height / 2.0f;
+	float halfwidth = _width / 2.0f;
+	float halfheight = _height / 2.0f;
 
 	Vector2<float> center = _position;
 

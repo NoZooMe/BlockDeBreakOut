@@ -1,12 +1,25 @@
 [
   {
-    "frame": 1,
+    "duration": 240,
     "command": {
       "type": "OmniShot",
       "position": [ "SCREEN_WIDTH/2", "SCREEN_HEIGHT/3" ],
       "speed": 8,
-      "numBullets": 16,
+      "numBullets": 8,
+      "size": "Midium"
+    },
+    "useDuration": true
+  },
+  {
+    "frame": 120,
+    "duration": 30,
+    "command": {
+      "type": "OmniSpiral",
+      "position": [ "SCREEN_WIDTH/2", "SCREEN_HEIGHT/3" ],
+      "speed": 4,
+      "numBullets": 32,
       "size": "Small"
-    }
+    },
+    "useDuration": true
   }
 ]

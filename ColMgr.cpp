@@ -50,7 +50,15 @@ void ColMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr, 
 		}
 	}
 
-	//itemとplayet
+	//ballとbullet
+	for (int i = 0; i < bulletMgr.GetBulletNum(); ++i) {
+		if (Col_BallAndBall(ball, *bulletMgr.GetBullet(i))) {
+			CollisionEvent t = { eCollisionEvent::BallToBullet, i };
+			evCol.push_back(t);
+		}
+	}
+
+	//itemとplayer
 	for (int i = 0; i < itemMgr.GetArrayNum(); ++i) {
 		std::vector<Vector2<float>> playerVert = player.GetterVertexs();
 		std::vector<Vector2<float>> itemVert = itemMgr.GetterItem(i)->GetterVertexs();
@@ -149,6 +157,18 @@ bool ColMgr::SAT_Intersect(const std::vector<Vector2<float>>& polyA, const std::
 	}
 	//全ての軸で重なっている→衝突
 	return true;
+}
+
+bool ColMgr::Col_BallAndBall(const CircleObject& circle1, const CircleObject& circle2) const {
+	Vector2<float> diff = circle2.GetterPosition() - circle1.GetterPosition();
+
+	//距離の二乗(平方根はコストが高い為内積で)
+	float dist = diff.DotProd(diff);
+
+	float sumRadius = circle1.GetterR() + circle2.GetterR();
+
+	return dist <= sumRadius * sumRadius;
+
 }
 
 bool ColMgr::Col_SegmentAndSegment(const Segment& segment1, const Segment& segment2) const{

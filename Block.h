@@ -7,7 +7,7 @@ private:
     int color;
     
 public:
-    Block(float x, float y, float width, float height, int color);
+    Block(float x, float y, float _width, float _height, int color);
     void Initialize() override;
     void Finalize() override;
     void Update() override;

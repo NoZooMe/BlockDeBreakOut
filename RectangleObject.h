@@ -16,8 +16,8 @@ public:
     void Update();
     void Draw() const override;
 
-    int GetterWidth() const { return width; };
-    int GetterHeight() const { return height; };
+    int GetterWidth() const { return _width; };
+    int GetterHeight() const { return _height; };
 
     std::vector<Vector2<float>> GetterVertexs() { 
         std::vector<Vector2<float>> temp;
@@ -30,7 +30,7 @@ public:
 
 protected:
     //この二つのパラメータが長方形を特徴づける
-    int width, height;
+    int _width, _height;
     //各頂点
     Vector2<float> vertex[4];
 

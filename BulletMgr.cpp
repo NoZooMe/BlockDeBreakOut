@@ -6,6 +6,7 @@
 #include "SpiralBehavior.h"
 #include "GravityBehavior.h"
 #include "WeierstrassBehavior.h"
+#include <algorithm>
 
 //#include <DxLib.h>
 
@@ -35,6 +36,15 @@ void BulletMgr::Update() {
 		bullet->Update();
 	}
 	CheckOut();
+
+	std::sort(_eraseQueue.begin(), _eraseQueue.end(), std::greater<int>());
+	for (int idx : _eraseQueue) {
+		if (idx >= 0 && idx < _vector.size()) {
+			_vector.erase(_vector.begin() + idx);
+		}
+	}
+	_eraseQueue.clear();
+
 }
 
 void BulletMgr::Draw() const {
@@ -97,7 +107,7 @@ int BulletMgr::GetBulletNum() const {
 
 void BulletMgr::DeleteBullet(int num) {
 	if (num >= 0 && num < _vector.size()) {
-		_vector.erase(_vector.begin() + num);
+		_eraseQueue.push_back(num);
 	}
 }
 

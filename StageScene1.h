@@ -12,6 +12,7 @@ public:
 private:
     void InitStageScript() override;
     void UpdateStageScript(int cnt) override;
+    void ChangeCurrentScript(int BlockNum) override;
     ResourceID GetStageBGM() const override;
 };
 

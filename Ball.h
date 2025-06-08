@@ -1,6 +1,7 @@
 #pragma once
 #include "CircleObject.h"
 #include <memory>
+
 class RectangleObject;
 class Segment;
 template <typename T> class Vector2;

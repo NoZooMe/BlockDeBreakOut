@@ -90,13 +90,19 @@ void Stage1Script::Update(int cnt, BulletMgr& bulletMgr, const Player& player, c
 	}
 
 	for (const auto& cmd : _commands) {
-		if (cnt >= cmd.frame && (cnt - cmd.frame) % 800 == 0) {
-			cmd.command->Execute(bulletMgr);
-		}
+		//frame‚ð’´‚¦‚½‚ç”­ŽËBduration‚ðŽg‚¤ê‡‚Íduration–ˆ‚É”­ŽË
+		if (!cmd.useDuration) {
+			if (cnt >= cmd.frame && (cnt - cmd.frame) % 800 == 0) {
+				cmd.command->Execute(bulletMgr);
 
-		/*if (cnt % 60 == 0) {
-			cmd.command->Execute(bulletMgr);
-		}*/
+			}
+		}
+		else {
+			if (cnt >= cmd.frame && (cnt - cmd.frame) % cmd.duration == 0) {
+				cmd.command->Execute(bulletMgr);
+			}
+
+		}
 	}
 
 }

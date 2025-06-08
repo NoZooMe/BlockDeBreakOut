@@ -8,6 +8,7 @@ private:
 public:
 	Vector2();
 	Vector2(T x, T y);
+	Vector2(const Vector2<T>& other);
 
 	//基本的にユーザー定義型の引数は参照渡し
 

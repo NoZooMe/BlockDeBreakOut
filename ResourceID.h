@@ -2,7 +2,11 @@
 #include <string>
 enum class ResourceID
 {
+
 	Player, 
+	Title,
+	First, 
+	Zero,
 
 	BreakBlockSE, 
 	DamageSE, 
@@ -11,6 +15,7 @@ enum class ResourceID
 	ShotBulletSE, 
 	ReflectSE,
 
+	TitleBGM,
 	Stage1, 
 
 	COUNT

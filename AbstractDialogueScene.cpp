@@ -1,6 +1,7 @@
 #include "AbstractDialogueScene.h"
 #include "Keyboard.h"
 #include "ConvertUtils.h"
+#include "Define.h"
 #include <DxLib.h>
 
 AbstractDialogueScene::AbstractDialogueScene(ISceneChangedListener* impl, const Parameter& param) : 
@@ -10,6 +11,8 @@ AbstractScene(impl, param){
 
 void AbstractDialogueScene::Initialize() {
 	InitDialogueScript();
+	_leftImageHandle = LoadGraph(_dialogues[0].leftImage.c_str());
+	_rightImageHandle = LoadGraph(_dialogues[0].rightImage.c_str());
 }
 
 void AbstractDialogueScene::Finalize() {
@@ -37,20 +40,20 @@ void AbstractDialogueScene::Update() {
 void AbstractDialogueScene::Draw() const {
 	if (_finished) return;
 
-	DrawGraph(50, 100, _leftImageHandle, true);
-	DrawGraph(450, 100, _rightImageHandle, true);
+	DrawGraph(50, Define::SCREEN_HEIGHT - 800, _leftImageHandle, true);
+	DrawGraph(Define::SCREEN_WIDTH - 566/2 - 50, Define::SCREEN_HEIGHT - 800, _rightImageHandle, true);
 
 	// ウィンドウ風の背景
-	DrawBox(30, 400, 610, 470, GetColor(0, 0, 0), true);
-	DrawBox(30, 400, 610, 470, GetColor(255, 255, 255), false);
+	DrawBox(30, 700, 1250, 840, GetColor(0, 0, 0), true);
+	DrawBox(30, 700, 1250, 840, GetColor(255, 255, 255), false);
 
 	std::string speakerStr = ConvertUtils::Utf8ToSjis(_dialogues[_currentIndex].speaker);
 	std::string textStr = ConvertUtils::Utf8ToSjis(_dialogues[_currentIndex].text);
 
 
 	// テキスト
-	DrawString(40, 410, speakerStr.c_str(), GetColor(255, 255, 0));
-	DrawString(40, 430, textStr.c_str(), GetColor(255, 255, 255));
+	DrawString(40, 710, speakerStr.c_str(), GetColor(255, 255, 0));
+	DrawString(40, 725, textStr.c_str(), GetColor(255, 255, 255));
 }
 
 bool AbstractDialogueScene::isFinished() const {

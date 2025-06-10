@@ -18,7 +18,7 @@ const int Define::HARD = 2;
 
 //Player関連
 const int Define::PLAYER_LIFE = 5;
-const int Define::PLAYER_BOMB = 5;
+const int Define::PLAYER_BOMB = 3;
 const int Define::PLAYER_SPEED = 10;
 const float Define::PLAYER_WIDTH = 160.0f;
 const float Define::PLAYER_HEIGHT = 16.0f;
@@ -26,6 +26,7 @@ const float Define::PLAYER_INIX = SCREEN_WIDTH / 2;
 const float Define::PLAYER_INIY = SCREEN_HEIGHT * 5 / 6;
 const float Define::PLAYER_SCREEN_HEIGHT = SCREEN_HEIGHT * 3 / 5;
 const int Define::PLAYER_BOMBTIME = 3;
+const int Define::PLAYER_LIFESCORE = 1000;
 
 //ball関連
 const int Define::BALL_RADIUS = 20;
@@ -52,3 +53,16 @@ const int Define::ITEM_WIDTH = 40;
 const int Define::ITEM_HEIGHT = ITEM_WIDTH;
 const int Define::ITEM_POWER_TIME = 5;
 const int Define::ITEM_FLOATING_TIME = 1;
+const int Define::ITEM_SCORE_VALUE = 100;
+
+//UI関連
+const int Define::UI_X = Define::SCREEN_WIDTH + (100);
+const int Define::ENEMY_NAME_Y = 20;
+const int Define::ENEMY_ILLUST_Y = ENEMY_NAME_Y + 10;
+const int Define::ENEMY_DIALOGUE_Y = 450;
+const int Define::PLAYER_LIFE_Y = SCREEN_HEIGHT * 2 / 3;
+const int Define::PLAYER_BOMB_Y = PLAYER_LIFE_Y + 45;
+const int Define::PLAYER_SCORE_Y = PLAYER_LIFE_Y + 90;
+
+//Stage1関連
+const int Define::SPELL_BLOCK_NUM = BLOCK_NUM / 2;

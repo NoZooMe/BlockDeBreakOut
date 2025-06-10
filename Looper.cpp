@@ -1,11 +1,13 @@
 #include "Looper.h"
 #include "TitleScene.h"
 #include "GameScene.h"
+#include "MusiumScene.h"
 #include "ImageManager.h"
 #include "SoundManager.h"
 #include "ResourceLoader.h"
 #include "ResourceID.h"
 #include "Keyboard.h"
+#include "Macro.h"
 #include <DxLib.h>
 
 Looper::Looper() : _exitGame(false)
@@ -16,6 +18,9 @@ Looper::Looper() : _exitGame(false)
 	ResourceLoader::getIns()->loadFromJson("resources.json");
 
 	ImageManager::getIns()->load(toString(ResourceID::Player), ResourceLoader::getIns()->getImagePath(toString(ResourceID::Player)));
+	ImageManager::getIns()->load(toString(ResourceID::Title), ResourceLoader::getIns()->getImagePath(toString(ResourceID::Title)));
+	ImageManager::getIns()->load(toString(ResourceID::First), ResourceLoader::getIns()->getImagePath(toString(ResourceID::First)));
+	ImageManager::getIns()->load(toString(ResourceID::Zero), ResourceLoader::getIns()->getImagePath(toString(ResourceID::Zero)));
 
 	SoundManager::getIns()->load(toString(ResourceID::BreakBlockSE), ResourceLoader::getIns()->getSoundPath(toString(ResourceID::BreakBlockSE)));
 	SoundManager::getIns()->load(toString(ResourceID::OpenMenuSE), ResourceLoader::getIns()->getSoundPath(toString(ResourceID::OpenMenuSE)));
@@ -24,11 +29,12 @@ Looper::Looper() : _exitGame(false)
 	SoundManager::getIns()->load(toString(ResourceID::DamageSE), ResourceLoader::getIns()->getSoundPath(toString(ResourceID::DamageSE)));
 	SoundManager::getIns()->load(toString(ResourceID::ReflectSE), ResourceLoader::getIns()->getSoundPath(toString(ResourceID::ReflectSE)));
 
+	SoundManager::getIns()->load(toString(ResourceID::TitleBGM), ResourceLoader::getIns()->getSoundPath(toString(ResourceID::TitleBGM)));
 
 	Parameter parameter;
 	//ここ変更することで始まるシーンを変えれる
-	//_sceneStack.push(std::make_shared<TitleScene>(this, parameter));
-	_sceneStack.push(std::make_shared<GameScene>(this, parameter));
+	_sceneStack.push(std::make_shared<TitleScene>(this, parameter));
+	//_sceneStack.push(std::make_shared<GameScene>(this, parameter));
 	
 	_sceneStack.top()->Initialize();
 	
@@ -48,7 +54,7 @@ bool Looper::loop()
 	if (!_exitGame) {
 		_sceneStack.top()->Update();
 		_sceneStack.top()->Draw();
-
+		
 		_keyboard->update();
 
 		_fps.draw();
@@ -78,8 +84,11 @@ void Looper::onSceneChanged(const eScene nextScene, const Parameter& parameter, 
 		case Game:
 			_sceneStack.push(std::make_shared<GameScene>(this, parameter));
 			break;
+		case Musium:
+			_sceneStack.push(std::make_shared<MusiumScene>(this, parameter));
+			break;
 		default:
-			;
+			ERR("無効なシーンです");
 	}
 	_sceneStack.top()->Initialize();
 }

@@ -21,5 +21,15 @@ private:
     const static char* TitleMenu1;
     const static char* TitleMenu2;
     const static char* TitleMenu3;
+    const static char* TitleMenu4;
+    const static char* TitleMenu5;
+
+    //フェードイン用
+    int _alpha;
+    int _fadeInTime;
+    int _frameCnt;
+    bool _isInputEnabled;
+
+    bool _isTutorial;
 };
 

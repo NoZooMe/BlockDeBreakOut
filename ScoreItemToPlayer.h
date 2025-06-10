@@ -11,6 +11,7 @@ public:
 
     void SetVelocity(const Vector2<float>& playerPosition) override;
 
+
 private:
     int _cnt;
     Vector2<float> _toVelocity;

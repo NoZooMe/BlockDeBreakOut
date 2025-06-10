@@ -6,6 +6,9 @@ ScoreItemToPlayer::ScoreItemToPlayer(float x, float y) : ScoreItem(x, y) , _cnt(
 	float radian = Define::PI / 180.0f * static_cast<float>(angle);
 	_velocity = Vector2<float>(cosf(radian), -sinf(radian)).Mult(5);
 	_acceleration = Vector2<float>(0, 0.1f);
+	_width = Define::ITEM_WIDTH / 3;
+	_height = Define::ITEM_HEIGHT / 3;
+	_valueScore = Define::ITEM_SCORE_VALUE/100;
 }
 
 void ScoreItemToPlayer::Update() {
@@ -16,6 +19,7 @@ void ScoreItemToPlayer::Update() {
 		_velocity = _toVelocity;
 	}
 }
+
 
 void ScoreItemToPlayer::SetVelocity(const Vector2<float>& PlayerPosition) {
 	if ((PlayerPosition - _position).Abs() > 0.1f) {

@@ -8,7 +8,11 @@
 
 using namespace std;
 //ここ、_choicesをポインタで持つとchoicesを変更される恐れがあるので渡せない
-Choices::Choices(const map<int, string>& choices) : _choices(choices) , itemNum(_choices.size()), nowSelect(0){
+Choices::Choices(const map<int, string>& choices) : _choices(choices) , itemNum(_choices.size()), nowSelect(0), _x(Define::SCREEN_WIDTH / 2), _y(Define::SCREEN_HEIGHT / 2), _isMove(false){
+
+}
+
+Choices::Choices(const map<int, string>& choices, int x, int y, bool isMoving) : _choices(choices), itemNum(_choices.size()), nowSelect(0), _x(x), _y(y), _isMove(isMoving) {
 
 }
 
@@ -36,10 +40,10 @@ int Choices::Update() {
 void Choices::Draw() const {
 	for (int i = 0; i < _choices.size(); i++) {
 		if (i == nowSelect) {
-			DrawFormatString(200, 150 + 20 * i, Define::WHITE, "■%s", _choices.at(i).c_str());
+			DrawFormatString(_x, _y + 20 * i, Define::WHITE, "■%s", _choices.at(i).c_str());
 		}
 		else {
-			DrawFormatString(200, 150 + 20 * i, Define::WHITE, "%s", _choices.at(i).c_str());
+			DrawFormatString(_x, _y + 20 * i, Define::WHITE, "%s", _choices.at(i).c_str());
 		}
 	}
 }

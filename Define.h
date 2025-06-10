@@ -31,6 +31,7 @@ public:
 	const static float PLAYER_IMAGESIZEX;
 	const static float PLAYER_IMAGESIZEY;
 	const static int PLAYER_BOMBTIME;
+	const static int PLAYER_LIFESCORE;
 
 	//ballŠÖ˜A
 	const static int BALL_RADIUS;
@@ -57,5 +58,18 @@ public:
 	const static int ITEM_HEIGHT;
 	const static int ITEM_POWER_TIME;
 	const static int ITEM_FLOATING_TIME;
+	const static int ITEM_SCORE_VALUE;
+
+	//UIŠÖ˜A
+	const static int UI_X;
+	const static int ENEMY_NAME_Y;
+	const static int ENEMY_ILLUST_Y;
+	const static int ENEMY_DIALOGUE_Y;
+	const static int PLAYER_LIFE_Y;
+	const static int PLAYER_BOMB_Y;
+	const static int PLAYER_SCORE_Y;
+
+	//Stage1ŠÖ˜A
+	const static int SPELL_BLOCK_NUM;
 };
 

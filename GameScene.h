@@ -36,5 +36,6 @@ private:
     bool pose;
     GamePhase _phase;
     std::shared_ptr<AbstractScene> _currentScene;
+    bool _isClear;
 };
 

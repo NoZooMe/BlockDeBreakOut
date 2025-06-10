@@ -10,5 +10,8 @@ public:
     void Finalize() override;
 
     void Effect(ItemContext& ctx) override;
+
+protected:
+    int _valueScore;
 };
 

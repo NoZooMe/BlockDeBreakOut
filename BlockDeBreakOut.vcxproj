@@ -183,6 +183,7 @@
     <ClCompile Include="Fps.cpp" />
     <ClCompile Include="GameMgr.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="GlobalStatusManager.cpp" />
     <ClCompile Include="GravityBehavior.cpp" />
     <ClCompile Include="Gui.cpp" />
     <ClCompile Include="ImageManager.cpp" />
@@ -191,6 +192,7 @@
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="Looper.cpp" />
     <ClCompile Include="Choices.cpp" />
+    <ClCompile Include="MusiumScene.cpp" />
     <ClCompile Include="OmniShotCommand.cpp" />
     <ClCompile Include="Parameter.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -241,10 +243,13 @@
     <ClInclude Include="DialogueScriptLoader.h" />
     <ClInclude Include="eBulletSize.h" />
     <ClInclude Include="eCollisionEvent.h" />
+    <ClInclude Include="eGlobalStatusFlag.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="eScene.h" />
     <ClInclude Include="ExprEval.h" />
     <ClInclude Include="Fps.h" />
+    <ClInclude Include="GlobalStatusManager.h" />
+    <ClInclude Include="GlobalStatus.h" />
     <ClInclude Include="ItemContext.h" />
     <ClInclude Include="GameMgr.h" />
     <ClInclude Include="GameScene.h" />
@@ -264,6 +269,7 @@
     <ClInclude Include="Looper.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="Choices.h" />
+    <ClInclude Include="MusiumScene.h" />
     <ClInclude Include="OmniShotCommand.h" />
     <ClInclude Include="Parameter.h" />
     <ClInclude Include="Player.h" />

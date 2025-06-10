@@ -6,6 +6,8 @@
 #include "ResourceID.h"
 #include "SoundManager.h"
 #include "ResourceLoader.h"
+#include "ISceneChangedListener.h"
+#include "GlobalStatusManager.h"
 
 using namespace std;
 
@@ -39,7 +41,7 @@ void AbstractStageScene::Initialize() {
 	InitStageScript();
 
 	SoundManager::getIns()->load(toString(GetStageBGM()), ResourceLoader::getIns()->getSoundPath(toString(GetStageBGM())));
-	//SoundManager::getIns()->play(toString(GetStageBGM()), true);
+	SoundManager::getIns()->play(toString(GetStageBGM()), true);
 }
 
 void AbstractStageScene::Finalize() {
@@ -55,7 +57,6 @@ void AbstractStageScene::Finalize() {
 	_gui->Finalize();
 
 	SoundManager::getIns()->stop(toString(GetStageBGM()));
-	SoundManager::getIns()->release(toString(GetStageBGM()));
 }
 
 void AbstractStageScene::Update() {
@@ -81,7 +82,7 @@ void AbstractStageScene::Update() {
 
 	_colMgr->Update(*_blockMgr, *_bulletMgr, *_itemMgr, *_player, *_ball, _colEvArray);
 	_gameMgr->Update(*_blockMgr, *_bulletMgr, *_itemMgr, *_player, *_ball, _colEvArray);
-	_gui->Update(_player->Getter_Status());
+	_gui->Update(_player->Getter_Status(), _blockMgr->Getter_LiveNum());
 
 	_colEvArray.clear();
 }
@@ -111,11 +112,15 @@ void AbstractStageScene::RequestContinue() {
 	_bulletMgr = std::make_shared<BulletMgr>();
 	_bulletMgr->Initialize();
 
-	//SoundManager::getIns()->play(toString(GetStageBGM()), true);
+	SoundManager::getIns()->play(toString(GetStageBGM()), true);
 }
 
 void AbstractStageScene::RequestClear() {
 	SoundManager::getIns()->stop(toString(GetStageBGM()));
+	Parameter param;
+	GlobalStatusManager::getIns()->SetGlobalFlag(eGlobalStatusFlag::Stage1Clear, true);
+
+	_implSceneChangedListener->exitGame();
 }
 
 void AbstractStageScene::RequestRestart() {
@@ -139,5 +144,5 @@ void AbstractStageScene::RequestRestart() {
 	_itemMgr = std::make_shared<ItemMgr>();
 	_itemMgr->Initialize();
 
-	//SoundManager::getIns()->play(toString(GetStageBGM()), true);
+	SoundManager::getIns()->play(toString(GetStageBGM()), true);
 }

@@ -1,6 +1,9 @@
 {
   "Image": {
-    "Player": "images/Player.png"
+    "Title" : "images/Title.png",
+    "Player": "images/Player.png",
+    "Zero": "images/zero.png",
+    "First": "images/first.png"
   },
 
   "Sound": {
@@ -11,6 +14,7 @@
     "ShotBulletSE": "sounds/shot.wav",
     "ReflectSE": "sounds/reflect.wav",
 
-    "Stage1": "sounds/stage1.m4a"
+    "Stage1": "sounds/stage1.m4a", 
+    "TitleBGM":  "sounds/title.m4a"
   }
 }

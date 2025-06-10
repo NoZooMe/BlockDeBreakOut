@@ -43,10 +43,6 @@ void Player::Update() {
 		}
 	}
 
-	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_RSHIFT) >= 1) {
-		
-	}
-
 	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_D) >= 1) {
 		_angle = Define::PI / 4;
 	}
@@ -57,7 +53,7 @@ void Player::Update() {
 		_angle = 0;
 	}
 
-	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_1) == 1) {
+	/*if (Keyboard::getIns()->getPressingCount(KEY_INPUT_1) == 1) {
 		ComplexTransform::mode = SpaceTransformMode::Identity;
 	}
 	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_2) == 1) {
@@ -86,10 +82,10 @@ void Player::Update() {
 	}
 	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_0) == 1) {
 		ComplexTransform::mode = SpaceTransformMode::Zeta;
-	}
+	}*/
 
-	//Scoreが100を上回ったらライフ加算
-	if (_lastScore < 100 && _status._score >= 100) {
+	//Scoreが1000を上回ったらライフ加算
+	if ((_lastScore % 1000 != 0)&& (_status._score % 1000 == 0)) {
 		_status._life++;
 	}
 
@@ -123,6 +119,11 @@ void Player::Update() {
 	}
 
 	_lastScore = _status._score;
+
+	if (_status._score >= _status._highScore) {
+		_status._highScore = _status._score;
+	}
+
 	_t++;
 }
 
@@ -133,11 +134,11 @@ void Player::Draw() const {
 		Player::DrawExtendGraph();
 		RectangleObject::Draw();
 	}
-	DrawFormatString(200, 200, Define::WHITE, "%d", _width);
+	//DrawFormatString(200, 200, Define::WHITE, "%d", _width);
 	//位置表示
 	//DrawFormatString(10, 50, GetColor(255, 255, 255), "pos=(%.1f, %.1f)", _position.GetterX(), _position.GetterY());
 	//複素関数の名前表示
-	DrawFormatString(0, 50, GetColor(255, 255, 255), "Transform: %s", ComplexTransform::ToString(ComplexTransform::mode).c_str());
+	//DrawFormatString(0, 50, GetColor(255, 255, 255), "Transform: %s", ComplexTransform::ToString(ComplexTransform::mode).c_str());
 }
 
 //向いている方向でdirVとdirHを変化.

@@ -131,11 +131,6 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr,
 
 		_implLifeCycle->RequestClear();
 
-		//スペースが押されたらリスタート
-		if (Keyboard::getIns()->getPressingCount(KEY_INPUT_SPACE) == 1) {
-			//playerの終了と初期化処理
-			_implLifeCycle->RequestRestart();
-		}
 	}
 }
 

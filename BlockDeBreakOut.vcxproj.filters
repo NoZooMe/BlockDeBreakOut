@@ -76,6 +76,12 @@
     <Filter Include="ヘッダー ファイル\Data">
       <UniqueIdentifier>{1bb455e4-2cff-4baf-b39b-0a04aa661683}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Effect">
+      <UniqueIdentifier>{70b7fd1d-7186-4045-9f70-630933b1726a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Effect">
+      <UniqueIdentifier>{79fdaec2-10a9-4187-adfa-38570d8db595}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -254,6 +260,24 @@
     </ClCompile>
     <ClCompile Include="MusiumScene.cpp">
       <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SavedataUtils.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="IEffect.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="ShakeEffect.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="WaveEffect.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectPipeline.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="WhiteFlashEffect.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -488,27 +512,48 @@
     <ClInclude Include="MusiumScene.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="SavedataUtils.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="IEffect.h">
+      <Filter>ヘッダー ファイル\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="ShakeEffect.h">
+      <Filter>ヘッダー ファイル\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveEffect.h">
+      <Filter>ヘッダー ファイル\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectPipeline.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="AfterImage.h">
+      <Filter>ヘッダー ファイル\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="WhiteFlashEffect.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="memo.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Stage1Script.json">
+    <None Include="resources\Dialogue1Script.json">
       <Filter>JSON</Filter>
     </None>
-    <None Include="resources.json">
+    <None Include="resources\resources.json">
       <Filter>JSON</Filter>
     </None>
-    <None Include="Stage1Command.json">
+    <None Include="resources\Stage1Command.json">
       <Filter>JSON</Filter>
     </None>
-    <None Include="Stage1SpellCommand.json">
+    <None Include="resources\Stage1Script.json">
       <Filter>JSON</Filter>
     </None>
-    <None Include="Stage1SpellScript.json">
+    <None Include="resources\Stage1SpellCommand.json">
       <Filter>JSON</Filter>
     </None>
-    <None Include="Dialogue1Script.json">
+    <None Include="resources\Stage1SpellScript.json">
       <Filter>JSON</Filter>
     </None>
   </ItemGroup>

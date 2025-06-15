@@ -29,7 +29,7 @@ private:
 	void CheckOut();
 	std::vector<std::shared_ptr<AbstractItem>> _itemArray;
 	Vector2<float> _playerPosition;
-	std::vector<int> _eraseQueue;	//削除予定のインデックス
-
+	std::vector<std::shared_ptr<AbstractItem>> _eraseQueue;	//削除予定のインデックス
+	int _cnt;
 };
 

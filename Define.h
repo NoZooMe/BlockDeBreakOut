@@ -4,10 +4,10 @@
 class Define final
 {
 public:
-	const static float SCREEN_WIDTH;		//ウィンドウサイズ横
+	const static float SCREEN_WIDTH;		//ゲーム画面サイズ横
 	const static float SCREEN_HEIGHT;		//ウィンドウサイズ縦
 
-	const static float DISPLAY_WIDTH;
+	const static float DISPLAY_WIDTH;		//ウィンドウサイズ横
 
 	const static float PI;		//円周率
 
@@ -32,6 +32,7 @@ public:
 	const static float PLAYER_IMAGESIZEY;
 	const static int PLAYER_BOMBTIME;
 	const static int PLAYER_LIFESCORE;
+	const static int PLAYER_CONTINUE;
 
 	//ball関連
 	const static int BALL_RADIUS;

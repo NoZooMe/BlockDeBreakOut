@@ -1,0 +1,27 @@
+{
+  "Image": {
+    "Title": "resources/images/Title.png",
+    "Player": "resources/images/Player.png",
+    "Zero": "resources/images/zero.png",
+    "First": "resources/images/first.png"
+  },
+
+  "Sound": {
+    "BreakBlockSE": "resources/sounds/breakblock.wav",
+    "DamageSE": "resources/sounds/hit.wav",
+    "OpenMenuSE": "resources/sounds/menu.wav",
+    "SelectMenuSE": "resources/sounds/select.wav",
+    "ShotBulletSE": "resources/sounds/shot.wav",
+    "ReflectSE": "resources/sounds/reflect.wav",
+    "BombSE": "resources/sounds/bomb.wav",
+    "EnemyAtackSE": "resources/sounds/enemyAtack.wav",
+    "LifeUpSE": "resources/sounds/lifeup.wav",
+    "PowerUpSE": "resources/sounds/powerup.wav",
+    "ScoreUpSE": "resources/sounds/score.wav",
+    "WideChangeSE": "resources/sounds/widechange.wav",
+    "KilledSE" :  "resources/sounds/killed.wav",
+
+    "Stage1": "resources/sounds/stage1.m4a",
+    "TitleBGM": "resources/sounds/title.m4a"
+  }
+}

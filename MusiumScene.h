@@ -7,6 +7,7 @@
 
 enum class eData {
     None, 
+    Data0,
     Kei, 
     Matsuri, 
     Data1,
@@ -35,6 +36,7 @@ private:
     const static char* Music1;
     const static char* Music2;
 
+    const static char* Data0;
     const static char* Data1;
     const static char* Data2;
     const static char* Data3;

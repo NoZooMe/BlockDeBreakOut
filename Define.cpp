@@ -27,6 +27,7 @@ const float Define::PLAYER_INIY = SCREEN_HEIGHT * 5 / 6;
 const float Define::PLAYER_SCREEN_HEIGHT = SCREEN_HEIGHT * 3 / 5;
 const int Define::PLAYER_BOMBTIME = 3;
 const int Define::PLAYER_LIFESCORE = 1000;
+const int Define::PLAYER_CONTINUE = 2;
 
 //ballŠÖ˜A
 const int Define::BALL_RADIUS = 20;
@@ -45,7 +46,7 @@ const int Define::BLOCK_NUM = BLOCK_ROW * BLOCK_COLUMN;
 //bulletŠÖ˜A
 const int Define::BULLET_SIZE_SMALL = 8;
 const int Define::BULLET_SIZE_MIDIUM = 20;
-const int Define::BULLET_SIZE_BIG = BALL_RADIUS * 3;
+const int Define::BULLET_SIZE_BIG = 50;
 
 //itemŠÖ˜A
 const Vector2<float> Define::ITEM_SPEED = Vector2<float>(0, 5);

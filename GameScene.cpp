@@ -42,7 +42,6 @@ void GameScene::Finalize() {
 void GameScene::Update() {
 
 	if (_isClear) {
-		_currentScene->Finalize();
 		Parameter param;
 		_implSceneChangedListener->onSceneChanged(eScene::Title, param, true);
 	}

@@ -25,7 +25,6 @@ void SoundManager::releaseAll() {
 void SoundManager::play(const std::string& tag, bool loop) {
 	auto it = _soundHandles.find(tag);
 	if (it != _soundHandles.end()) {
-		ChangeVolumeSoundMem(150, it->second);
 		PlaySoundMem(it->second, loop ? DX_PLAYTYPE_LOOP : DX_PLAYTYPE_BACK, TRUE);
 	}
 }
@@ -34,5 +33,11 @@ void SoundManager::stop(const std::string& tag) {
 	auto it = _soundHandles.find(tag);
 	if (it != _soundHandles.end()) {
 		StopSoundMem(it->second);
+	}
+}
+
+void SoundManager::set(const int volume) {
+	for (auto& [tag, handle] : _soundHandles) {
+		ChangeVolumeSoundMem(volume, handle);
 	}
 }

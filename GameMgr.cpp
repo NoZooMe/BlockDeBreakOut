@@ -12,6 +12,7 @@
 #include "SoundManager.h"
 #include "ResourceID.h"
 #include "eItemName.h"
+#include "GlobalStatusManager.h"
 #include <DxLib.h>
 #include <optional>
 #include <random>
@@ -24,12 +25,7 @@ GameMgr::GameMgr(IGameLifeCycleHandler* impl){
 	_itemCntMax = 0;
 	_isBombActive = false;
 	_bombCoolCnt = 0;
-	_dx = _dy = 0;
-	_shakeScreenBuffer = MakeScreen(Define::SCREEN_WIDTH, Define::SCREEN_HEIGHT, TRUE);
-	_isShake = false;
-	_shakeTime = 0;
-	_shakePower = 0;
-	_shakeCnt = 0;
+	_continueCredit = Define::PLAYER_CONTINUE;
 }
 
 void GameMgr::Initialize() {
@@ -56,19 +52,22 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr,
 			bulletMgr.Update();
 			blockMgr.Update();
 			itemMgr.Update();
+
+
 		}
 
 		if (ball.CheckFlag(static_cast<int>(Ball::fBall::_move))) {
 			ball.Update();
+			//スペースボタンを押された時、ボールはplayerの方に戻る
+			if (Keyboard::getIns()->getPressingCount(KEY_INPUT_SPACE) == 1) {
+				ball.WaveFlag(static_cast<int>(Ball::fBall::_move), false);
+			}
 		}
 		else {//ballがplayerに追従するとき
 			ball.Update(player.GetterPosX(), player.GetterPosY() - (ball.GetterR()+Define::PLAYER_HEIGHT/2.0f));
 		}
 
-		//Xボタンを押された時、ボールはplayerの方向に戻る
-		if (Keyboard::getIns()->getPressingCount(KEY_INPUT_X) == 1) {
-			ball.WaveFlag(static_cast<int>(Ball::fBall::_move), false);
-		}
+		
 
 		//ボールが下に落ちた時
 		if (ball.CheckFlag(static_cast<int>(Ball::fBall::_out))) {
@@ -81,7 +80,7 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr,
 			if (!_isBombActive) {
 				_isBombActive = true;
 				player.CallDecBomb();
-				ShakeScreen(40, 20);
+				SoundManager::getIns()->play(toString(ResourceID::BombSE));
 				
 				for (int i = 0; i < bulletMgr.GetBulletNum(); ++i) {
 					Vector2<float> temp = bulletMgr.GetBullet(i)->GetterPosition();
@@ -99,35 +98,29 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr,
 				_isBombActive = false;
 			}
 		}
-
-		//ScreenShake
-		if (_isShake) {
-			_shakeCnt++;
-
-			_dx = (rand() % _shakePower * 2) - _shakePower;
-			_dy = (rand() % _shakePower * 2) - _shakePower;
-
-			if (_shakeCnt >= _shakeTime) {
-				_shakeCnt = 0;
-				_isShake = false;
-				_dx = _dy = 0;
-			}
-		}
 	}
 	else if(player.Getter_PlayerLife() <= 0){//残機が無くなったら
 		player.SetPlayerFlag_Death(true);
-		DrawString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2, "Game Over", Define::WHITE);
-		DrawString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2 + 15, "Continue is Space", Define::WHITE);
+		bulletMgr.Update();
 
-		//スペースが押されたらコンティニュー
+		//スペースが押されたらコンティニュー回数によって分岐
 		if (Keyboard::getIns()->getPressingCount(KEY_INPUT_SPACE) == 1) {
-			//playerの終了と初期化処理
-			_implLifeCycle->RequestContinue();
+			if (player.Getter_PlayerContinue() > 0) {
+				_implLifeCycle->RequestContinue();
+			}
+			else {
+				_implLifeCycle->RequestGameOver();
+			}
 		}
 	}
 	else if (blockMgr.Getter_LiveNum() <= 0) {//blockを全て消せたら
-		DrawString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2, "Game Clear!", Define::WHITE);
-		DrawString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2 + 15, "Restart is Spece", Define::WHITE);
+
+		//ハイスコア更新処理
+		if (player.Getter_PlayerScore() >= GlobalStatusManager::getIns()->GetHighScore()) {
+			GlobalStatusManager::getIns()->SetHighScore(player.Getter_PlayerScore());
+		}
+
+		bulletMgr.DeleteAllBullet();
 
 		_implLifeCycle->RequestClear();
 
@@ -135,20 +128,13 @@ void GameMgr::Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr,
 }
 
 void GameMgr::Draw(const BlockMgr& blockMgr, const BulletMgr& bulletMgr, const ItemMgr& itemMgr, const Player& player, const Ball& ball) const {
-	if (!player.CheckFlag((int)Player::fPlayer::_death)) {
-
-		SetDrawScreen(_shakeScreenBuffer);
-		ClearDrawScreen();
-
-		player.Draw();
-		ball.Draw();
-		blockMgr.Draw();
-		bulletMgr.Draw();
-		itemMgr.Draw();
-
-		SetDrawScreen(DX_SCREEN_BACK);
-		DrawGraph(_dx, _dy, _shakeScreenBuffer, TRUE);
-	}
+	
+	
+	player.Draw();
+	ball.Draw();
+	blockMgr.Draw();
+	bulletMgr.Draw();
+	itemMgr.Draw();
 }
 
 void GameMgr::CollisionProcess(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr, Player& player, Ball& ball, const std::vector<CollisionEvent>& evCol) {
@@ -229,10 +215,4 @@ bool GameMgr::ItemGenerate(ItemMgr& itemMgr, BlockMgr& blockMgr, int blockIndex)
 	}
 	return false;
 
-}
-
-void GameMgr::ShakeScreen(int power, int duration) {
-	_shakePower = power;
-	_shakeTime = duration;
-	_isShake = true;
 }

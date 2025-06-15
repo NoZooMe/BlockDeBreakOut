@@ -9,6 +9,7 @@ void Gui::Initialize() {
 	_isPhase1 = true;
 	_isPhase2 = false;
 	_isPhase3 = false;
+	_liveNum = Define::BLOCK_NUM;
 }
 
 void Gui::Finalize() {
@@ -18,14 +19,14 @@ void Gui::Finalize() {
 void Gui::Update(const PlayerStatus& status, const int liveBlockNum) {
 	_drawnStatus = status;
 
-	int liveNum = liveBlockNum;
+	_liveNum = liveBlockNum;
 
-	if (liveNum <= Define::SPELL_BLOCK_NUM && liveNum > 0) {
+	if (_liveNum <= Define::SPELL_BLOCK_NUM && _liveNum > 0) {
 		_isPhase1 = false;
 		_isPhase2 = true;
 		_isPhase3 = false;
 	}
-	else if (liveNum <= 0) {
+	else if (_liveNum <= 0) {
 		_isPhase1 = false;
 		_isPhase2 = false;
 		_isPhase3 = true;
@@ -35,8 +36,6 @@ void Gui::Update(const PlayerStatus& status, const int liveBlockNum) {
 		_isPhase2 = false;
 		_isPhase3 = false;
 	}
-
-
 }
 
 void Gui::Draw() const {
@@ -52,7 +51,7 @@ void Gui::Draw() const {
 		DrawString(Define::SCREEN_WIDTH+5, Define::ENEMY_DIALOGUE_Y, "さくっと倒させてもらいますよ。", Define::WHITE);
 	}
 	if (_isPhase2) {
-		DrawString(Define::SCREEN_WIDTH+5, Define::ENEMY_DIALOGUE_Y, "まずいですね……。\n空間を歪めるしかないか……！", Define::WHITE);
+		DrawString(Define::SCREEN_WIDTH+5, Define::ENEMY_DIALOGUE_Y, "まずいですね……。\n少々手荒になるが魔法を使うか……。", Define::WHITE);
 	}
 	if (_isPhase3) {
 		DrawString(Define::SCREEN_WIDTH+5, Define::ENEMY_DIALOGUE_Y, "まさかっ！　逃げられるなんて！？", Define::WHITE);
@@ -73,4 +72,23 @@ void Gui::Draw() const {
 	DrawFormatString(Define::UI_X, Define::PLAYER_SCORE_Y + 20, Define::WHITE, "%d", _drawnStatus._score);
 	DrawString(Define::UI_X, Define::PLAYER_SCORE_Y + 40, "HighScore", Define::WHITE);
 	DrawFormatString(Define::UI_X, Define::PLAYER_SCORE_Y + 60, Define::WHITE, "%d", _drawnStatus._highScore);
+
+	//ゲームオーバー
+	if (_drawnStatus._life <= 0) {
+		DrawString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2, "Game Over", Define::WHITE);
+		if (_drawnStatus._continue > 0) {
+			DrawFormatString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2 + 15, Define::WHITE, "Continue is Space. Credit:%d", _drawnStatus._continue);
+		}
+		else {
+			DrawString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2 + 15, "Press Space to Return Title", Define::WHITE);
+		}
+	}
+
+	//ゲームクリア
+	if (_liveNum == 0) {
+		DrawString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2, "Game Clear!", Define::WHITE);
+		DrawFormatString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2 + 15, Define::WHITE, "Your final socre is %d", _drawnStatus._score);
+		DrawString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2 + 30, " Press Spece", Define::WHITE);
+	}
+
 }

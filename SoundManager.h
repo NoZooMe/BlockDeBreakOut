@@ -13,6 +13,7 @@ public:
 
     void play(const std::string& tag, bool loop = false);
     void stop(const std::string& tag);
+    void set(const int volume);
 
 private:
     std::unordered_map<std::string, int> _soundHandles;

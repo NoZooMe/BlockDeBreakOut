@@ -14,6 +14,13 @@ const std::string& toString(ResourceID id) {
 		{ResourceID::SelectMenuSE, "SelectMenuSE"}, 
 		{ResourceID::ShotBulletSE, "ShotBulletSE"}, 
 		{ResourceID::ReflectSE, "ReflectSE"},
+		{ResourceID::BombSE, "BombSE"},
+		{ResourceID::EnemyAtackSE, "EnemyAtackSE"},
+		{ResourceID::PowerUpSE, "PowerUpSE"},
+		{ResourceID::LifeUpSE, "LifeUpSE"}, 
+		{ResourceID::ScoreUpSE, "ScoreUpSE"},
+		{ResourceID::WideChangeSE, "WideChangeSE"},
+		{ResourceID::KilledSE, "KilledSE"},
 
 		{ResourceID::TitleBGM, "TitleBGM"},
 		{ResourceID::Stage1, "Stage1"}

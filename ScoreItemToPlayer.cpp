@@ -23,7 +23,7 @@ void ScoreItemToPlayer::Update() {
 
 void ScoreItemToPlayer::SetVelocity(const Vector2<float>& PlayerPosition) {
 	if ((PlayerPosition - _position).Abs() > 0.1f) {
-		_toVelocity = (PlayerPosition - _position).Norm().Mult(50);
+		_toVelocity = (PlayerPosition - _position).Norm().Mult(20);
 	}
 	else {
 		_toVelocity = Vector2<float>(0, 0);

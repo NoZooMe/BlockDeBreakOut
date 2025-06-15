@@ -1,0 +1,58 @@
+[
+  {
+    "speaker": "ケイ",
+    "text": "……捕まってしまった。どうにかしてここから脱出しなければ。",
+    "leftImage": "resources/images/zero.png"
+  },
+  {
+    "speaker": "ケイ",
+    "text": "んー、やはり壁を破壊するしかないだろうか。これくらいなら魔法を使えば破壊できるだろうが……。",
+    "leftImage": "resources/images/zero.png"
+  },
+  {
+    "speaker": "ケイ",
+    "text": "しかし壁を壊すとなると相当時間もかかる。見張りが来ない内に片を付けたいが……。",
+    "leftImage": "resources/images/zero.png"
+  },
+  {
+    "speaker": "ケイ",
+    "text": "げ。",
+    "leftImage": "resources/images/zero.png"
+  },
+  {
+    "speaker": "マツリ",
+    "text": "その見張りっていうのは私のような人のことでしょうか。",
+    "leftImage": "resources/images/zero.png",
+    "rightImage": "resources/images/first.png"
+  },
+  {
+    "speaker": "ケイ",
+    "text": "いやはやそんな……。別に何をしようとかそういう訳じゃないんだが……。\n君、もしかしてネイティブかい？",
+    "leftImage": "resources/images/zero.png",
+    "rightImage": "resources/images/first.png"
+  },
+  {
+    "speaker": "マツリ",
+    "text": "ええ、ネイティブですが。",
+    "leftImage": "resources/images/zero.png",
+    "rightImage": "resources/images/first.png"
+  },
+  {
+    "speaker": "ケイ",
+    "text": "そうか……。それは困ったなぁ……。\nちなみにここは見逃してくれたり……。",
+    "leftImage": "resources/images/zero.png",
+    "rightImage": "resources/images/first.png"
+  },
+  {
+    "speaker": "マツリ",
+    "text": "残念ながら、それは出来ないですね。貴方みたいな大悪党を逃せば私の首が危ないですから。",
+    "leftImage": "resources/images/zero.png",
+    "rightImage": "resources/images/first.png"
+  },
+  {
+    "speaker": "ケイ",
+    "text": "大悪党……。ふむ。どうやら逃してくれはしなさそうだ。\nしょうがない。ここは力ずくで行かせてもらうか！",
+    "leftImage": "resources/images/zero.png",
+    "rightImage": "resources/images/first.png"
+  }
+]

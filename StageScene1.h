@@ -14,5 +14,7 @@ private:
     void UpdateStageScript(int cnt) override;
     void ChangeCurrentScript(int BlockNum) override;
     ResourceID GetStageBGM() const override;
+    bool _spell1Flag;
+    int _spell1Cnt;
 };
 

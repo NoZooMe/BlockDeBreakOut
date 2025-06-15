@@ -3,11 +3,14 @@
 #include "Define.h"
 #include "ImageManager.h"
 #include "ResourceID.h"
+#include "SoundManager.h"
 #include "Keyboard.h"
 #include "ComplexTransform.h"
+#include "GlobalStatusManager.h"
 
 Player::Player(float iniX, float iniY) : RectangleObject(iniX, iniY, Define::PLAYER_WIDTH, Define::PLAYER_HEIGHT), dirH(0), dirV(0),  _mutekiCnt(0) ,_t(0.0f), _dt(1.0f/60.0f), 
 	_lastScore(0), _animationCnt(0), _speed(Define::PLAYER_SPEED){
+	_status._highScore = GlobalStatusManager::getIns()->GetHighScore();
 }
 
 void Player::Initialize() {
@@ -25,6 +28,18 @@ void Player::Update() {
 		else {
 			Set_VelocityODE(_t, _dt);
 			//Set_VelocityLorenzA(_t, _dt);
+			
+			//残像を残す
+			_afterImages.push_back({ _position, _angle, 255 });
+
+			//透明に
+			for (auto& img : _afterImages) {
+				img.alpha -= 10;
+			}
+			//完全に消えたら削除
+			while (!_afterImages.empty() && _afterImages.front().alpha <= 0) {
+				_afterImages.pop_front();
+			}
 		}
 		
 		RectangleObject::Update();
@@ -84,12 +99,17 @@ void Player::Update() {
 		ComplexTransform::mode = SpaceTransformMode::Zeta;
 	}*/
 
-	//Scoreが1000を上回ったらライフ加算
-	if ((_lastScore % 1000 != 0)&& (_status._score % 1000 == 0)) {
-		_status._life++;
+	//Scoreが1000毎にライフ加算
+	int lastRes = _lastScore % Define::PLAYER_LIFESCORE;
+	int scoreRes = _status._score % Define::PLAYER_LIFESCORE;
+	if (lastRes > scoreRes) {
+		CallIncLife();
 	}
 
 	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_LSHIFT) >= 1) {
+		if (Keyboard::getIns()->getPressingCount(KEY_INPUT_LSHIFT) == 1) {
+			SoundManager::getIns()->play(toString(ResourceID::WideChangeSE));
+		}
 		if (_width > Define::PLAYER_WIDTH / 2) {
 			_width *= 0.9;
 		}
@@ -98,6 +118,9 @@ void Player::Update() {
 		}
 	}
 	else {
+		if (Keyboard::getIns()->getReleasingCount(KEY_INPUT_LSHIFT) == 1) {
+			SoundManager::getIns()->play(toString(ResourceID::WideChangeSE));
+		}
 		if (_width < Define::PLAYER_WIDTH) {
 			_animationCnt++;
 			//30フレームでπ/2に
@@ -124,6 +147,7 @@ void Player::Update() {
 		_status._highScore = _status._score;
 	}
 
+
 	_t++;
 }
 
@@ -134,6 +158,9 @@ void Player::Draw() const {
 		Player::DrawExtendGraph();
 		RectangleObject::Draw();
 	}
+
+	//DrawFormatString(200, 200, Define::WHITE, "%d", _afterImages.size());
+
 	//DrawFormatString(200, 200, Define::WHITE, "%d", _width);
 	//位置表示
 	//DrawFormatString(10, 50, GetColor(255, 255, 255), "pos=(%.1f, %.1f)", _position.GetterX(), _position.GetterY());
@@ -280,6 +307,7 @@ void Player::CallDecLife() {
 }
 
 void Player::CallIncLife() {
+	SoundManager::getIns()->play(toString(ResourceID::LifeUpSE));
 	_status._life++;
 }
 
@@ -289,6 +317,10 @@ void Player::CallDecBomb() {
 
 void Player::CallIncBomb() {
 	_status._bomb++;
+}
+
+void Player::Setter_PlayerContinue(int credit) {
+	_status._continue = credit;
 }
 
 Vector2<float> Player::GetterPosition() const {
@@ -336,6 +368,17 @@ void Player::DrawExtendGraph() const {
 	int x = static_cast<int>(_position.GetterX());
 	int y = static_cast<int>(_position.GetterY());
 
+
+	for (const auto& img : _afterImages) {
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, img.alpha);
+		DrawRotaGraph3(img.position.GetterX(), img.position.GetterY(), Define::PLAYER_WIDTH / 2, _height / 2, extendRate, 1.0, _angle,
+			ImageManager::getIns()->getImage(toString(ResourceID::Player)), false);
+	}
+
+	//本体を描画
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
 	DrawRotaGraph3(x, y, Define::PLAYER_WIDTH/2, _height/2, extendRate, 1.0, _angle,
 		ImageManager::getIns()->getImage(toString(ResourceID::Player)), false);
+
 }

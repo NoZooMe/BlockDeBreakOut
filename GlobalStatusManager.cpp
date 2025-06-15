@@ -29,6 +29,14 @@ bool GlobalStatusManager::GetGlobalFlag(eGlobalStatusFlag flag) const {
 	}
 }
 
+int GlobalStatusManager::GetBgmVolume() const {
+	return _globalStatus._bgmVolume;
+}
+
+int GlobalStatusManager::GetSeVolume() const {
+	return _globalStatus._seVolume;
+}
+
 GlobalStatus GlobalStatusManager::GetGlobalStatus() const {
 	return _globalStatus;
 }
@@ -54,6 +62,14 @@ void GlobalStatusManager::SetGlobalFlag(eGlobalStatusFlag flag, bool value) {
 	default:
 		ERR("‘¶İ‚µ‚È‚¢ƒtƒ‰ƒO‚É‘‚«‚à‚¤‚Æ‚µ‚Ä‚¢‚Ü‚·B");
 	}
+}
+
+void GlobalStatusManager::SetBgmVolume(const int volume) {
+	_globalStatus._bgmVolume = volume;
+}
+
+void GlobalStatusManager::SetSeVolume(const int volume) {
+	_globalStatus._seVolume = volume;
 }
 
 void GlobalStatusManager::SetGlobalStatus(const GlobalStatus& saveData) {

@@ -1,6 +1,8 @@
 #pragma once
 #include "RectangleObject.h"
 #include "PlayerStatus.h"
+#include "AfterImage.h"
+#include <deque>
 
 class Player :
     public RectangleObject
@@ -39,6 +41,9 @@ public:
     //Score
     void AddScore(int amount) { _status._score += amount; };
     int Getter_PlayerScore() const { return _status._score; };
+    //Continue
+    void Setter_PlayerContinue(int credit);
+    int Getter_PlayerContinue() const { return _status._continue; }
 
     //外部呼出し用のflagセット関数
     void SetPlayerFlag_OutVertical(bool value);
@@ -88,5 +93,9 @@ private:
     void DrawExtendGraph() const;
 
     int _animationCnt;
+
+    //dequeは両端キュー
+    std::deque<AfterImage> _afterImages;
+
 };
 

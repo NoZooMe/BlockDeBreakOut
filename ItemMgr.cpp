@@ -7,7 +7,7 @@
 #include "eItemName.h"
 #include <algorithm>
 
-ItemMgr::ItemMgr() : _playerPosition(0, 0) {
+ItemMgr::ItemMgr() : _playerPosition(0, 0) , _cnt(0){
 
 }
 
@@ -31,11 +31,10 @@ void ItemMgr::Update() {
 	}
 	CheckOut();
 
-	//高インデックスから削除。
-	std::sort(_eraseQueue.begin(), _eraseQueue.end(), std::greater<int>());
-	for (int idx : _eraseQueue) {
-		if (idx >= 0 && idx < _itemArray.size()) {
-			_itemArray.erase(_itemArray.begin() + idx);
+	for (const auto& target : _eraseQueue) {
+		auto it = std::find(_itemArray.begin(), _itemArray.end(), target);
+		if (it != _itemArray.end()) {
+			_itemArray.erase(it);
 		}
 	}
 	_eraseQueue.clear();
@@ -45,6 +44,7 @@ void ItemMgr::Draw() const {
 	for (auto item : _itemArray) {
 		item->Draw();
 	}
+	//DrawFormatString(200, 200, Define::WHITE, "%d", _cnt);
 }
 
 void ItemMgr::Generate(const eItemName& name, float x, float y) {
@@ -78,16 +78,18 @@ AbstractItem* ItemMgr::GetterItem(int num) {
 void ItemMgr::CallEffect(int num, ItemContext& ctx) {
 	if (num >= 0 && num < _itemArray.size()) {
 		_itemArray[num]->Effect(ctx);
-		_eraseQueue.push_back(num);
+		//ポインタを直接追加する。
+		_eraseQueue.push_back(_itemArray[num]);
 	}
 }
 
 void ItemMgr::CheckOut() {
 	for (auto it = _itemArray.begin(); it != _itemArray.end();) {
-		if (it->get()->GetterPosition().GetterX() + Define::PLAYER_WIDTH / 2 < 0 || it->get()->GetterPosition().GetterX() - it->get()->GetterWidth() / 2 > Define::SCREEN_WIDTH
+		if (it->get()->GetterPosition().GetterX() + it->get()->GetterWidth() / 2 < 0 || it->get()->GetterPosition().GetterX() - it->get()->GetterWidth() / 2 > Define::SCREEN_WIDTH
 			|| it->get()->GetterPosition().GetterY() - it->get()->GetterHeight() / 2 > Define::SCREEN_HEIGHT) {
 			//消去するならイテレーターが便利。
 			it = _itemArray.erase(it);		//erase(it)は次のイテレーターを返すのでここでは加算しない。
+			_cnt++;
 		}
 		else {
 			++it;

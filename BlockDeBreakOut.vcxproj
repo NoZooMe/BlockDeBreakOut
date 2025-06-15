@@ -178,6 +178,7 @@
     <ClCompile Include="Define.cpp" />
     <ClCompile Include="DialogueScene1.cpp" />
     <ClCompile Include="DialogueScriptLoader.cpp" />
+    <ClCompile Include="EffectPipeline.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="ExprEval.cpp" />
     <ClCompile Include="Fps.cpp" />
@@ -186,6 +187,7 @@
     <ClCompile Include="GlobalStatusManager.cpp" />
     <ClCompile Include="GravityBehavior.cpp" />
     <ClCompile Include="Gui.cpp" />
+    <ClCompile Include="IEffect.cpp" />
     <ClCompile Include="ImageManager.cpp" />
     <ClCompile Include="include\tinyexpr-master\tinyexpr.c" />
     <ClCompile Include="ItemMgr.cpp" />
@@ -200,8 +202,10 @@
     <ClCompile Include="RectangleObject.cpp" />
     <ClCompile Include="ResourceID.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
+    <ClCompile Include="SavedataUtils.cpp" />
     <ClCompile Include="ScoreItem.cpp" />
     <ClCompile Include="ScoreItemToPlayer.cpp" />
+    <ClCompile Include="ShakeEffect.cpp" />
     <ClCompile Include="SinBehavior.cpp" />
     <ClCompile Include="SpiralBehavior.cpp" />
     <ClCompile Include="OmniSpiralCommand.cpp" />
@@ -217,12 +221,15 @@
     <ClCompile Include="Task.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="WaveEffect.cpp" />
     <ClCompile Include="WeierstrassBehavior.cpp" />
+    <ClCompile Include="WhiteFlashEffect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractDialogueScene.h" />
     <ClInclude Include="AbstractItem.h" />
     <ClInclude Include="AbstractStageScene.h" />
+    <ClInclude Include="AfterImage.h" />
     <ClInclude Include="BombItem.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="AbstractScene.h" />
@@ -243,6 +250,7 @@
     <ClInclude Include="DialogueScriptLoader.h" />
     <ClInclude Include="eBulletSize.h" />
     <ClInclude Include="eCollisionEvent.h" />
+    <ClInclude Include="EffectPipeline.h" />
     <ClInclude Include="eGlobalStatusFlag.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="eScene.h" />
@@ -250,6 +258,7 @@
     <ClInclude Include="Fps.h" />
     <ClInclude Include="GlobalStatusManager.h" />
     <ClInclude Include="GlobalStatus.h" />
+    <ClInclude Include="IEffect.h" />
     <ClInclude Include="ItemContext.h" />
     <ClInclude Include="GameMgr.h" />
     <ClInclude Include="GameScene.h" />
@@ -278,8 +287,10 @@
     <ClInclude Include="RectangleObject.h" />
     <ClInclude Include="ResourceID.h" />
     <ClInclude Include="ResourceLoader.h" />
+    <ClInclude Include="SavedataUtils.h" />
     <ClInclude Include="ScoreItem.h" />
     <ClInclude Include="ScoreItemToPlayer.h" />
+    <ClInclude Include="ShakeEffect.h" />
     <ClInclude Include="SinBehavior.h" />
     <ClInclude Include="SpiralBehavior.h" />
     <ClInclude Include="OmniSpiralCommand.h" />
@@ -296,18 +307,20 @@
     <ClInclude Include="Task.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Vector2.h" />
+    <ClInclude Include="WaveEffect.h" />
     <ClInclude Include="WeierstrassBehavior.h" />
+    <ClInclude Include="WhiteFlashEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="memo.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Dialogue1Script.json" />
-    <None Include="resources.json" />
-    <None Include="Stage1Command.json" />
-    <None Include="Stage1Script.json" />
-    <None Include="Stage1SpellCommand.json" />
-    <None Include="Stage1SpellScript.json" />
+    <None Include="resources\Dialogue1Script.json" />
+    <None Include="resources\resources.json" />
+    <None Include="resources\Stage1Command.json" />
+    <None Include="resources\Stage1Script.json" />
+    <None Include="resources\Stage1SpellCommand.json" />
+    <None Include="resources\Stage1SpellScript.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

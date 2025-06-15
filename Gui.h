@@ -16,5 +16,6 @@ private:
     bool _isPhase1;
     bool _isPhase2;
     bool _isPhase3;
+    int _liveNum;
 };
 

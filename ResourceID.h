@@ -14,6 +14,14 @@ enum class ResourceID
 	SelectMenuSE, 
 	ShotBulletSE, 
 	ReflectSE,
+	BombSE,
+	EnemyAtackSE,
+	LifeUpSE,
+	PowerUpSE,
+	ScoreUpSE,
+	WideChangeSE,
+	KilledSE,
+
 
 	TitleBGM,
 	Stage1, 

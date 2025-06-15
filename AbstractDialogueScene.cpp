@@ -22,7 +22,7 @@ void AbstractDialogueScene::Finalize() {
 void AbstractDialogueScene::Update() {
 	if (_finished) CallSceneChange();
 
-	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_Z) == 1) {
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_RETURN) == 1) {
 		_currentIndex++;
 		if (_currentIndex >= _dialogues.size()) {
 			_finished = true;
@@ -40,7 +40,7 @@ void AbstractDialogueScene::Update() {
 void AbstractDialogueScene::Draw() const {
 	if (_finished) return;
 
-	DrawGraph(50, Define::SCREEN_HEIGHT - 800, _leftImageHandle, true);
+	DrawGraph(20, Define::SCREEN_HEIGHT - 800, _leftImageHandle, true);
 	DrawGraph(Define::SCREEN_WIDTH - 566/2 - 50, Define::SCREEN_HEIGHT - 800, _rightImageHandle, true);
 
 	// ウィンドウ風の背景

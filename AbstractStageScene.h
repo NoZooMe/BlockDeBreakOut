@@ -9,6 +9,7 @@
 #include "IGameLifecycleHandler.h"
 #include "StageScriptBase.h"
 #include "Gui.h"
+#include "EffectPipeline.h"
 
 enum class ResourceID;
 
@@ -29,6 +30,7 @@ public:
     void RequestContinue() override;
     void RequestDamage() override;
     void RequestClear() override;
+    void RequestGameOver() override;
 
 protected:
     virtual void InitStageScript() = 0;
@@ -44,9 +46,17 @@ protected:
     std::shared_ptr<Player> _player;
     std::shared_ptr<Ball> _ball;
     std::shared_ptr<Gui> _gui;
+    std::shared_ptr<EffectPipeline> _effectPipeline;
 
     int _cnt;
     int _currentScriptIndex;
+    int _beginCnt;
+    int _clearCnt;
+    int _damageCnt;
+    bool _isClear;
+    bool _isGameOver;
+    bool _isDamage;
+
 
     //スクリプトを持つのはそのステージだけなのでunique
     std::vector<std::unique_ptr<StageScriptBase>> _stageScript;

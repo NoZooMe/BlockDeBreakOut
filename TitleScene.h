@@ -1,6 +1,7 @@
 #pragma once
 #include "AbstractScene.h"
 #include "Choices.h"
+#include "EffectPipeline.h"
 #include <string>
 #include <memory>
 
@@ -17,6 +18,7 @@ public:
 
 private:
     std::shared_ptr<Choices> _titleMenu;
+    std::shared_ptr<EffectPipeline> _effectPipeline;
 
     const static char* TitleMenu1;
     const static char* TitleMenu2;
@@ -29,7 +31,12 @@ private:
     int _fadeInTime;
     int _frameCnt;
     bool _isInputEnabled;
+    bool _postEnabled;
 
     bool _isTutorial;
+    bool _isConfig;
+
+    int _volume;
+    int _volumeRate;
 };
 

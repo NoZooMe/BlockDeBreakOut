@@ -7,4 +7,5 @@ public:
 	virtual void RequestContinue() = 0;
 	virtual void RequestDamage() = 0;
 	virtual void RequestClear() = 0;
+	virtual void RequestGameOver() = 0;
 };

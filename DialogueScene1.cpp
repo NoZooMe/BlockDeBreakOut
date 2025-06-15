@@ -7,7 +7,7 @@ DialogueScene1::DialogueScene1(ISceneChangedListener* impl, const Parameter& par
 }
 
 void DialogueScene1::InitDialogueScript() {
-	_dialogues = DialogueScriptLoader::LoadDialogueFromJson("Dialogue1Script.json");
+	_dialogues = DialogueScriptLoader::LoadDialogueFromJson("resources/Dialogue1Script.json");
 }
 
 void DialogueScene1::CallSceneChange() {

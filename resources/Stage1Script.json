@@ -26,7 +26,7 @@
     "endFrame": 110,
     "interval": 800,
     "position": [ "SCREEN_WIDTH/2", "PLAYER_INIY/2" ],
-    "angle": "-PI * 13 / 12",
+    "angle": "0",
     "speed": 10,
     "targetPlayer": true
   },
@@ -77,7 +77,7 @@
     "endFrame": 520,
     "interval": 800,
     "position": [ "SCREEN_WIDTH/2", 0 ],
-    "angle": "-PI * 13 / 12",
+    "angle": "-PI / 12",
     "speed": 15,
     "targetPlayer": true
   },
@@ -88,7 +88,7 @@
     "endFrame": 550,
     "interval": 800,
     "position": [ "SCREEN_WIDTH/2", 0 ],
-    "angle": "-PI * 13 / 12",
+    "angle": "PI / 12",
     "speed": 15,
     "targetPlayer": true
   },
@@ -99,7 +99,7 @@
     "endFrame": 580,
     "interval": 800,
     "position": [ "SCREEN_WIDTH/2", 0 ],
-    "angle": "-PI * 13 / 12",
+    "angle": "-PI / 12",
     "speed": 15,
     "targetPlayer": true
   },
@@ -110,7 +110,7 @@
     "endFrame": 610,
     "interval": 800,
     "position": [ "SCREEN_WIDTH/2", 0 ],
-    "angle": "-PI * 13 / 12",
+    "angle": "PI / 12",
     "speed": 15,
     "targetPlayer": true
   },
@@ -121,7 +121,7 @@
     "endFrame": 640,
     "interval": 800,
     "position": [ "SCREEN_WIDTH/2", 0 ],
-    "angle": "-PI * 13 / 12",
+    "angle": "-PI / 12",
     "speed": 15,
     "targetPlayer": true
   }

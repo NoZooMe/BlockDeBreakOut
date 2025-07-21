@@ -45,9 +45,7 @@ private:
 
     void Check_Out();
 
-    //-1/2‚©‚ç1/2‚ğ“®‚­•Ï”
     float rand;
-    //powerCnt
     int _powerCnt;
 };
 

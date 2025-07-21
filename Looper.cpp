@@ -24,8 +24,8 @@ Looper::Looper() : _exitGame(false)
 
 	ImageManager::getIns()->load(toString(ResourceID::Player), ResourceLoader::getIns()->getImagePath(toString(ResourceID::Player)));
 	ImageManager::getIns()->load(toString(ResourceID::Title), ResourceLoader::getIns()->getImagePath(toString(ResourceID::Title)));
-	ImageManager::getIns()->load(toString(ResourceID::First), ResourceLoader::getIns()->getImagePath(toString(ResourceID::First)));
-	ImageManager::getIns()->load(toString(ResourceID::Zero), ResourceLoader::getIns()->getImagePath(toString(ResourceID::Zero)));
+	ImageManager::getIns()->load(toString(ResourceID::Nagisa1), ResourceLoader::getIns()->getImagePath(toString(ResourceID::Nagisa1)));
+	ImageManager::getIns()->load(toString(ResourceID::Kei1), ResourceLoader::getIns()->getImagePath(toString(ResourceID::Kei1)));
 
 	SoundManager::getIns()->load(toString(ResourceID::BreakBlockSE), ResourceLoader::getIns()->getSoundPath(toString(ResourceID::BreakBlockSE)));
 	SoundManager::getIns()->load(toString(ResourceID::OpenMenuSE), ResourceLoader::getIns()->getSoundPath(toString(ResourceID::OpenMenuSE)));
@@ -46,8 +46,8 @@ Looper::Looper() : _exitGame(false)
 
 	Parameter parameter;
 	//ここ変更することで始まるシーンを変えれる
-	_sceneStack.push(std::make_shared<TitleScene>(this, parameter));
-	//_sceneStack.push(std::make_shared<GameScene>(this, parameter));
+	//_sceneStack.push(std::make_shared<TitleScene>(this, parameter));
+	_sceneStack.push(std::make_shared<GameScene>(this, parameter));
 	
 	_sceneStack.top()->Initialize();
 	

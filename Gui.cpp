@@ -2,6 +2,7 @@
 #include "ImageManager.h"
 #include "ResourceID.h"
 #include "BlockMgr.h"
+#include "Macro.h"
 #include <DxLib.h>
 
 
@@ -41,21 +42,6 @@ void Gui::Update(const PlayerStatus& status, const int liveBlockNum) {
 void Gui::Draw() const {
 	//枠
 	DrawBox(Define::SCREEN_WIDTH, 0, Define::DISPLAY_WIDTH, Define::SCREEN_HEIGHT, Define::BLUE, false);
-	//敵の名前
-	DrawString(Define::UI_X, Define::ENEMY_NAME_Y, "VS マツリ", Define::WHITE);
-	//敵の画像
-	DrawExtendGraph(Define::SCREEN_WIDTH, Define::ENEMY_ILLUST_Y, Define::SCREEN_WIDTH + 283, 430, ImageManager::getIns()->getImage(toString(ResourceID::First)), true);
-
-	//敵のセリフ
-	if (_isPhase1) {
-		DrawString(Define::SCREEN_WIDTH+5, Define::ENEMY_DIALOGUE_Y, "さくっと倒させてもらいますよ。", Define::WHITE);
-	}
-	if (_isPhase2) {
-		DrawString(Define::SCREEN_WIDTH+5, Define::ENEMY_DIALOGUE_Y, "まずいですね……。\n少々手荒になるが魔法を使うか……。", Define::WHITE);
-	}
-	if (_isPhase3) {
-		DrawString(Define::SCREEN_WIDTH+5, Define::ENEMY_DIALOGUE_Y, "まさかっ！　逃げられるなんて！？", Define::WHITE);
-	}
 
 	//プレイヤーのライフ
 	DrawString(Define::UI_X, Define::PLAYER_LIFE_Y, "Life", Define::WHITE);
@@ -90,5 +76,29 @@ void Gui::Draw() const {
 		DrawFormatString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2 + 15, Define::WHITE, "Your final socre is %d", _drawnStatus._score);
 		DrawString(Define::SCREEN_WIDTH / 2, Define::SCREEN_HEIGHT / 2 + 30, " Press Spece", Define::WHITE);
 	}
+
+	switch (_stageNum) {
+	case 1:
+		//敵の名前
+		DrawString(Define::UI_X, Define::ENEMY_NAME_Y, "VS マツリ", Define::WHITE);
+		//敵の画像
+		DrawExtendGraph(Define::SCREEN_WIDTH, Define::ENEMY_ILLUST_Y, Define::SCREEN_WIDTH + 283, 430, ImageManager::getIns()->getImage(toString(ResourceID::Nagisa1)), true);
+
+		//敵のセリフ
+		if (_isPhase1) {
+			DrawString(Define::SCREEN_WIDTH + 5, Define::ENEMY_DIALOGUE_Y, "さくっと倒させてもらいますよ。", Define::WHITE);
+		}
+		if (_isPhase2) {
+			DrawString(Define::SCREEN_WIDTH + 5, Define::ENEMY_DIALOGUE_Y, "まずいですね……。\n少々手荒になるが魔法を使うか……。", Define::WHITE);
+		}
+		if (_isPhase3) {
+			DrawString(Define::SCREEN_WIDTH + 5, Define::ENEMY_DIALOGUE_Y, "まさかっ！　逃げられるなんて！？", Define::WHITE);
+		}
+		break;
+	default:
+		ERR("不明なステージナンバーです");
+	}
+
+	
 
 }

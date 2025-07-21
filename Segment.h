@@ -12,7 +12,6 @@ private:
 
 public:
 	Segment();
-	//Vector2のコンストラクタを呼び出さないといけないのでfloatで引数を取る
 	Segment(float beginX, float beginY, float endX, float endY);
 	Segment(Vector2<float> beginVector, Vector2<float> endVector);
 

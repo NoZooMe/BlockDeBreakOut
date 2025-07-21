@@ -13,7 +13,8 @@ public:
 	static std::vector<BulletCommand::TimedCommand> LoadCommandsFromJSON(const std::string& filename);
 
 private:
-	StageScriptLoader() = delete;	//インスタンス化禁止
+	StageScriptLoader() = delete;
+	~StageScriptLoader() = delete;
 
 };
 

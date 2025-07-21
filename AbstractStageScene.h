@@ -58,7 +58,6 @@ protected:
     bool _isDamage;
 
 
-    //スクリプトを持つのはそのステージだけなのでunique
     std::vector<std::unique_ptr<StageScriptBase>> _stageScript;
     std::vector<CollisionEvent> _colEvArray;
 };

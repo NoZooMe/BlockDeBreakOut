@@ -72,5 +72,6 @@ public:
 
 	//Stage1ŠÖ˜A
 	const static int SPELL_BLOCK_NUM;
+	const static int STAGE1_CNT;
 };
 

@@ -67,3 +67,4 @@ const int Define::PLAYER_SCORE_Y = PLAYER_LIFE_Y + 90;
 
 //Stage1ŠÖ˜A
 const int Define::SPELL_BLOCK_NUM = BLOCK_NUM / 2;
+const int Define::STAGE1_CNT = 1000;

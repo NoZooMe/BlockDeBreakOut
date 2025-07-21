@@ -1,12 +1,11 @@
 #pragma once
 #include "ShapeObject.h"
 
-//抽象クラス
+//円形オブジェクトの抽象クラス
 class CircleObject :
     public ShapeObject
 {
 protected:
-    //半径が円を特徴づける
     int _r;
 public:
     CircleObject(float x, float y, int r);

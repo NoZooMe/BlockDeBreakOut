@@ -213,7 +213,7 @@
     <ClCompile Include="Segment.cpp" />
     <ClCompile Include="ShapeObject.cpp" />
     <ClCompile Include="SoundManager.cpp" />
-    <ClCompile Include="Stage1Script.cpp" />
+    <ClCompile Include="StageScript.cpp" />
     <ClCompile Include="StageScene1.cpp" />
     <ClCompile Include="StraightBehavior.cpp" />
     <ClCompile Include="SystemMain.cpp" />
@@ -299,7 +299,7 @@
     <ClInclude Include="ShapeObject.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SoundManager.h" />
-    <ClInclude Include="Stage1Script.h" />
+    <ClInclude Include="StageScript.h" />
     <ClInclude Include="StageScene1.h" />
     <ClInclude Include="StageScriptBase.h" />
     <ClInclude Include="StraightBehavior.h" />

@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <string>
 
+//複素関数を操作するためのクラス
 enum class SpaceTransformMode {
 	Identity, 
 	Inverse, 
@@ -26,7 +27,6 @@ public:
 	static int HSVtoRGB(float h, float s, float v);
 	~ComplexTransform() = delete;
 private:
-	//状態を持つ必要が無いなら静的なメンバで。
 	static const std::unordered_map<SpaceTransformMode, std::string> _modeToStr;
 	static std::complex<float> Gamma(std::complex<float> z);
 	static std::complex<float> Zeta_Dirichlet(std::complex<float> s, int terms);

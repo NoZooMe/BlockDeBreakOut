@@ -14,5 +14,4 @@ public:
 		static _T inst;
 		return &inst;
 	};
-
 };

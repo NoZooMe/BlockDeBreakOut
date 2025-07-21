@@ -3,7 +3,7 @@
 #include "Segment.h"
 #include <vector>
 
-//抽象クラス
+//矩形オブジェクトの抽象クラス
 class RectangleObject :
     public ShapeObject
 {
@@ -29,7 +29,6 @@ public:
     Segment vertSide1, vertSide2, horiSide1, horiSide2;
 
 protected:
-    //この二つのパラメータが長方形を特徴づける
     int _width, _height;
     //各頂点
     Vector2<float> vertex[4];

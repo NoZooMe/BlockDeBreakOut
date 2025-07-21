@@ -3,8 +3,7 @@
 
 #include "Vector2.h"
 
-//抽象オブジェクトクラス
-//当たり判定のためにここから図形クラスを分ける.関数はMove関数のみ実装
+//形のあるものの抽象オブジェクトクラス
 class ShapeObject :
     protected Task
 {
@@ -38,15 +37,14 @@ public:
     void SetterVelocity(Vector2<float> temp) {
         _velocity.Setter(temp.GetterX(), temp.GetterY());
     }
-    //flagのenumを渡すことでそのフラグが立っているかをboolで返す.外部呼出し可.
+    //flagのenumを渡すことでそのフラグが立っているかをboolで返す.
     bool CheckFlag(const int tFlag) const;
-    //flagを立てる。外部呼出し可。
+    //flagを立てる.
     void SetOnFlag(int tFlag);
 
-    //tFlagのTFをvalueにする
     void WaveFlag(int tFlag, bool value);
 protected:
-    //現在地.ベクトルとして実装. RectangleObjectは左上がposition座標
+    //現在地.ベクトルとして実装. 
     Vector2<float> _position;
     //速度ベクトル
     Vector2<float> _velocity;
@@ -54,13 +52,12 @@ protected:
     Vector2<float> _acceleration;
 
 
-    //角度.Velocityに三角関数を用いて入れたりする.
+    //角度.
     float _angle = 0;
 
     //基本的なMove関数.現在地に速度ベクトルを足す
     void Move();
 
-    //4byteまでのflag
     int _flag;
 
     int _color;

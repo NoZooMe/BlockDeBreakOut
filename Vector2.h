@@ -10,7 +10,6 @@ public:
 	Vector2(T x, T y);
 	Vector2(const Vector2<T>& other);
 
-	//基本的にユーザー定義型の引数は参照渡し
 
 	//足し算, 引き算
 	Vector2 operator+(const Vector2& vector) const;

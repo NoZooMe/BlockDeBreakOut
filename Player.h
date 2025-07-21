@@ -14,7 +14,7 @@ public:
     void Update() override;
     void Draw() const override;
 
-    //具体的なフラグの構造体
+    //フラグの構造体
     enum fPlayer {
         _outVertical,
         _outHorizontal,
@@ -74,7 +74,7 @@ private:
     void Check_Direciton();
     //方向に合わせてVelocityをセット
     void Set_Velocity();
-    //画面外にいるかをチェック.いれば修正.
+    //画面外にいるかをチェック.
     void Check_Out();
     //自分を回転させる
     void RotateLeft();
@@ -94,7 +94,7 @@ private:
 
     int _animationCnt;
 
-    //dequeは両端キュー
+    //残像用キュー
     std::deque<AfterImage> _afterImages;
 
 };

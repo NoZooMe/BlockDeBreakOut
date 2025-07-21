@@ -19,7 +19,6 @@ public:
 private:
 	Fps _fps;
 	std::stack<std::shared_ptr<AbstractScene>> _sceneStack;
-	//Singletonはスマートポインタじゃなくていい……のかな？ 勝手にデストラクタしてくれる？
 	Keyboard* _keyboard;
 	bool _exitGame;
 };

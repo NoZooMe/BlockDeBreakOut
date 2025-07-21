@@ -2,8 +2,8 @@
   "Image": {
     "Title": "resources/images/Title.png",
     "Player": "resources/images/Player.png",
-    "Zero": "resources/images/zero.png",
-    "First": "resources/images/first.png"
+    "Nagisa1": "resources/images/nagisa1.png",
+    "Kei1": "resources/images/kei1.png"
   },
 
   "Sound": {

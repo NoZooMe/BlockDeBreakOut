@@ -1,7 +1,7 @@
 #include "StageScene1.h"
 #include "Macro.h"
 #include "Define.h"
-#include "Stage1Script.h"
+#include "StageScript.h"
 #include "Keyboard.h"
 #include "eItemName.h"
 #include "ResourceID.h"
@@ -14,6 +14,7 @@ using namespace std;
 
 StageScene1::StageScene1(ISceneChangedListener* impl, const Parameter& param) : AbstractStageScene(impl, param), _spell1Flag(false), _spell1Cnt(0){
 	GlobalStatusManager::getIns()->SetGlobalFlag(eGlobalStatusFlag::Stage1Enter, true);
+	_gui->SetterStageNum(1);
 }
 
 void StageScene1::Update() {
@@ -24,8 +25,8 @@ void StageScene1::Update() {
 }
 
 void StageScene1::InitStageScript() {
-	_stageScript.push_back(make_unique<Stage1Script>("resources/Stage1Script.json", "resources/Stage1Command.json"));
-	_stageScript.push_back(make_unique<Stage1Script>("resources/Stage1SpellScript.json", "resources/Stage1SpellCommand.json"));
+	_stageScript.push_back(make_unique<StageScript>("resources/Stage1Script.json", "resources/Stage1Command.json"));
+	_stageScript.push_back(make_unique<StageScript>("resources/Stage1SpellScript.json", "resources/Stage1SpellCommand.json"));
 }
 
 ResourceID StageScene1::GetStageBGM() const{
@@ -33,7 +34,7 @@ ResourceID StageScene1::GetStageBGM() const{
 }
 
 void StageScene1::UpdateStageScript(int cnt) {
-	_stageScript[_currentScriptIndex]->Update(cnt, *_bulletMgr, *_player, *_ball);
+	_stageScript[_currentScriptIndex]->Update(cnt, *_bulletMgr, *_player, *_ball, Define::STAGE1_CNT);
 }
 
 void StageScene1::ChangeCurrentScript(int BlockNum) {

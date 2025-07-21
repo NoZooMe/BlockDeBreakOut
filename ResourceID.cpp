@@ -5,8 +5,8 @@ const std::string& toString(ResourceID id) {
 	static const std::unordered_map<ResourceID, std::string> table = {
 		{ResourceID::Player, "Player"}, 
 		{ResourceID::Title, "Title"},
-		{ResourceID::First, "First"},
-		{ResourceID::Zero, "Zero"},
+		{ResourceID::Nagisa1, "Nagisa1"},
+		{ResourceID::Kei1, "Kei1"},
 
 		{ResourceID::BreakBlockSE, "BreakBlockSE"}, 
 		{ResourceID::DamageSE, "DamageSE"}, 

@@ -174,7 +174,7 @@
     <ClCompile Include="ResourceID.cpp">
       <Filter>ソース ファイル\ResourceManager</Filter>
     </ClCompile>
-    <ClCompile Include="Stage1Script.cpp">
+    <ClCompile Include="StageScript.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="StageScriptLoader.cpp">
@@ -395,7 +395,7 @@
     <ClInclude Include="StageScriptBase.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Stage1Script.h">
+    <ClInclude Include="StageScript.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="StageScriptLoader.h">

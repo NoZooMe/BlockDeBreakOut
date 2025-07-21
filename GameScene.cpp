@@ -21,7 +21,7 @@ GameScene::GameScene(ISceneChangedListener* impl, const Parameter& parameter) : 
 
 	Parameter param;
 
-	_currentScene = make_shared<DialogueScene1>(this, param);
+	_currentScene = make_shared<StageScene1>(this, param);
 
 	map<int, string> gameMenu;
 	gameMenu[0] = GameMenu1;

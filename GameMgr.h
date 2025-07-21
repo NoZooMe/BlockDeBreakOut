@@ -16,7 +16,6 @@ public:
     GameMgr(IGameLifeCycleHandler* impl);
     void Initialize();
     void Finalize();
-    //evColÇÕì«Ç›éÊÇËêÍópÇ»ÇÃÇ≈constéQè∆Ç≈ó«Ç¢ÅB
     void Update(BlockMgr& blockMgr, BulletMgr& bulletMgr, ItemMgr& itemMgr, Player& player, Ball& ball, const std::vector<CollisionEvent>& evCol);
     void Draw(const BlockMgr& blockMgr, const BulletMgr& bulletMgr, const ItemMgr& itemMgr, const Player& player, const Ball& ball) const;
 

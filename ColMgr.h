@@ -29,12 +29,9 @@ private:
     //Õ“Ë‚µ‚Ä‚¢‚ésegment‚ğ•Ô‚·
     std::optional<Segment> Col_RectAndBall(const RectangleObject& rect, const CircleObject& circle) const;
     bool Col_SegmentAndSegment(const Segment& segment1, const Segment& segment2) const;
-    //bool Col_RectAndRect(const RectangleObject& rect1, const RectangleObject& rect2) const;
     bool SAT_Intersect(const std::vector<Vector2<float>>& polyA, const std::vector<Vector2<float>>& polyB);
     bool Col_BallAndBall(const CircleObject& circleA, const CircleObject& circleB) const;
 
-
-    //‘½ŠpŒ`‚Ì’¸“_‚ğ²‚É‘Î‚µ‚ÄË‰e‚·‚é
     void ProjectPolygon(const std::vector<Vector2<float>>& vertices, const Vector2<float>& axis, float& min, float& max);
 
     

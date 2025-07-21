@@ -139,7 +139,7 @@ void TitleScene::Draw() const {
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 		if (_isInputEnabled) {
 			_effectPipeline->Draw([&] {_titleMenu->Draw(),
-				DrawGraph(20, Define::SCREEN_HEIGHT - 800, ImageManager::getIns()->getImage(toString(ResourceID::Zero)), true), 
+				DrawGraph(20, Define::SCREEN_HEIGHT - 800, ImageManager::getIns()->getImage(toString(ResourceID::Kei1)), true), 
 				DrawString(Define::DISPLAY_WIDTH/2 - 100, Define::SCREEN_HEIGHT/2 + 200, "Press Enter", Define::WHITE); });
 			
 		}

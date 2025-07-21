@@ -5,8 +5,8 @@ enum class ResourceID
 
 	Player, 
 	Title,
-	First, 
-	Zero,
+	Nagisa1, 
+	Kei1,
 
 	BreakBlockSE, 
 	DamageSE, 

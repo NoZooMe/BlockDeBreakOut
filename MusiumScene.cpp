@@ -169,13 +169,13 @@ void MusiumScene::Draw() const {
 				"【号外 政府反乱軍\"クラテミス\"のリーダー、ケイ捕まる!!】", Define::WHITE);
 		break;
 	case eData::Kei:
-		DrawGraph((Define::DISPLAY_WIDTH - 180) / 2, 0, ImageManager::getIns()->getImage(toString(ResourceID::Zero)), true);
+		DrawGraph((Define::DISPLAY_WIDTH - 180) / 2, 0, ImageManager::getIns()->getImage(toString(ResourceID::Kei1)), true);
 		DrawString(200, 820, "政府に属さない組織\"クラテミス\"のリーダー。魔法が確認される前の人類であり、独学で魔法を習得した。\n"
 								"元々は有能な科学者であり、クラテミスを作る前はEUIという研究機関に若いながらも所属していた。\n"
 								"専攻は、完全なランダム性を実現できるのではと思われていた魔子という粒子の研究。", Define::WHITE);
 		break;
 	case eData::Matsuri:
-		DrawGraph((Define::DISPLAY_WIDTH - 180) / 2, 0, ImageManager::getIns()->getImage(toString(ResourceID::First)), true);
+		DrawGraph((Define::DISPLAY_WIDTH - 180) / 2, 0, ImageManager::getIns()->getImage(toString(ResourceID::Nagisa1)), true);
 		DrawString(200, 820, "魔法が確認されてから産まれたいわゆる\"ネイティブ\"。\n"
 								"魔法を制御しようとしている政府では、魔法への適正が高いネイティブは重宝されているようで、\n"
 								"彼女は若いながらも政府へ反乱する魔法使いを閉じ込める監獄の看守を任されている。\n"
